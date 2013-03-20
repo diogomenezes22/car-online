@@ -1,0 +1,14 @@
+C:\Users\geraldo.borges\Documents\Visual Studio 2010\Projects\carOnline\carOnline\bin\carOnline.dll
+C:\Users\geraldo.borges\Documents\Visual Studio 2010\Projects\carOnline\carOnline\bin\carOnline.pdb
+C:\Users\geraldo.borges\Documents\Visual Studio 2010\Projects\carOnline\carOnline\bin\EntityFramework.dll
+C:\Users\geraldo.borges\Documents\Visual Studio 2010\Projects\carOnline\carOnline\bin\EntityFramework.xml
+C:\Users\geraldo.borges\Documents\Visual Studio 2010\Projects\carOnline\carOnline\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\geraldo.borges\Documents\Visual Studio 2010\Projects\carOnline\carOnline\obj\Debug\carOnline.dll
+C:\Users\geraldo.borges\Documents\Visual Studio 2010\Projects\carOnline\carOnline\obj\Debug\carOnline.pdb
+D:\carOnline\carOnline\bin\carOnline.dll
+D:\carOnline\carOnline\bin\carOnline.pdb
+D:\carOnline\carOnline\bin\EntityFramework.dll
+D:\carOnline\carOnline\bin\EntityFramework.xml
+D:\carOnline\carOnline\obj\Debug\ResolveAssemblyReference.cache
+D:\carOnline\carOnline\obj\Debug\carOnline.dll
+D:\carOnline\carOnline\obj\Debug\carOnline.pdb

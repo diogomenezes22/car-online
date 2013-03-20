@@ -1,0 +1,17 @@
+﻿@model carOnline.Models.tblAdministrador
+
+@{
+    ViewBag.Title = "Alteracao";
+    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+}
+
+<h2>Alteracao</h2>
+@using (Html.BeginForm("Alterar", "Administrador", new { area= "Administrativo" },FormMethod.Post))
+{
+    <p>@Model.idAdministrador</p>
+    <input type="hidden" value="@Model.idAdministrador" id="idAdministrador" name="idAdministrador" />
+    <p><label for="" class="">Nome  :</label>@Html.TextBoxFor(m=> Model.nome)</p>
+    <p><label for="" class="">Email :</label>@Html.TextBoxFor(m=> Model.email)</p>
+    <p><label for="" class="">Senha :</label>@Html.PasswordFor(m=> Model.senha)</p>
+    <p><input type="submit" value="Alterar" /></p>
+}

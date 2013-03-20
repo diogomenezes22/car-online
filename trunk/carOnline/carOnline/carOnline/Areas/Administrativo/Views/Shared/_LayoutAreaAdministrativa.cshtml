@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/estilos/reset.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/estilos/administrativo.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.8.3.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-mascaras.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.form.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.blockUI.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.livequery.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-1.7.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/administrativo.js")" type="text/javascript"></script>
+</head>
+<body>
+    <div>
+        @Html.ActionLink("Logout", "Deslogar", "Login", new { area = "Administrativo" }, null)
+        @RenderBody()
+    </div>
+</body>
+</html>

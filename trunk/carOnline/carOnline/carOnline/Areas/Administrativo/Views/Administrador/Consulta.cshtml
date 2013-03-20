@@ -1,0 +1,33 @@
+﻿@using carOnline.Models
+@model IEnumerable<tblAdministrador>
+@{
+    ViewBag.Title = "Consulta";
+    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+}
+
+<h2>Consulta</h2>
+
+<br />
+<br />
+
+<table border="1">
+    @{
+        if(Model!=null)
+        {
+            <tr><td>Código</td><td>Nome</td><td>Alterar</td><td>Deletar</td></tr>
+            foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.idAdministrador</td>
+                    <td>@item.nome</td>
+                    <td>@Html.ActionLink("Alterar", "Alteracao", new { id= @item.idAdministrador })</td>
+                    <td>@Html.ActionLink("Deletar", "DeletarAdministrador", new { id= @item.idAdministrador })</td>
+                </tr>
+            }  
+        } 
+        else
+        {
+            <p>Não há administradores cadastrados</p>
+        }
+    }
+</table>

@@ -1,0 +1,27 @@
+﻿@model carOnline.Models.tblFuncionario
+
+@{
+    ViewBag.Title = "Alteracao";
+    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+}
+
+<h2>Alteracao</h2>
+@using (Html.BeginForm("Alterar", "Funcionario", new { area= "Administrativo" },FormMethod.Post))
+{
+    <input type="hidden" class="urlBuscarCidade" value="@Url.Action("BuscarCidade", "Funcionario", new { area= "Administrativo" })" />
+    <p><label for="" class="">Nome  :</label>@Html.TextBoxFor(m=> m.nome)</p>
+    <p><label for="" class="">Email :</label>@Html.TextBoxFor(m=> m.email)</p>
+    <p><label for="" class="">Telefone :</label>@Html.TextBoxFor(m => m.telefone, new {@class="TELEFONE" })</p>
+    <p><label for="" class="">Celular  :</label>@Html.TextBoxFor(m => m.celular, new { @class = "NOVO_FORMATO_TELEFONE" })</p>
+    <p><label for="" class="">Endereço  :</label>@Html.TextBoxFor(m => m.endereco)</p>
+    <p><label for="" class="">Bairro  :</label>@Html.TextBoxFor(m => m.bairro)</p>
+    <p><label for="" class="">Cargo  :</label>@Html.DropDownList("Cargos")</p>
+    <p><label for="" class="">País  :</label>@Html.DropDownList("Paises")</p>
+    <p><label for="" class="">Estado  :</label>@Html.DropDownList("Estados")</p>
+    <p>
+        <label for="" class="">Cidade  :</label>
+        <select class="listaCidades" id="Cidades" name="Cidades">
+        </select>
+    </p>
+    <p><input type="submit" value="Alterar" /></p>
+}

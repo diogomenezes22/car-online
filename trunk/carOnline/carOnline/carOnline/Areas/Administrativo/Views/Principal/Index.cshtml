@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+}
+
+<h2>Área Administrativa</h2>
+<br />
+<br />
+<p>Administrador</p>
+<p>@Html.ActionLink("Cadastro Administrador", "Cadastro", "Administrador", new { area = "Administrativo" }, new { @title="Cadastro de administrador" })</p>
+<p>@Html.ActionLink("Consulta Administrador", "Consulta", "Administrador", new { area = "Administrativo" }, new { @title="Consulta administrador" })</p>
+<br />
+<p>Funcionário</p>
+<p>@Html.ActionLink("Cadastro de Funcionário", "Cadastro", "Funcionario", new { area = "Administrativo" }, new { @title="Cadastro de funcionário" })</p>
+<p>@Html.ActionLink("Consulta de Funcionário", "Consulta", "Funcionario", new { area = "Administrativo" }, new { @title="Consulta de funcionários" })</p>

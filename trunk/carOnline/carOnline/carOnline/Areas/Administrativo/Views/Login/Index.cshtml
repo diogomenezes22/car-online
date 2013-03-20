@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Login</h2>
+<br />
+
+
+    @using(Html.BeginForm("ValidarLogin","Login",new {area="Administrativo"},FormMethod.Post))
+    {
+        <p><label for="">E-mail:</label>@Html.TextBox("emailAdministrador")</p>
+        <p><label for="">Senha :</label>@Html.Password("senhaAdministrador")</p>
+        <p><input type="submit" value="Logar" /><input type="reset" value="Limpar" /></p>
+    }
