@@ -1,0 +1,34 @@
+﻿@using carOnline.Models
+@model List<tblAdministrador>
+@{
+    ViewBag.Title = "Consulta";
+    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+}
+    <br />
+    <br />
+<div id="areaConsulta">
+    <p class="mensagemSucesso">@TempData["mensagemRetorno"]</p>
+    <br />
+    <p class="titulo">Consulta de Administrador</p>
+    <br />
+    <br />
+    @{
+        var gridAdministradores = new WebGrid(Model, canPage: true, canSort: true, rowsPerPage: 3);
+        gridAdministradores.Pager(WebGridPagerModes.NextPrevious);
+        //@gridAdministradores.GetHtml();
+        @gridAdministradores.GetHtml(
+            tableStyle:"webGrid",
+            htmlAttributes:new {id="tabelaAdministradores"},
+            alternatingRowStyle:"alt",
+            columns:gridAdministradores.Columns(
+                gridAdministradores.Column("idAdministrador","Código"),
+                gridAdministradores.Column("nome","Nome"),
+                gridAdministradores.Column("email","Email"),
+                gridAdministradores.Column(header:"Alterar",format :@<text>@Html.ActionLink("Alterar","Alteracao","Administrador",new {id = item.idAdministrador},new {@class="links"})</text>),
+                gridAdministradores.Column(header:"Deletar",format :@<text><a class="links linkDeletarAdministrador" href="#" id="@item.idAdministrador">Deletar</a></text>)
+            )  
+        );
+    }
+</div>
+<br />
+<br /> 

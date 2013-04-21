@@ -1,0 +1,53 @@
+﻿@using carOnline.Models
+@model List<RelatorioCarrosVendidos_Result>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>RelatorioCarrosVendidos</title>
+    <link href="@Url.Content("~/Content/css/reset.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/relatorio.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="corpoRelatorio">
+    <p id="dataHora">@DateTime.Now</p>
+        <div id="cabecalho">
+            <p class="tituloRelatorio">Relatório de carros vendidos</p>
+        </div>
+        <hr />
+        <br />
+        <div id="areaRegistros">
+        @{
+            var gridVeiculos = new WebGrid(Model, canPage: false, canSort: false);
+            //gridVeiculos.Pager(WebGridPagerModes.NextPrevious);
+            @gridVeiculos.GetHtml(
+                tableStyle:"webGrid",
+                htmlAttributes:new {id="tabelaVeiculos"},
+                alternatingRowStyle:"alt",
+                columns:gridVeiculos.Columns(
+                    gridVeiculos.Column("Codigo"),
+                    gridVeiculos.Column("Ano"),
+                    gridVeiculos.Column("Marca"),
+                    gridVeiculos.Column("Modelo"),
+                    gridVeiculos.Column("Combustivel"),
+                    gridVeiculos.Column("ValorVenda"),
+                    gridVeiculos.Column("dataVenda")
+               )
+            );
+        }
+        </div>
+        <br />
+        <br />
+        <hr />
+        <br />
+        <br />
+        <div id="rodape">
+            <p>Total da venda ==> @ViewBag.TotalVenda</p>
+        </div>
+    </div>
+</body>
+</html>

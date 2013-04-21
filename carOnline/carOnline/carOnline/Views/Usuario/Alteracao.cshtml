@@ -1,0 +1,31 @@
+﻿@model carOnline.Models.tblUsuario
+
+@{
+    ViewBag.Title = "Meus dados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+
+<div id="areaUsuario">
+    <p class="mensagemRetorno">@TempData["mensagemRetorno"]</p>
+    <br />
+    <p class="titulo">Alteração de Usuário</p>
+    <br />
+    @using (Html.BeginForm("Alterar", "Usuario", FormMethod.Post, new {@class="formularioUsuario" }))
+    {
+        <input type="hidden" value="@Model.idUsuario" id="idUsuario" name="idUsuario" />
+        <p><label for="nome" class="label">Nome  :          </label>@Html.TextBoxFor(m => m.nome, new { @class = "campoTexto campoNomeUsuario", maxlength = "60", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
+        <p><label for="email" class="label">Email :         </label>@Html.TextBoxFor(m => m.email, new { @class = "campoTexto campoEmailUsuario", maxlength = "60", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
+        <p><label for="senha" class="label">Senha :         </label>@Html.PasswordFor(m => Model.senha, new { @class = "campoTexto campoSenhaUsuario", maxlength = "8" })<span class="campoObrigatorio" title="Este campo é obrigatório!">*</span></p>
+        <p><label for="telefone"  class="label">Telefone :  </label>@Html.TextBoxFor(m => m.telefone, new { @class = "TELEFONE campoTexto" })</p>
+        <p><label for="celular" class="label">Celular  :    </label>@Html.TextBoxFor(m => m.celular, new { @class = "NOVO_FORMATO_TELEFONE campoTexto" })</p>
+    
+        <br />
+        <br />
+        <p><input type="submit" value="Alterar" class="botao" /></p>
+    }
+</div>
+<br />
+<br />

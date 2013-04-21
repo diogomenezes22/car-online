@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "FormularioRelatorioCarrosCadastrados";
+    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+}
+
+<br />
+<div id="areaFormularioRelatorioCarrosCadastrados">
+    <p class="titulo">Relatório de Carros Cadastrados</p>
+    <br />
+    <br />
+
+    @using (@Html.BeginForm("RelatorioCarrosCadastradosPDF","Relatorio",FormMethod.Post))
+    {
+        <p> <label class="label">Data Inicial: </label><input type="text" id="dataInicial" name="dataInicial" class="CALENDARIO campoTexto" /></p>
+        <p> <label class="label">Data Final: </label><input  type="text" id="dataFinal" name="dataFinal" class="CALENDARIO campoTexto" /></p>
+        <br />
+        <p><input type="submit" value="Gerar Relatório" class="botao" /><input type="reset" value="Limpar" class="botao" /></p>
+    }
+</div>
+<br />
+<br />
