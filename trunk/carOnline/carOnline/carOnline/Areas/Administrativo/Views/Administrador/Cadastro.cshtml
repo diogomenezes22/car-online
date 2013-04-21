@@ -1,0 +1,28 @@
+﻿@model carOnline.Models.tblAdministrador
+
+@{
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+}
+    <br />
+    <br />
+    <p><span class="mensagemValidacao" title="">@Html.ValidationMessage("nome")</span></p>
+    <p><span class="mensagemValidacao" title="">@Html.ValidationMessage("email")</span></p>
+    <p><span class="mensagemValidacao" title="">@Html.ValidationMessage("senha")</span></p>
+<div id="areaCadastro">
+    <p class="mensagemRetorno">@TempData["mensagemRetorno"]</p>
+    <br />
+    <p class="titulo">Cadastro de Administrador</p>
+    <br />
+    @using (Html.BeginForm("Cadastrar", "Administrador", new { area = "Administrativo" }, FormMethod.Post, new { @class="formularioCadastroAdministrador" }))
+    {
+        <p><label for="nome" class="label">Nome  :</label>@Html.TextBoxFor(Model => Model.nome, new { @class = "campoTexto campoNomeAdministrador", maxlength = "60", size = "40" })<span class="campoObrigatorio" title="Este campo é obrigatório!">*</span></p>
+        <p><label for="email" class="label">Email :</label>@Html.TextBoxFor(Model => Model.email, new { @class = "campoTexto campoEmailAdministrador", maxlength = "60", size = "40" })<span class="campoObrigatorio" title="Este campo é obrigatório!">*</span></p>
+        <p><label for="senha" class="label">Senha :</label>@Html.PasswordFor(Model => Model.senha, new { @class = "campoTexto campoSenhaAdministrador", maxlength = "8" })<span class="campoObrigatorio" title="Este campo é obrigatório!">*</span></p>
+        <br />
+        <br />
+        <p><input type="submit" value="Cadastrar" class="botao" /><input type="reset"  class="botao" value="limpar" /></p>
+    }
+</div>
+<br />
+<br /> 

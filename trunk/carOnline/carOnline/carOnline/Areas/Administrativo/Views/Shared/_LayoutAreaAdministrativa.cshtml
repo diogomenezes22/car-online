@@ -1,0 +1,151 @@
+﻿@using carOnline.Models;
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/css/reset.css")" rel="stylesheet" type="text/css" />
+    
+    <link href="@Url.Content("~/Content/css/administrativo.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/jquery-ui.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.8.3.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.11.js")" type="text/javascript"> </script>
+    <script src="@Url.Content("~/Scripts/jquery-mascaras.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.form.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.blockUI.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.livequery.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-1.7.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/funcoes.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/administrativo.js")" type="text/javascript"></script>
+</head>
+<body>
+    <a href="#" class="linkAuxiliarMascara"></a>
+    <!--<div class="corpo">-->
+        @{
+            tblAdministrador administrador = (tblAdministrador)Session["ADMINISTRADOR"];
+            tblFuncionario funcionario = (tblFuncionario)Session["FUNCIONARIO"];
+            string nomeUusuario = "";
+
+            if (funcionario != null)
+            {
+                nomeUusuario = funcionario.nome;
+            }
+            else
+            {
+                nomeUusuario = administrador.nome;
+            }
+        }
+        <div class="cabecalhoUsuario">
+            <p class="nomeUsuarioLogado">@nomeUusuario</p>
+            <br />
+            <p>@Html.ActionLink("Logout", "Deslogar", "Login", new { area = "Administrativo" }, new { @class = "linkLogout" })</p>
+        </div>
+        
+        <!--<div id="corpoAreaAdministrativa">-->
+        
+            <p class="areaTituloMenu">Área Administrativa</p>
+            <br />
+            <br />
+            <div class="areaMenuPrincipal">
+                @if (funcionario != null)
+                {
+                    if (funcionario.idTipoPermissao != 3)
+                    {
+                        if (funcionario.idTipoPermissao == 1)
+                        {
+                            <div class="areaConfiguracaoBotao" id="areaBotaoAdministrador1">
+                                <img src="@Url.Content("~/Content/images/administrador.png")" alt="" title="Administrador" width="128px" height="128px" />
+                                <div class="botoesOcultos">
+                                    <p class="areatituloBotao">Administrador</p>
+                                    <br />
+                                    <p>@Html.ActionLink("Cadastro Administrador", "Cadastro", "Administrador", new { area = "Administrativo" }, new { @title = "Cadastro de administrador", @class = "Links" })</p>
+                                    <p>@Html.ActionLink("Consulta Administrador", "Consulta", "Administrador", new { area = "Administrativo" }, new { @title = "Consulta administrador", @class = "Links" })</p>  
+                                </div>
+                            </div>
+                        }
+                        <div class="areaConfiguracaoBotao" id="areaBotaoFuncionario1">
+                            <img src="@Url.Content("~/Content/images/funcionario.png")" alt="" title="Funcionário" width="128px" height="128px" />
+                            <div class="botoesOcultos">
+                                <p class="areatituloBotao">Funcionário</p>
+                                <br />   
+                                <p>@Html.ActionLink("Cadastro de Funcionário", "Cadastro", "Funcionario", new { area = "Administrativo" }, new { @title = "Cadastro de funcionário", @class = "Links" })</p>
+                                <p>@Html.ActionLink("Consulta de Funcionário", "Consulta", "Funcionario", new { area = "Administrativo" }, new { @title = "Consulta de funcionários", @class = "Links" })</p>  
+                            </div>
+                        </div>
+                        <div class="areaConfiguracaoBotao" id="areaBotaoRelatorio1">
+                            <img src="@Url.Content("~/Content/images/relatorio.png")" alt="" title="Relatórios" width="128px" height="128px" />
+                            <div class="botoesOcultos">
+                                <p class="areatituloBotao">Relatórios</p>
+                                <br />
+                                <p>@Html.ActionLink("Carros Vendidos", "FormularioRelatorioCarrosVendidos", "Relatorio", new { area = "Administrativo" }, new { @title = "Relatório de Carros Vendidos", @class = "Links" }) </p>  
+                                <p>@Html.ActionLink("Carros Cadastrados", "FormularioRelatorioCarrosCadastrados", "Relatorio", new { area = "Administrativo" }, new { @title = "Relatório de Carros Cadastrados", @class = "Links" }) </p>   
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="areaConfiguracaoBotao" id="areaBotaoAdministrador">
+                        <img src="@Url.Content("~/Content/images/administrador.png")" alt="" title="Administrador" width="128px" height="128px" />
+                        <div class="botoesOcultos">
+                            <p class="areatituloBotao">Administrador</p>
+                            <br />
+                            <p>@Html.ActionLink("Cadastro Administrador", "Cadastro", "Administrador", new { area = "Administrativo" }, new { @title = "Cadastro de administrador", @class = "Links" })</p>
+                            <p>@Html.ActionLink("Consulta Administrador", "Consulta", "Administrador", new { area = "Administrativo" }, new { @title = "Consulta administrador", @class = "Links" })</p> 
+                        </div>
+                     </div>
+                    <div class="areaConfiguracaoBotao" id="areaBotaoFuncionario">
+                        <img src="@Url.Content("~/Content/images/funcionario.png")" alt="" title="Funcionário" width="128px" height="128px" />
+                        <div class="botoesOcultos">
+                            <p class="areatituloBotao">Funcionário</p>
+                            <br />   
+                            <p>@Html.ActionLink("Cadastro de Funcionário", "Cadastro", "Funcionario", new { area = "Administrativo" }, new { @title = "Cadastro de funcionário", @class = "Links" })</p>
+                            <p>@Html.ActionLink("Consulta de Funcionário", "Consulta", "Funcionario", new { area = "Administrativo" }, new { @title = "Consulta de funcionários", @class = "Links" })</p>  
+                        </div>
+                    </div>
+                    <div class="areaConfiguracaoBotao" id="areaBotaoSeguradora">
+                        <img src="@Url.Content("~/Content/images/seguradora.png")" alt="" title="Seguradora" width="128px" height="128px" />
+                        <div class="botoesOcultos">
+                            <p class="areatituloBotao">Seguradora</p>
+                            <br />           
+                            <p>@Html.ActionLink("Cadastro de Seguradora", "Cadastro", "Seguradora", new { area = "Administrativo" }, new { @title = "Cadastro de Seguradora", @class = "Links" })</p>
+                            <p>@Html.ActionLink("Consulta de Seguradora", "Consulta", "Seguradora", new { area = "Administrativo" }, new { @title = "Consulta de Seguradoras", @class = "Links" })</p> 
+                        </div>
+                    </div>
+
+                    <div class="areaConfiguracaoBotao" id="areaBotaoUsuario">
+                        <img src="@Url.Content("~/Content/images/usuario.png")" alt="" title="Usuário" width="128px" height="128px" />
+                        <div class="botoesOcultos">
+                            <p class="areatituloBotao">Usuário</p>
+                            <br />
+                            <p>@Html.ActionLink("Consulta de Usuário", "Consulta", "Usuario", new { area = "" }, new { @title = "Consulta de Usuários", @class = "Links" })</p>  
+                        </div>
+                    </div>
+                    <div class="areaConfiguracaoBotao" id="areaBotaoRelatorio">
+                        <img src="@Url.Content("~/Content/images/relatorio.png")" alt="" title="Relatórios" width="128px" height="128px" />
+                        <div class="botoesOcultos">
+                            <p class="areatituloBotao">Relatórios</p>
+                            <br />
+                            <p>@Html.ActionLink("Carros Vendidos", "FormularioRelatorioCarrosVendidos", "Relatorio", new { area = "Administrativo" }, new { @title = "Relatório de Carros Vendidos", @class = "Links" }) </p>  
+                            <p>@Html.ActionLink("Carros Cadastrados", "FormularioRelatorioCarrosCadastrados", "Relatorio", new { area = "Administrativo" }, new { @title = "Relatório de Carros Cadastrados", @class = "Links" }) </p>  
+                        </div>
+                    </div>
+                    <div class="areaConfiguracaoBotao" id="areaBotaoParametro">
+                        <img src="@Url.Content("~/Content/images/parametro.png")" alt="" title="Parâmetros" width="128px" height="128px" />
+                        <div class="botoesOcultos">
+                            <p class="areatituloBotao">Parâmetros</p>
+                            <br />
+                            <p>@Html.ActionLink("Cadastro de Parâmetros", "Cadastro", "Parametro", new { area = "Administrativo" },  new { @title = "Cadastro de Parâmetros", @class = "Links" }) </p>
+                            <p>@Html.ActionLink("Consulta de Parâmetros", "Consulta", "Parametro", new { area = "Administrativo" }, new { @title = "Consulta de Parâmetros", @class = "Links" }) </p>
+                            <p>@Html.ActionLink("Parâmetros de Cargo", "Cargo", "Parametro", new { area = "Administrativo" }, new { @title = "Parâmetros de Cargo", @class = "Links" }) </p>
+                        </div>
+                    </div>
+                }
+           </div>
+        <!--</div>-->
+        
+        @RenderBody()
+    <!--</div>-->
+</body>
+</html>
+<div class="mascara"></div>

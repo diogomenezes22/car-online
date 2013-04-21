@@ -1,0 +1,26 @@
+﻿@inherits BibliotecaHelpers
+@using System.Data;
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using carOnline.Models;
+@using System.Web.Mvc.Ajax;
+@using System.Web.Mvc.Razor;
+@using System.Data.Objects.DataClasses;
+@using System.Collections;
+
+@helper FileList(int idVeiculo)
+{
+    UrlHelper url = new UrlHelper(Request.RequestContext);
+    <input type="hidden" class="auxiliarUploadFoto" value="alteracaoVeiculo"/> 
+    <input type="hidden" class="idVeiculoUsuario" value="@idVeiculo"/> 
+    <input type="hidden" class="urlBuscarTabelaArquivo" value="@url.Action("BuscarTabelaArquivo", "Veiculo")" />   
+    <div class="areaFileList">
+        <form class="ajaxUploadForm" action="@url.Action("GravarFotos", "Veiculo", new { idVeiculo = @idVeiculo, tamanhoArquivo = 1000000 })" method="post" enctype="multipart/form-data">
+            <label class="Label">Arquivo: <input type="file" id="myFile" name="file" /></label>
+            <input class="botoes botaoSalvarFileList" data-idVeiculo="@idVeiculo" type="submit" value="Salvar Arquivo" />
+        </form>
+        <br />
+        <div class="areaTabelaArquivos"></div>
+    </div>
+}
+

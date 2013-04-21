@@ -1,0 +1,66 @@
+﻿@using carOnline.Models
+@{
+    ViewBag.Title = "Area";
+}
+
+</header> 
+ 
+<section id="content-2">
+    <div class="container_12">
+        <div>
+            <div class="grid_5">
+                <div class="ident-bot-15">
+                    <h2>Área do Usuário</h2><br /><br />
+                    <h2 class="h2 ident-top-1">Menu</h2>
+                </div>
+
+                <!-- MENU ADMINISTRATIVO DO USUÁRIO -->
+                @Html.Partial("~/Views/Usuario/_Menu.cshtml")
+
+            </div>
+            <div class="grid_7">
+                <div class="ident-bot-6">
+                    <h2>Meus</h2>
+                    <h2 class="h2 ident-top-1">Dados</h2>
+                </div>
+ 
+                <div id="confirm">
+                  @if (Session["USUARIO"] != null)
+                  {
+                      tblUsuario usuario = (tblUsuario)Session["USUARIO"];
+                      
+                      <p><strong>Id:</strong> @usuario.idUsuario</p>
+                      <p><strong>Nome:</strong> @usuario.nome</p>
+                      <p><strong>E-mail</strong> @usuario.email</p>
+                      <p><strong>Telefone:</strong> @usuario.telefone</p>
+                      <p><strong>Celular:</strong> @usuario.celular</p>
+                      <p><strong>Data de Cadastro:</strong> @usuario.dataCadastro</p>
+                  }
+                </div> 
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</section> 
+
+
+@*
+<div id="areaUsuario">
+    <p class="mensagemRetorno">@TempData["mensagemRetorno"]</p>
+    <br />
+    <p class="titulo">Cadastro de Usuário</p>
+    <br />
+    @using (Html.BeginForm("Cadastrar", "Usuario", FormMethod.Post, new {@class="formularioUsuario" }))
+    {
+        <p><label for="nome" class="label">Nome  :          </label>@Html.TextBoxFor(m => m.nome, new { @class = "campoTexto campoNomeUsuario", maxlength = "60", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
+        <p><label for="email" class="label">Email :         </label>@Html.TextBoxFor(m => m.email, new { @class = "campoTexto campoEmailUsuario", maxlength = "60", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
+        <p><label for="senha" class="label">Senha :         </label>@Html.PasswordFor(Model => Model.senha, new { @class = "campoTexto campoSenhaUsuario", maxlength = "8" })<span class="campoObrigatorio" title="Este campo é obrigatório!">*</span></p>
+        <p><label for="telefone"  class="label">Telefone :  </label>@Html.TextBoxFor(m => m.telefone, new { @class = "TELEFONE campoTexto" })</p>
+        <p><label for="celular" class="label">Celular  :    </label>@Html.TextBoxFor(m => m.celular, new { @class = "NOVO_FORMATO_TELEFONE campoTexto" })</p>
+    
+        <br />
+        <br />
+        <p><input type="submit" value="Cadastrar" class="botao" /><input type="reset" class="botaoLimparUsuario botao" value="limpar" /></p>
+    }
+</div>
+*@

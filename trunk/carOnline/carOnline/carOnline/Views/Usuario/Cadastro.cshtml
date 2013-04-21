@@ -1,0 +1,111 @@
+﻿@model carOnline.Models.tblUsuario
+
+@{
+    ViewBag.Title = "Cadastro de Usuário";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+</header> 
+ 
+<section id="content-2">
+    <div class="container_12">
+        <div>
+            <div class="grid_5">
+                <div class="ident-bot-15">
+                    <h2>Área do</h2>
+                    <h2 class="h2 ident-top-1">Usuário</h2>
+                </div>
+                <div class="ident-bot-6">                    
+                    <iframe width="325" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.br/maps?q=R.+Timbiras,+1532&amp;ie=UTF8&amp;hq=&amp;hnear=R.+dos+Timbiras,+1532+-+Lourdes,+Belo+Horizonte+-+Minas+Gerais,+30140-061&amp;gl=br&amp;ll=-19.927059,-43.937501&amp;spn=0.042364,0.084543&amp;t=h&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.br/maps?q=R.+Timbiras,+1532&amp;ie=UTF8&amp;hq=&amp;hnear=R.+dos+Timbiras,+1532+-+Lourdes,+Belo+Horizonte+-+Minas+Gerais,+30140-061&amp;gl=br&amp;ll=-19.927059,-43.937501&amp;spn=0.042364,0.084543&amp;t=h&amp;z=14&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left"></a></small>
+                </div>   
+                <div class="extra-wrap">
+                    <span class="dl1">
+                        Rua tal<br/>
+                        Glasgow, D04 89GR
+                        <span>+1 800 559 6580</span>Freephone:
+                        <span>+1 800 603 6035</span>Telephone:
+                        <span>+1 800 889 9898</span>FAX:
+                        E-mail: <a class="link-2" href="#"><span class="__cf_email__" data-cfemail="6805090104280c0d05070401060346071a0f">[email&nbsp;protected]</span><script type="text/javascript">
+                        /* <![CDATA[ */
+                        (function(){try{var s,a,i,j,r,c,l,b=document.getElementsByTagName("script");l=b[b.length-1].previousSibling;a=l.getAttribute('data-cfemail');if(a){s='';r=parseInt(a.substr(0,2),16);for(j=2;a.length-j;j+=2){c=parseInt(a.substr(j,2),16)^r;s+=String.fromCharCode(c);}s=document.createTextNode(s);l.parentNode.replaceChild(s,l);}}catch(e){}})();
+                        /* ]]> */
+                        </script></a></dd>
+                    </span>
+                </div>
+            </div>
+            <div class="grid_7">
+                <div class="ident-bot-6">
+                    <h2>Cadastro de</h2>
+                    <h2 class="h2 ident-top-1">Usuário</h2>
+                </div>
+ 
+                <div id="confirm">
+                    @using (Html.BeginForm("Cadastrar", "Usuario", FormMethod.Post, new { @class = "formularioUsuario" }))
+                    {
+                        <div class="success"><div class="success_txt" style="font-weight:bold;font-size:14;color:green">@TempData["mensagemRetorno"]<br/><!--<strong> Você já pode efetuar o login.</strong>--></div></div>
+                        <fieldset>                            
+                            <span style="font-weight:bold;font-size:16px;">Nome</span>
+                            <label class="name" style="margin-bottom: 30px;">                                
+                                @Html.TextBoxFor(m => m.nome, new { @class = "campoTexto campoNomeUsuario", maxlength = "60", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span>
+                                <!--<span class="error">*This is not a valid name.</span> <span class="empty">*This field is required.</span>-->
+                            </label>
+
+                            <span style="font-weight:bold;font-size:16px;">E-mail</span>
+                            <label class="email" style="margin-bottom: 30px;">
+                                @Html.TextBoxFor(m => m.email, new { @class = "campoTexto campoEmailUsuario", maxlength = "60", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span>
+                                <!--<span class="error">*This is not a valid name.</span> <span class="empty">*This field is required.</span>-->
+                            </label>
+
+                            <span style="font-weight:bold;font-size:16px;">Senha</span>
+                            <label class="password" style="margin-bottom: 30px;">
+                                @Html.PasswordFor(Model => Model.senha, new { @class = "campoTexto campoSenhaUsuario", maxlength = "8" })<span class="campoObrigatorio" title="Este campo é obrigatório!">*</span>
+                                <!--<span class="error">*This is not a valid name.</span> <span class="empty">*This field is required.</span>-->
+                            </label>
+
+                            <span style="font-weight:bold;font-size:16px;">Telefone</span>
+                            <label class="phone" style="margin-bottom: 30px;">
+                                @Html.TextBoxFor(m => m.telefone, new { @class = "TELEFONE campoTexto" })                                
+                                <!--<span class="error">*This is not a valid name.</span> <span class="empty">*This field is required.</span>-->
+                            </label>
+
+                            <span style="font-weight:bold;font-size:16px;">Celular</span>
+                            <label class="phone" style="margin-bottom: 30px;">
+                                @Html.TextBoxFor(m => m.celular, new { @class = "NOVO_FORMATO_TELEFONE campoTexto" })                                
+                                <!--<span class="error">*This is not a valid name.</span> <span class="empty">*This field is required.</span>-->
+                            </label>
+                            
+                            <div class="clear"></div>
+                            
+                            <div class="btns">                                
+                                <a href="#" class="button botao_link" data-type="submit">Cadastrar</a>
+                            </div>
+                        </fieldset>
+                    }
+                </div> 
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</section> 
+
+
+@*
+<div id="areaUsuario">
+    <p class="mensagemRetorno">@TempData["mensagemRetorno"]</p>
+    <br />
+    <p class="titulo">Cadastro de Usuário</p>
+    <br />
+    @using (Html.BeginForm("Cadastrar", "Usuario", FormMethod.Post, new {@class="formularioUsuario" }))
+    {
+        <p><label for="nome" class="label">Nome  :          </label>@Html.TextBoxFor(m => m.nome, new { @class = "campoTexto campoNomeUsuario", maxlength = "60", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
+        <p><label for="email" class="label">Email :         </label>@Html.TextBoxFor(m => m.email, new { @class = "campoTexto campoEmailUsuario", maxlength = "60", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
+        <p><label for="senha" class="label">Senha :         </label>@Html.PasswordFor(Model => Model.senha, new { @class = "campoTexto campoSenhaUsuario", maxlength = "8" })<span class="campoObrigatorio" title="Este campo é obrigatório!">*</span></p>
+        <p><label for="telefone"  class="label">Telefone :  </label>@Html.TextBoxFor(m => m.telefone, new { @class = "TELEFONE campoTexto" })</p>
+        <p><label for="celular" class="label">Celular  :    </label>@Html.TextBoxFor(m => m.celular, new { @class = "NOVO_FORMATO_TELEFONE campoTexto" })</p>
+    
+        <br />
+        <br />
+        <p><input type="submit" value="Cadastrar" class="botao" /><input type="reset" class="botaoLimparUsuario botao" value="limpar" /></p>
+    }
+</div>
+*@

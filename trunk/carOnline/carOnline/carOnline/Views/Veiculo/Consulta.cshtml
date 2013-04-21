@@ -1,0 +1,42 @@
+﻿@using carOnline.Models
+@model List<ConsultaVeiculo_Result>
+@{
+    ViewBag.Title = "Consulta de veículos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="areaConsultaVeiculo">
+     
+    <p class="mensagemSucesso">@TempData["mensagemRetorno"]</p>
+    <br />
+    <p class="titulo">Consulta de Veículos</p>
+    <br />
+    <br />
+               
+    @{
+        var gridVeiculos = new WebGrid(Model, canPage: true, canSort: true, rowsPerPage: 3);
+        gridVeiculos.Pager(WebGridPagerModes.NextPrevious);
+        @gridVeiculos.GetHtml(
+            tableStyle:"webGrid",
+            htmlAttributes:new {id="tabelaVeiculos"},
+            alternatingRowStyle:"alt",
+            columns:gridVeiculos.Columns(
+                gridVeiculos.Column("idVeiculo","Código"),
+                gridVeiculos.Column("Tipo"),
+                gridVeiculos.Column("Marca"),
+                gridVeiculos.Column("Modelo"),
+                gridVeiculos.Column("Cor"),
+                gridVeiculos.Column("TipoCombustivel"),
+                gridVeiculos.Column("Ano"),
+                gridVeiculos.Column("Preco"),
+                gridVeiculos.Column("Quilometragem"),
+                gridVeiculos.Column("Cadastro"),
+
+                gridVeiculos.Column(header: "Alterar", format: @<text>@Html.ActionLink("Alterar", "Alteracao", "Veiculo", new { id = item.idVeiculo }, new { @class = "links" })</text>),
+                gridVeiculos.Column(header: "Deletar", format: @<text><a class="links linkDeletarVeiculo" href="#" id="@item.idVeiculo">Deletar</a></text>)
+           )
+        );
+    }
+</div>
+<br />
+<br />

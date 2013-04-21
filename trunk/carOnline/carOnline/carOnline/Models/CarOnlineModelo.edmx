@@ -1,0 +1,1299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CarOnlineModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="CarOnlineModelStoreContainer">
+          <EntitySet Name="tblAdministrador" EntityType="CarOnlineModel.Store.tblAdministrador" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblCargo" EntityType="CarOnlineModel.Store.tblCargo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblCidade" EntityType="CarOnlineModel.Store.tblCidade" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblCor" EntityType="CarOnlineModel.Store.tblCor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblEstado" EntityType="CarOnlineModel.Store.tblEstado" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblFotosVeiculo" EntityType="CarOnlineModel.Store.tblFotosVeiculo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblFuncionario" EntityType="CarOnlineModel.Store.tblFuncionario" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblMarcaVeiculo" EntityType="CarOnlineModel.Store.tblMarcaVeiculo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblModeloVeiculo" EntityType="CarOnlineModel.Store.tblModeloVeiculo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblPais" EntityType="CarOnlineModel.Store.tblPais" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblParametro" EntityType="CarOnlineModel.Store.tblParametro" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblSeguradora" EntityType="CarOnlineModel.Store.tblSeguradora" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblTipoCombustivel" EntityType="CarOnlineModel.Store.tblTipoCombustivel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblTipoParametro" EntityType="CarOnlineModel.Store.tblTipoParametro" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblTipoPermissao" EntityType="CarOnlineModel.Store.tblTipoPermissao" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblTipoVeiculo" EntityType="CarOnlineModel.Store.tblTipoVeiculo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblUsuario" EntityType="CarOnlineModel.Store.tblUsuario" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblVeiculo" EntityType="CarOnlineModel.Store.tblVeiculo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblVendas" EntityType="CarOnlineModel.Store.tblVendas" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_tblAdministrador_tblTipoPermissao" Association="CarOnlineModel.Store.FK_tblAdministrador_tblTipoPermissao">
+            <End Role="tblTipoPermissao" EntitySet="tblTipoPermissao" />
+            <End Role="tblAdministrador" EntitySet="tblAdministrador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCidade_tblEstado" Association="CarOnlineModel.Store.FK_tblCidade_tblEstado">
+            <End Role="tblEstado" EntitySet="tblEstado" />
+            <End Role="tblCidade" EntitySet="tblCidade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEstado_tblPais" Association="CarOnlineModel.Store.FK_tblEstado_tblPais">
+            <End Role="tblPais" EntitySet="tblPais" />
+            <End Role="tblEstado" EntitySet="tblEstado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFotosVeiculo_tblVeiculo" Association="CarOnlineModel.Store.FK_tblFotosVeiculo_tblVeiculo">
+            <End Role="tblVeiculo" EntitySet="tblVeiculo" />
+            <End Role="tblFotosVeiculo" EntitySet="tblFotosVeiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFuncionario_tblCargo" Association="CarOnlineModel.Store.FK_tblFuncionario_tblCargo">
+            <End Role="tblCargo" EntitySet="tblCargo" />
+            <End Role="tblFuncionario" EntitySet="tblFuncionario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFuncionario_tblCidade" Association="CarOnlineModel.Store.FK_tblFuncionario_tblCidade">
+            <End Role="tblCidade" EntitySet="tblCidade" />
+            <End Role="tblFuncionario" EntitySet="tblFuncionario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFuncionario_tblTipoPermissao" Association="CarOnlineModel.Store.FK_tblFuncionario_tblTipoPermissao">
+            <End Role="tblTipoPermissao" EntitySet="tblTipoPermissao" />
+            <End Role="tblFuncionario" EntitySet="tblFuncionario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMarcaVeiculo_tblTipoVeiculo" Association="CarOnlineModel.Store.FK_tblMarcaVeiculo_tblTipoVeiculo">
+            <End Role="tblTipoVeiculo" EntitySet="tblTipoVeiculo" />
+            <End Role="tblMarcaVeiculo" EntitySet="tblMarcaVeiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblModeloVeiculo_tblMarcaVeiculo" Association="CarOnlineModel.Store.FK_tblModeloVeiculo_tblMarcaVeiculo">
+            <End Role="tblMarcaVeiculo" EntitySet="tblMarcaVeiculo" />
+            <End Role="tblModeloVeiculo" EntitySet="tblModeloVeiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblParametro_tblTipoParametro" Association="CarOnlineModel.Store.FK_tblParametro_tblTipoParametro">
+            <End Role="tblTipoParametro" EntitySet="tblTipoParametro" />
+            <End Role="tblParametro" EntitySet="tblParametro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVeiculo_tblCor" Association="CarOnlineModel.Store.FK_tblVeiculo_tblCor">
+            <End Role="tblCor" EntitySet="tblCor" />
+            <End Role="tblVeiculo" EntitySet="tblVeiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVeiculo_tblModeloVeiculo" Association="CarOnlineModel.Store.FK_tblVeiculo_tblModeloVeiculo">
+            <End Role="tblModeloVeiculo" EntitySet="tblModeloVeiculo" />
+            <End Role="tblVeiculo" EntitySet="tblVeiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVeiculo_tblTipoCombustivel" Association="CarOnlineModel.Store.FK_tblVeiculo_tblTipoCombustivel">
+            <End Role="tblTipoCombustivel" EntitySet="tblTipoCombustivel" />
+            <End Role="tblVeiculo" EntitySet="tblVeiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVeiculo_tblUsuario" Association="CarOnlineModel.Store.FK_tblVeiculo_tblUsuario">
+            <End Role="tblUsuario" EntitySet="tblUsuario" />
+            <End Role="tblVeiculo" EntitySet="tblVeiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVendas_tblVeiculo" Association="CarOnlineModel.Store.FK_tblVendas_tblVeiculo">
+            <End Role="tblVeiculo" EntitySet="tblVeiculo" />
+            <End Role="tblVendas" EntitySet="tblVendas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblAdministrador">
+          <Key>
+            <PropertyRef Name="idAdministrador" />
+          </Key>
+          <Property Name="idAdministrador" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="email" Type="varchar" Nullable="false" MaxLength="60" />
+          <Property Name="senha" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="dataCadastro" Type="datetime" Nullable="false" />
+          <Property Name="idTipoPermissao" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCargo">
+          <Key>
+            <PropertyRef Name="idCargo" />
+          </Key>
+          <Property Name="idCargo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="ativo" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="tblCidade">
+          <Key>
+            <PropertyRef Name="idCidade" />
+          </Key>
+          <Property Name="idCidade" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="idEstado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCor">
+          <Key>
+            <PropertyRef Name="idCor" />
+          </Key>
+          <Property Name="idCor" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="varchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tblEstado">
+          <Key>
+            <PropertyRef Name="idEstado" />
+          </Key>
+          <Property Name="idEstado" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="sigla" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="idPais" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFotosVeiculo">
+          <Key>
+            <PropertyRef Name="idFotoVeiculo" />
+          </Key>
+          <Property Name="idFotoVeiculo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="urlFoto" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="dataCadastro" Type="datetime" Nullable="false" />
+          <Property Name="idVeiculo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFuncionario">
+          <Key>
+            <PropertyRef Name="idFuncionario" />
+          </Key>
+          <Property Name="idFuncionario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="idCidade" Type="int" Nullable="false" />
+          <Property Name="bairro" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="endereco" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="telefone" Type="varchar" MaxLength="13" />
+          <Property Name="celular" Type="varchar" MaxLength="14" />
+          <Property Name="senha" Type="varchar" MaxLength="32" />
+          <Property Name="email" Type="varchar" Nullable="false" MaxLength="60" />
+          <Property Name="dataCadastro" Type="datetime" Nullable="false" />
+          <Property Name="idTipoPermissao" Type="int" Nullable="false" />
+          <Property Name="idCargo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMarcaVeiculo">
+          <Key>
+            <PropertyRef Name="idMarcaVeiculo" />
+          </Key>
+          <Property Name="idMarcaVeiculo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="idTipoVeiculo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblModeloVeiculo">
+          <Key>
+            <PropertyRef Name="idModeloVeiculo" />
+          </Key>
+          <Property Name="idModeloVeiculo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="idMarcaVeiculo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPais">
+          <Key>
+            <PropertyRef Name="idPais" />
+          </Key>
+          <Property Name="idPais" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="sigla" Type="varchar" Nullable="false" MaxLength="3" />
+          <Property Name="iso" Type="int" />
+        </EntityType>
+        <EntityType Name="tblParametro">
+          <Key>
+            <PropertyRef Name="idParametro" />
+          </Key>
+          <Property Name="idParametro" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="valor" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="idTipoParametro" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSeguradora">
+          <Key>
+            <PropertyRef Name="idSeguradora" />
+          </Key>
+          <Property Name="idSeguradora" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="varchar" Nullable="false" MaxLength="60" />
+          <Property Name="email" Type="varchar" Nullable="false" MaxLength="60" />
+          <Property Name="telefone" Type="varchar" MaxLength="13" />
+          <Property Name="celular" Type="varchar" MaxLength="14" />
+          <Property Name="dataCadastro" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTipoCombustivel">
+          <Key>
+            <PropertyRef Name="idTipoCombustivel" />
+          </Key>
+          <Property Name="idTipoCombustivel" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="varchar" Nullable="false" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="tblTipoParametro">
+          <Key>
+            <PropertyRef Name="idTipoParametro" />
+          </Key>
+          <Property Name="idTipoParametro" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="varchar" Nullable="false" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="tblTipoPermissao">
+          <Key>
+            <PropertyRef Name="idTipoPermissao" />
+          </Key>
+          <Property Name="idTipoPermissao" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblTipoVeiculo">
+          <Key>
+            <PropertyRef Name="idTipoVeiculo" />
+          </Key>
+          <Property Name="idTipoVeiculo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="varchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tblUsuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="varchar" Nullable="false" MaxLength="60" />
+          <Property Name="email" Type="varchar" Nullable="false" MaxLength="60" />
+          <Property Name="senha" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="telefone" Type="varchar" MaxLength="13" />
+          <Property Name="celular" Type="varchar" MaxLength="14" />
+          <Property Name="dataCadastro" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblVeiculo">
+          <Key>
+            <PropertyRef Name="idVeiculo" />
+          </Key>
+          <Property Name="idVeiculo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="varchar(max)" />
+          <Property Name="preco" Type="float" Nullable="false" />
+          <Property Name="quilometragem" Type="float" Nullable="false" />
+          <Property Name="portas" Type="int" />
+          <Property Name="idCor" Type="int" Nullable="false" />
+          <Property Name="ano" Type="int" Nullable="false" />
+          <Property Name="motor" Type="varchar" MaxLength="200" />
+          <Property Name="idModeloVeiculo" Type="int" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="dataCadastro" Type="datetime" Nullable="false" />
+          <Property Name="idTipoCombustivel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblVendas">
+          <Key>
+            <PropertyRef Name="idVenda" />
+          </Key>
+          <Property Name="idVenda" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="preco" Type="float" Nullable="false" />
+          <Property Name="dataVenda" Type="datetime" Nullable="false" />
+          <Property Name="idVeiculo" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tblAdministrador_tblTipoPermissao">
+          <End Role="tblTipoPermissao" Type="CarOnlineModel.Store.tblTipoPermissao" Multiplicity="1" />
+          <End Role="tblAdministrador" Type="CarOnlineModel.Store.tblAdministrador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoPermissao">
+              <PropertyRef Name="idTipoPermissao" />
+            </Principal>
+            <Dependent Role="tblAdministrador">
+              <PropertyRef Name="idTipoPermissao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCidade_tblEstado">
+          <End Role="tblEstado" Type="CarOnlineModel.Store.tblEstado" Multiplicity="1" />
+          <End Role="tblCidade" Type="CarOnlineModel.Store.tblCidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEstado">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="tblCidade">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEstado_tblPais">
+          <End Role="tblPais" Type="CarOnlineModel.Store.tblPais" Multiplicity="1" />
+          <End Role="tblEstado" Type="CarOnlineModel.Store.tblEstado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPais">
+              <PropertyRef Name="idPais" />
+            </Principal>
+            <Dependent Role="tblEstado">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFotosVeiculo_tblVeiculo">
+          <End Role="tblVeiculo" Type="CarOnlineModel.Store.tblVeiculo" Multiplicity="1" />
+          <End Role="tblFotosVeiculo" Type="CarOnlineModel.Store.tblFotosVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVeiculo">
+              <PropertyRef Name="idVeiculo" />
+            </Principal>
+            <Dependent Role="tblFotosVeiculo">
+              <PropertyRef Name="idVeiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFuncionario_tblCargo">
+          <End Role="tblCargo" Type="CarOnlineModel.Store.tblCargo" Multiplicity="1" />
+          <End Role="tblFuncionario" Type="CarOnlineModel.Store.tblFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCargo">
+              <PropertyRef Name="idCargo" />
+            </Principal>
+            <Dependent Role="tblFuncionario">
+              <PropertyRef Name="idCargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFuncionario_tblCidade">
+          <End Role="tblCidade" Type="CarOnlineModel.Store.tblCidade" Multiplicity="1" />
+          <End Role="tblFuncionario" Type="CarOnlineModel.Store.tblFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCidade">
+              <PropertyRef Name="idCidade" />
+            </Principal>
+            <Dependent Role="tblFuncionario">
+              <PropertyRef Name="idCidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFuncionario_tblTipoPermissao">
+          <End Role="tblTipoPermissao" Type="CarOnlineModel.Store.tblTipoPermissao" Multiplicity="1" />
+          <End Role="tblFuncionario" Type="CarOnlineModel.Store.tblFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoPermissao">
+              <PropertyRef Name="idTipoPermissao" />
+            </Principal>
+            <Dependent Role="tblFuncionario">
+              <PropertyRef Name="idTipoPermissao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMarcaVeiculo_tblTipoVeiculo">
+          <End Role="tblTipoVeiculo" Type="CarOnlineModel.Store.tblTipoVeiculo" Multiplicity="1" />
+          <End Role="tblMarcaVeiculo" Type="CarOnlineModel.Store.tblMarcaVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoVeiculo">
+              <PropertyRef Name="idTipoVeiculo" />
+            </Principal>
+            <Dependent Role="tblMarcaVeiculo">
+              <PropertyRef Name="idTipoVeiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblModeloVeiculo_tblMarcaVeiculo">
+          <End Role="tblMarcaVeiculo" Type="CarOnlineModel.Store.tblMarcaVeiculo" Multiplicity="1" />
+          <End Role="tblModeloVeiculo" Type="CarOnlineModel.Store.tblModeloVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMarcaVeiculo">
+              <PropertyRef Name="idMarcaVeiculo" />
+            </Principal>
+            <Dependent Role="tblModeloVeiculo">
+              <PropertyRef Name="idMarcaVeiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblParametro_tblTipoParametro">
+          <End Role="tblTipoParametro" Type="CarOnlineModel.Store.tblTipoParametro" Multiplicity="1" />
+          <End Role="tblParametro" Type="CarOnlineModel.Store.tblParametro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoParametro">
+              <PropertyRef Name="idTipoParametro" />
+            </Principal>
+            <Dependent Role="tblParametro">
+              <PropertyRef Name="idTipoParametro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVeiculo_tblCor">
+          <End Role="tblCor" Type="CarOnlineModel.Store.tblCor" Multiplicity="1" />
+          <End Role="tblVeiculo" Type="CarOnlineModel.Store.tblVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCor">
+              <PropertyRef Name="idCor" />
+            </Principal>
+            <Dependent Role="tblVeiculo">
+              <PropertyRef Name="idCor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVeiculo_tblModeloVeiculo">
+          <End Role="tblModeloVeiculo" Type="CarOnlineModel.Store.tblModeloVeiculo" Multiplicity="1" />
+          <End Role="tblVeiculo" Type="CarOnlineModel.Store.tblVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblModeloVeiculo">
+              <PropertyRef Name="idModeloVeiculo" />
+            </Principal>
+            <Dependent Role="tblVeiculo">
+              <PropertyRef Name="idModeloVeiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVeiculo_tblTipoCombustivel">
+          <End Role="tblTipoCombustivel" Type="CarOnlineModel.Store.tblTipoCombustivel" Multiplicity="1" />
+          <End Role="tblVeiculo" Type="CarOnlineModel.Store.tblVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoCombustivel">
+              <PropertyRef Name="idTipoCombustivel" />
+            </Principal>
+            <Dependent Role="tblVeiculo">
+              <PropertyRef Name="idTipoCombustivel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVeiculo_tblUsuario">
+          <End Role="tblUsuario" Type="CarOnlineModel.Store.tblUsuario" Multiplicity="1" />
+          <End Role="tblVeiculo" Type="CarOnlineModel.Store.tblVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="tblVeiculo">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVendas_tblVeiculo">
+          <End Role="tblVeiculo" Type="CarOnlineModel.Store.tblVeiculo" Multiplicity="1" />
+          <End Role="tblVendas" Type="CarOnlineModel.Store.tblVendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVeiculo">
+              <PropertyRef Name="idVeiculo" />
+            </Principal>
+            <Dependent Role="tblVendas">
+              <PropertyRef Name="idVeiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ConsultarParametro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ConsultarVeiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idUsuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RelatorioCarrosCadastrados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dataInicial" Type="varchar" Mode="In" />
+          <Parameter Name="dataFinal" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RelatorioCarrosVendidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dataInicial" Type="varchar" Mode="In" />
+          <Parameter Name="dataFinal" Type="varchar" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CarOnlineModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="CarOnlineEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAdministrador" EntityType="CarOnlineModel.tblAdministrador" />
+          <EntitySet Name="tblCargo" EntityType="CarOnlineModel.tblCargo" />
+          <EntitySet Name="tblCidade" EntityType="CarOnlineModel.tblCidade" />
+          <EntitySet Name="tblCor" EntityType="CarOnlineModel.tblCor" />
+          <EntitySet Name="tblEstado" EntityType="CarOnlineModel.tblEstado" />
+          <EntitySet Name="tblFuncionario" EntityType="CarOnlineModel.tblFuncionario" />
+          <EntitySet Name="tblMarcaVeiculo" EntityType="CarOnlineModel.tblMarcaVeiculo" />
+          <EntitySet Name="tblModeloVeiculo" EntityType="CarOnlineModel.tblModeloVeiculo" />
+          <EntitySet Name="tblPais" EntityType="CarOnlineModel.tblPais" />
+          <EntitySet Name="tblTipoCombustivel" EntityType="CarOnlineModel.tblTipoCombustivel" />
+          <EntitySet Name="tblTipoVeiculo" EntityType="CarOnlineModel.tblTipoVeiculo" />
+          <EntitySet Name="tblUsuario" EntityType="CarOnlineModel.tblUsuario" />
+          <EntitySet Name="tblVeiculo" EntityType="CarOnlineModel.tblVeiculo" />
+          <EntitySet Name="tblVendas" EntityType="CarOnlineModel.tblVendas" />
+          <AssociationSet Name="FK_tblFuncionario_tblCargo" Association="CarOnlineModel.FK_tblFuncionario_tblCargo">
+            <End Role="tblCargo" EntitySet="tblCargo" />
+            <End Role="tblFuncionario" EntitySet="tblFuncionario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCidade_tblEstado" Association="CarOnlineModel.FK_tblCidade_tblEstado">
+            <End Role="tblEstado" EntitySet="tblEstado" />
+            <End Role="tblCidade" EntitySet="tblCidade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFuncionario_tblCidade" Association="CarOnlineModel.FK_tblFuncionario_tblCidade">
+            <End Role="tblCidade" EntitySet="tblCidade" />
+            <End Role="tblFuncionario" EntitySet="tblFuncionario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVeiculo_tblCor" Association="CarOnlineModel.FK_tblVeiculo_tblCor">
+            <End Role="tblCor" EntitySet="tblCor" />
+            <End Role="tblVeiculo" EntitySet="tblVeiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEstado_tblPais" Association="CarOnlineModel.FK_tblEstado_tblPais">
+            <End Role="tblPais" EntitySet="tblPais" />
+            <End Role="tblEstado" EntitySet="tblEstado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMarcaVeiculo_tblTipoVeiculo" Association="CarOnlineModel.FK_tblMarcaVeiculo_tblTipoVeiculo">
+            <End Role="tblTipoVeiculo" EntitySet="tblTipoVeiculo" />
+            <End Role="tblMarcaVeiculo" EntitySet="tblMarcaVeiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblModeloVeiculo_tblMarcaVeiculo" Association="CarOnlineModel.FK_tblModeloVeiculo_tblMarcaVeiculo">
+            <End Role="tblMarcaVeiculo" EntitySet="tblMarcaVeiculo" />
+            <End Role="tblModeloVeiculo" EntitySet="tblModeloVeiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVeiculo_tblModeloVeiculo" Association="CarOnlineModel.FK_tblVeiculo_tblModeloVeiculo">
+            <End Role="tblModeloVeiculo" EntitySet="tblModeloVeiculo" />
+            <End Role="tblVeiculo" EntitySet="tblVeiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVendas_tblVeiculo" Association="CarOnlineModel.FK_tblVendas_tblVeiculo">
+            <End Role="tblVeiculo" EntitySet="tblVeiculo" />
+            <End Role="tblVendas" EntitySet="tblVendas" />
+          </AssociationSet>
+          <EntitySet Name="tblTipoPermissao" EntityType="CarOnlineModel.tblTipoPermissao" />
+          <AssociationSet Name="FK_tblAdministrador_tblTipoPermissao" Association="CarOnlineModel.FK_tblAdministrador_tblTipoPermissao">
+            <End Role="tblTipoPermissao" EntitySet="tblTipoPermissao" />
+            <End Role="tblAdministrador" EntitySet="tblAdministrador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFuncionario_tblTipoPermissao" Association="CarOnlineModel.FK_tblFuncionario_tblTipoPermissao">
+            <End Role="tblTipoPermissao" EntitySet="tblTipoPermissao" />
+            <End Role="tblFuncionario" EntitySet="tblFuncionario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVeiculo_tblUsuario" Association="CarOnlineModel.FK_tblVeiculo_tblUsuario">
+            <End Role="tblUsuario" EntitySet="tblUsuario" />
+            <End Role="tblVeiculo" EntitySet="tblVeiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVeiculo_tblTipoCombustivel" Association="CarOnlineModel.FK_tblVeiculo_tblTipoCombustivel">
+            <End Role="tblTipoCombustivel" EntitySet="tblTipoCombustivel" />
+            <End Role="tblVeiculo" EntitySet="tblVeiculo" />
+          </AssociationSet>
+          <FunctionImport Name="ConsultaVeiculo" ReturnType="Collection(CarOnlineModel.ConsultaVeiculo_Result)">
+          <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="tblSeguradora" EntityType="CarOnlineModel.tblSeguradora" />
+          <EntitySet Name="tblFotosVeiculo" EntityType="CarOnlineModel.tblFotosVeiculo" />
+          <AssociationSet Name="FK_tblFotosVeiculo_tblVeiculo" Association="CarOnlineModel.FK_tblFotosVeiculo_tblVeiculo">
+            <End Role="tblVeiculo" EntitySet="tblVeiculo" />
+            <End Role="tblFotosVeiculo" EntitySet="tblFotosVeiculo" />
+          </AssociationSet>
+          <EntitySet Name="tblParametro" EntityType="CarOnlineModel.tblParametro" />
+          <EntitySet Name="tblTipoParametro" EntityType="CarOnlineModel.tblTipoParametro" />
+          <AssociationSet Name="FK_tblParametro_tblTipoParametro" Association="CarOnlineModel.FK_tblParametro_tblTipoParametro">
+            <End Role="tblTipoParametro" EntitySet="tblTipoParametro" />
+            <End Role="tblParametro" EntitySet="tblParametro" />
+          </AssociationSet>
+          <FunctionImport Name="RelatorioCarrosVendidos" ReturnType="Collection(CarOnlineModel.RelatorioCarrosVendidos_Result)">
+            <Parameter Name="dataInicial" Mode="In" Type="String" />
+            <Parameter Name="dataFinal" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RelatorioCarrosCadastrados" ReturnType="Collection(CarOnlineModel.RelatorioCarrosCadastrados_Result)">
+            <Parameter Name="dataInicial" Mode="In" Type="String" />
+            <Parameter Name="dataFinal" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarParametro" ReturnType="Collection(CarOnlineModel.ConsultarParametro_Result)" />
+        </EntityContainer>
+        <EntityType Name="tblAdministrador">
+          <Key>
+            <PropertyRef Name="idAdministrador" />
+          </Key>
+          <Property Name="idAdministrador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="senha" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="dataCadastro" Type="DateTime" Nullable="false" />
+          <Property Type="Int32" Name="idTipoPermissao" Nullable="false" />
+          <NavigationProperty Name="tblTipoPermissao" Relationship="CarOnlineModel.FK_tblAdministrador_tblTipoPermissao" FromRole="tblAdministrador" ToRole="tblTipoPermissao" />
+        </EntityType>
+        <EntityType Name="tblCargo">
+          <Key>
+            <PropertyRef Name="idCargo" />
+          </Key>
+          <Property Name="idCargo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="tblFuncionario" Relationship="CarOnlineModel.FK_tblFuncionario_tblCargo" FromRole="tblCargo" ToRole="tblFuncionario" />
+          <Property Type="String" Name="ativo" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCidade">
+          <Key>
+            <PropertyRef Name="idCidade" />
+          </Key>
+          <Property Name="idCidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="idEstado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblEstado" Relationship="CarOnlineModel.FK_tblCidade_tblEstado" FromRole="tblCidade" ToRole="tblEstado" />
+          <NavigationProperty Name="tblFuncionario" Relationship="CarOnlineModel.FK_tblFuncionario_tblCidade" FromRole="tblCidade" ToRole="tblFuncionario" />
+        </EntityType>
+        <EntityType Name="tblCor">
+          <Key>
+            <PropertyRef Name="idCor" />
+          </Key>
+          <Property Name="idCor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="tblVeiculo" Relationship="CarOnlineModel.FK_tblVeiculo_tblCor" FromRole="tblCor" ToRole="tblVeiculo" />
+        </EntityType>
+        <EntityType Name="tblEstado">
+          <Key>
+            <PropertyRef Name="idEstado" />
+          </Key>
+          <Property Name="idEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="sigla" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="idPais" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblCidade" Relationship="CarOnlineModel.FK_tblCidade_tblEstado" FromRole="tblEstado" ToRole="tblCidade" />
+          <NavigationProperty Name="tblPais" Relationship="CarOnlineModel.FK_tblEstado_tblPais" FromRole="tblEstado" ToRole="tblPais" />
+        </EntityType>
+        <EntityType Name="tblFuncionario">
+          <Key>
+            <PropertyRef Name="idFuncionario" />
+          </Key>
+          <Property Name="idFuncionario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="idCidade" Type="Int32" Nullable="false" />
+          <Property Name="bairro" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="endereco" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="telefone" Type="String" MaxLength="13" Unicode="false" FixedLength="false" />
+          <Property Name="celular" Type="String" MaxLength="14" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="dataCadastro" Type="DateTime" Nullable="false" />
+          <Property Name="idCargo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblCargo" Relationship="CarOnlineModel.FK_tblFuncionario_tblCargo" FromRole="tblFuncionario" ToRole="tblCargo" />
+          <NavigationProperty Name="tblCidade" Relationship="CarOnlineModel.FK_tblFuncionario_tblCidade" FromRole="tblFuncionario" ToRole="tblCidade" />
+          <Property Type="Int32" Name="idTipoPermissao" Nullable="false" />
+          <NavigationProperty Name="tblTipoPermissao" Relationship="CarOnlineModel.FK_tblFuncionario_tblTipoPermissao" FromRole="tblFuncionario" ToRole="tblTipoPermissao" />
+          <Property Type="String" Name="senha" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblMarcaVeiculo">
+          <Key>
+            <PropertyRef Name="idMarcaVeiculo" />
+          </Key>
+          <Property Name="idMarcaVeiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="idTipoVeiculo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblTipoVeiculo" Relationship="CarOnlineModel.FK_tblMarcaVeiculo_tblTipoVeiculo" FromRole="tblMarcaVeiculo" ToRole="tblTipoVeiculo" />
+          <NavigationProperty Name="tblModeloVeiculo" Relationship="CarOnlineModel.FK_tblModeloVeiculo_tblMarcaVeiculo" FromRole="tblMarcaVeiculo" ToRole="tblModeloVeiculo" />
+        </EntityType>
+        <EntityType Name="tblModeloVeiculo">
+          <Key>
+            <PropertyRef Name="idModeloVeiculo" />
+          </Key>
+          <Property Name="idModeloVeiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="idMarcaVeiculo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblMarcaVeiculo" Relationship="CarOnlineModel.FK_tblModeloVeiculo_tblMarcaVeiculo" FromRole="tblModeloVeiculo" ToRole="tblMarcaVeiculo" />
+          <NavigationProperty Name="tblVeiculo" Relationship="CarOnlineModel.FK_tblVeiculo_tblModeloVeiculo" FromRole="tblModeloVeiculo" ToRole="tblVeiculo" />
+        </EntityType>
+        <EntityType Name="tblPais">
+          <Key>
+            <PropertyRef Name="idPais" />
+          </Key>
+          <Property Name="idPais" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="sigla" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+          <Property Name="iso" Type="Int32" />
+          <NavigationProperty Name="tblEstado" Relationship="CarOnlineModel.FK_tblEstado_tblPais" FromRole="tblPais" ToRole="tblEstado" />
+        </EntityType>
+        <EntityType Name="tblTipoCombustivel">
+          <Key>
+            <PropertyRef Name="idTipoCombustivel" />
+          </Key>
+          <Property Name="idTipoCombustivel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="tblVeiculo" Relationship="CarOnlineModel.FK_tblVeiculo_tblTipoCombustivel" FromRole="tblTipoCombustivel" ToRole="tblVeiculo" />
+        </EntityType>
+        <EntityType Name="tblTipoVeiculo">
+          <Key>
+            <PropertyRef Name="idTipoVeiculo" />
+          </Key>
+          <Property Name="idTipoVeiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="tblMarcaVeiculo" Relationship="CarOnlineModel.FK_tblMarcaVeiculo_tblTipoVeiculo" FromRole="tblTipoVeiculo" ToRole="tblMarcaVeiculo" />
+        </EntityType>
+        <EntityType Name="tblUsuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="senha" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="telefone" Type="String" MaxLength="13" Unicode="false" FixedLength="false" Nullable="true" />
+          <Property Name="celular" Type="String" Nullable="true" MaxLength="14" Unicode="false" FixedLength="false" />
+          <Property Name="dataCadastro" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="tblVeiculo" Relationship="CarOnlineModel.FK_tblVeiculo_tblUsuario" FromRole="tblUsuario" ToRole="tblVeiculo" />
+        </EntityType>
+        <EntityType Name="tblVeiculo">
+          <Key>
+            <PropertyRef Name="idVeiculo" />
+          </Key>
+          <Property Name="idVeiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="preco" Type="Double" Nullable="false" />
+          <Property Name="quilometragem" Type="Double" Nullable="false" />
+          <Property Name="portas" Type="Int32" Nullable="false" />
+          <Property Name="idCor" Type="Int32" Nullable="false" />
+          <Property Name="idModeloVeiculo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblCor" Relationship="CarOnlineModel.FK_tblVeiculo_tblCor" FromRole="tblVeiculo" ToRole="tblCor" />
+          <NavigationProperty Name="tblModeloVeiculo" Relationship="CarOnlineModel.FK_tblVeiculo_tblModeloVeiculo" FromRole="tblVeiculo" ToRole="tblModeloVeiculo" />
+          <NavigationProperty Name="tblVendas" Relationship="CarOnlineModel.FK_tblVendas_tblVeiculo" FromRole="tblVeiculo" ToRole="tblVendas" />
+          <Property Type="Int32" Name="idUsuario" Nullable="false" />
+          <Property Type="DateTime" Name="dataCadastro" Nullable="false" />
+          <NavigationProperty Name="tblUsuario" Relationship="CarOnlineModel.FK_tblVeiculo_tblUsuario" FromRole="tblVeiculo" ToRole="tblUsuario" />
+          <Property Type="Int32" Name="ano" Nullable="false" />
+          <Property Type="Int32" Name="idTipoCombustivel" Nullable="false" />
+          <NavigationProperty Name="tblTipoCombustivel" Relationship="CarOnlineModel.FK_tblVeiculo_tblTipoCombustivel" FromRole="tblVeiculo" ToRole="tblTipoCombustivel" />
+          <Property Type="String" Name="motor" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblFotosVeiculo" Relationship="CarOnlineModel.FK_tblFotosVeiculo_tblVeiculo" FromRole="tblVeiculo" ToRole="tblFotosVeiculo" />
+        </EntityType>
+        <EntityType Name="tblVendas">
+          <Key>
+            <PropertyRef Name="idVenda" />
+          </Key>
+          <Property Name="idVenda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="preco" Type="Double" Nullable="false" />
+          <Property Name="dataVenda" Type="DateTime" Nullable="false" />
+          <Property Name="idVeiculo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblVeiculo" Relationship="CarOnlineModel.FK_tblVendas_tblVeiculo" FromRole="tblVendas" ToRole="tblVeiculo" />
+        </EntityType>
+        <Association Name="FK_tblFuncionario_tblCargo">
+          <End Role="tblCargo" Type="CarOnlineModel.tblCargo" Multiplicity="1" />
+          <End Role="tblFuncionario" Type="CarOnlineModel.tblFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCargo">
+              <PropertyRef Name="idCargo" />
+            </Principal>
+            <Dependent Role="tblFuncionario">
+              <PropertyRef Name="idCargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCidade_tblEstado">
+          <End Role="tblEstado" Type="CarOnlineModel.tblEstado" Multiplicity="1" />
+          <End Role="tblCidade" Type="CarOnlineModel.tblCidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEstado">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="tblCidade">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFuncionario_tblCidade">
+          <End Role="tblCidade" Type="CarOnlineModel.tblCidade" Multiplicity="1" />
+          <End Role="tblFuncionario" Type="CarOnlineModel.tblFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCidade">
+              <PropertyRef Name="idCidade" />
+            </Principal>
+            <Dependent Role="tblFuncionario">
+              <PropertyRef Name="idCidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVeiculo_tblCor">
+          <End Role="tblCor" Type="CarOnlineModel.tblCor" Multiplicity="1" />
+          <End Role="tblVeiculo" Type="CarOnlineModel.tblVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCor">
+              <PropertyRef Name="idCor" />
+            </Principal>
+            <Dependent Role="tblVeiculo">
+              <PropertyRef Name="idCor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEstado_tblPais">
+          <End Role="tblPais" Type="CarOnlineModel.tblPais" Multiplicity="1" />
+          <End Role="tblEstado" Type="CarOnlineModel.tblEstado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPais">
+              <PropertyRef Name="idPais" />
+            </Principal>
+            <Dependent Role="tblEstado">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMarcaVeiculo_tblTipoVeiculo">
+          <End Role="tblTipoVeiculo" Type="CarOnlineModel.tblTipoVeiculo" Multiplicity="1" />
+          <End Role="tblMarcaVeiculo" Type="CarOnlineModel.tblMarcaVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoVeiculo">
+              <PropertyRef Name="idTipoVeiculo" />
+            </Principal>
+            <Dependent Role="tblMarcaVeiculo">
+              <PropertyRef Name="idTipoVeiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblModeloVeiculo_tblMarcaVeiculo">
+          <End Role="tblMarcaVeiculo" Type="CarOnlineModel.tblMarcaVeiculo" Multiplicity="1" />
+          <End Role="tblModeloVeiculo" Type="CarOnlineModel.tblModeloVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMarcaVeiculo">
+              <PropertyRef Name="idMarcaVeiculo" />
+            </Principal>
+            <Dependent Role="tblModeloVeiculo">
+              <PropertyRef Name="idMarcaVeiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVeiculo_tblModeloVeiculo">
+          <End Role="tblModeloVeiculo" Type="CarOnlineModel.tblModeloVeiculo" Multiplicity="1" />
+          <End Role="tblVeiculo" Type="CarOnlineModel.tblVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblModeloVeiculo">
+              <PropertyRef Name="idModeloVeiculo" />
+            </Principal>
+            <Dependent Role="tblVeiculo">
+              <PropertyRef Name="idModeloVeiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVendas_tblVeiculo">
+          <End Role="tblVeiculo" Type="CarOnlineModel.tblVeiculo" Multiplicity="1" />
+          <End Role="tblVendas" Type="CarOnlineModel.tblVendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVeiculo">
+              <PropertyRef Name="idVeiculo" />
+            </Principal>
+            <Dependent Role="tblVendas">
+              <PropertyRef Name="idVeiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblTipoPermissao">
+          <Key>
+            <PropertyRef Name="idTipoPermissao" />
+          </Key>
+          <Property Type="Int32" Name="idTipoPermissao" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="descricao" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblAdministrador" Relationship="CarOnlineModel.FK_tblAdministrador_tblTipoPermissao" FromRole="tblTipoPermissao" ToRole="tblAdministrador" />
+          <NavigationProperty Name="tblFuncionario" Relationship="CarOnlineModel.FK_tblFuncionario_tblTipoPermissao" FromRole="tblTipoPermissao" ToRole="tblFuncionario" />
+        </EntityType>
+        <Association Name="FK_tblAdministrador_tblTipoPermissao">
+          <End Type="CarOnlineModel.tblTipoPermissao" Role="tblTipoPermissao" Multiplicity="1" />
+          <End Type="CarOnlineModel.tblAdministrador" Role="tblAdministrador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoPermissao">
+              <PropertyRef Name="idTipoPermissao" />
+            </Principal>
+            <Dependent Role="tblAdministrador">
+              <PropertyRef Name="idTipoPermissao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFuncionario_tblTipoPermissao">
+          <End Type="CarOnlineModel.tblTipoPermissao" Role="tblTipoPermissao" Multiplicity="1" />
+          <End Type="CarOnlineModel.tblFuncionario" Role="tblFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoPermissao">
+              <PropertyRef Name="idTipoPermissao" />
+            </Principal>
+            <Dependent Role="tblFuncionario">
+              <PropertyRef Name="idTipoPermissao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVeiculo_tblUsuario">
+          <End Type="CarOnlineModel.tblUsuario" Role="tblUsuario" Multiplicity="1" />
+          <End Type="CarOnlineModel.tblVeiculo" Role="tblVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="tblVeiculo">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVeiculo_tblTipoCombustivel">
+          <End Type="CarOnlineModel.tblTipoCombustivel" Role="tblTipoCombustivel" Multiplicity="1" />
+          <End Type="CarOnlineModel.tblVeiculo" Role="tblVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoCombustivel">
+              <PropertyRef Name="idTipoCombustivel" />
+            </Principal>
+            <Dependent Role="tblVeiculo">
+              <PropertyRef Name="idTipoCombustivel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="ConsultaVeiculo_Result">
+          <Property Type="Int32" Name="idVeiculo" Nullable="false" />
+          <Property Type="String" Name="Tipo" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Marca" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Modelo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cor" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="TipoCombustivel" Nullable="false" MaxLength="40" />
+          <Property Type="Int32" Name="Ano" Nullable="false" />
+          <Property Type="Double" Name="Preco" Nullable="false" />
+          <Property Type="Double" Name="QuiloMetragem" Nullable="false" />
+          <Property Type="Int32" Name="Portas" Nullable="true" />
+          <Property Type="DateTime" Name="Cadastro" Nullable="false" Precision="23" />
+        </ComplexType>
+        <EntityType Name="tblSeguradora">
+          <Key>
+            <PropertyRef Name="idSeguradora" />
+          </Key>
+          <Property Type="Int32" Name="idSeguradora" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nome" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="telefone" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="celular" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="dataCadastro" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFotosVeiculo">
+          <Key>
+            <PropertyRef Name="idFotoVeiculo" />
+          </Key>
+          <Property Type="Int32" Name="idFotoVeiculo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="urlFoto" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="dataCadastro" Nullable="false" />
+          <Property Type="Int32" Name="idVeiculo" Nullable="false" />
+          <NavigationProperty Name="tblVeiculo" Relationship="CarOnlineModel.FK_tblFotosVeiculo_tblVeiculo" FromRole="tblFotosVeiculo" ToRole="tblVeiculo" />
+        </EntityType>
+        <Association Name="FK_tblFotosVeiculo_tblVeiculo">
+          <End Type="CarOnlineModel.tblVeiculo" Role="tblVeiculo" Multiplicity="1" />
+          <End Type="CarOnlineModel.tblFotosVeiculo" Role="tblFotosVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVeiculo">
+              <PropertyRef Name="idVeiculo" />
+            </Principal>
+            <Dependent Role="tblFotosVeiculo">
+              <PropertyRef Name="idVeiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblParametro">
+          <Key>
+            <PropertyRef Name="idParametro" />
+          </Key>
+          <Property Type="Int32" Name="idParametro" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="descricao" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="valor" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="idTipoParametro" Nullable="false" />
+          <NavigationProperty Name="tblTipoParametro" Relationship="CarOnlineModel.FK_tblParametro_tblTipoParametro" FromRole="tblParametro" ToRole="tblTipoParametro" />
+        </EntityType>
+        <EntityType Name="tblTipoParametro">
+          <Key>
+            <PropertyRef Name="idTipoParametro" />
+          </Key>
+          <Property Type="Int32" Name="idTipoParametro" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="descricao" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblParametro" Relationship="CarOnlineModel.FK_tblParametro_tblTipoParametro" FromRole="tblTipoParametro" ToRole="tblParametro" />
+        </EntityType>
+        <Association Name="FK_tblParametro_tblTipoParametro">
+          <End Type="CarOnlineModel.tblTipoParametro" Role="tblTipoParametro" Multiplicity="1" />
+          <End Type="CarOnlineModel.tblParametro" Role="tblParametro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoParametro">
+              <PropertyRef Name="idTipoParametro" />
+            </Principal>
+            <Dependent Role="tblParametro">
+              <PropertyRef Name="idTipoParametro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="RelatorioCarrosVendidos_Result">
+          <Property Type="Int32" Name="Ano" Nullable="false" />
+          <Property Type="Int32" Name="Codigo" Nullable="false" />
+          <Property Type="String" Name="Marca" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Modelo" Nullable="false" MaxLength="50" />
+          <Property Type="Double" Name="ValorVenda" Nullable="false" />
+          <Property Type="String" Name="Combustivel" Nullable="false" MaxLength="40" />
+          <Property Type="DateTime" Name="dataVenda" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="RelatorioCarrosCadastrados_Result">
+          <Property Type="String" Name="Tipo" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Marca" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Modelo" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Ano" Nullable="false" />
+          <Property Type="String" Name="Cor" Nullable="false" MaxLength="30" />
+          <Property Type="Double" Name="Quilometragem" Nullable="false" />
+          <Property Type="String" Name="Motor" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="Cadastro" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="ConsultarParametro_Result">
+          <Property Type="Int32" Name="Codigo" Nullable="false" />
+          <Property Type="String" Name="Descricao" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Valor" Nullable="false" MaxLength="300" />
+          <Property Type="String" Name="Tipo" Nullable="false" MaxLength="60" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CarOnlineModelStoreContainer" CdmEntityContainer="CarOnlineEntities">
+          <EntitySetMapping Name="tblAdministrador"><EntityTypeMapping TypeName="CarOnlineModel.tblAdministrador"><MappingFragment StoreEntitySet="tblAdministrador">
+            <ScalarProperty Name="idTipoPermissao" ColumnName="idTipoPermissao" />
+                <ScalarProperty Name="idAdministrador" ColumnName="idAdministrador" />
+            <ScalarProperty Name="nome" ColumnName="nome" />
+            <ScalarProperty Name="email" ColumnName="email" />
+            <ScalarProperty Name="senha" ColumnName="senha" />
+            <ScalarProperty Name="dataCadastro" ColumnName="dataCadastro" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblCargo"><EntityTypeMapping TypeName="CarOnlineModel.tblCargo"><MappingFragment StoreEntitySet="tblCargo">
+            <ScalarProperty Name="ativo" ColumnName="ativo" />
+                <ScalarProperty Name="idCargo" ColumnName="idCargo" />
+            <ScalarProperty Name="descricao" ColumnName="descricao" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblCidade"><EntityTypeMapping TypeName="CarOnlineModel.tblCidade"><MappingFragment StoreEntitySet="tblCidade">
+            <ScalarProperty Name="idCidade" ColumnName="idCidade" />
+            <ScalarProperty Name="nome" ColumnName="nome" />
+            <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblCor"><EntityTypeMapping TypeName="CarOnlineModel.tblCor"><MappingFragment StoreEntitySet="tblCor">
+            <ScalarProperty Name="idCor" ColumnName="idCor" />
+            <ScalarProperty Name="descricao" ColumnName="descricao" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblEstado"><EntityTypeMapping TypeName="CarOnlineModel.tblEstado"><MappingFragment StoreEntitySet="tblEstado">
+            <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+            <ScalarProperty Name="nome" ColumnName="nome" />
+            <ScalarProperty Name="sigla" ColumnName="sigla" />
+            <ScalarProperty Name="idPais" ColumnName="idPais" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblFuncionario"><EntityTypeMapping TypeName="CarOnlineModel.tblFuncionario"><MappingFragment StoreEntitySet="tblFuncionario">
+            <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="idTipoPermissao" ColumnName="idTipoPermissao" />
+                <ScalarProperty Name="idFuncionario" ColumnName="idFuncionario" />
+            <ScalarProperty Name="nome" ColumnName="nome" />
+            <ScalarProperty Name="idCidade" ColumnName="idCidade" />
+            <ScalarProperty Name="bairro" ColumnName="bairro" />
+            <ScalarProperty Name="endereco" ColumnName="endereco" />
+            <ScalarProperty Name="telefone" ColumnName="telefone" />
+            <ScalarProperty Name="celular" ColumnName="celular" />
+            <ScalarProperty Name="email" ColumnName="email" />
+            <ScalarProperty Name="dataCadastro" ColumnName="dataCadastro" />
+            <ScalarProperty Name="idCargo" ColumnName="idCargo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblMarcaVeiculo"><EntityTypeMapping TypeName="CarOnlineModel.tblMarcaVeiculo"><MappingFragment StoreEntitySet="tblMarcaVeiculo">
+            <ScalarProperty Name="idMarcaVeiculo" ColumnName="idMarcaVeiculo" />
+            <ScalarProperty Name="descricao" ColumnName="descricao" />
+            <ScalarProperty Name="idTipoVeiculo" ColumnName="idTipoVeiculo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblModeloVeiculo"><EntityTypeMapping TypeName="CarOnlineModel.tblModeloVeiculo"><MappingFragment StoreEntitySet="tblModeloVeiculo">
+            <ScalarProperty Name="idModeloVeiculo" ColumnName="idModeloVeiculo" />
+            <ScalarProperty Name="descricao" ColumnName="descricao" />
+            <ScalarProperty Name="idMarcaVeiculo" ColumnName="idMarcaVeiculo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblPais"><EntityTypeMapping TypeName="CarOnlineModel.tblPais"><MappingFragment StoreEntitySet="tblPais">
+            <ScalarProperty Name="idPais" ColumnName="idPais" />
+            <ScalarProperty Name="nome" ColumnName="nome" />
+            <ScalarProperty Name="sigla" ColumnName="sigla" />
+            <ScalarProperty Name="iso" ColumnName="iso" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblTipoCombustivel"><EntityTypeMapping TypeName="CarOnlineModel.tblTipoCombustivel"><MappingFragment StoreEntitySet="tblTipoCombustivel">
+            <ScalarProperty Name="idTipoCombustivel" ColumnName="idTipoCombustivel" />
+            <ScalarProperty Name="descricao" ColumnName="descricao" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblTipoVeiculo"><EntityTypeMapping TypeName="CarOnlineModel.tblTipoVeiculo"><MappingFragment StoreEntitySet="tblTipoVeiculo">
+            <ScalarProperty Name="idTipoVeiculo" ColumnName="idTipoVeiculo" />
+            <ScalarProperty Name="descricao" ColumnName="descricao" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblUsuario"><EntityTypeMapping TypeName="CarOnlineModel.tblUsuario"><MappingFragment StoreEntitySet="tblUsuario">
+            <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+            <ScalarProperty Name="nome" ColumnName="nome" />
+            <ScalarProperty Name="email" ColumnName="email" />
+            <ScalarProperty Name="senha" ColumnName="senha" />
+            <ScalarProperty Name="telefone" ColumnName="telefone" />
+            <ScalarProperty Name="celular" ColumnName="celular" />
+            <ScalarProperty Name="dataCadastro" ColumnName="dataCadastro" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblVeiculo"><EntityTypeMapping TypeName="CarOnlineModel.tblVeiculo"><MappingFragment StoreEntitySet="tblVeiculo">
+            <ScalarProperty Name="motor" ColumnName="motor" />
+                <ScalarProperty Name="idTipoCombustivel" ColumnName="idTipoCombustivel" />
+                <ScalarProperty Name="ano" ColumnName="ano" />
+                <ScalarProperty Name="dataCadastro" ColumnName="dataCadastro" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idVeiculo" ColumnName="idVeiculo" />
+            <ScalarProperty Name="descricao" ColumnName="descricao" />
+            <ScalarProperty Name="preco" ColumnName="preco" />
+            <ScalarProperty Name="quilometragem" ColumnName="quilometragem" />
+            <ScalarProperty Name="portas" ColumnName="portas" />
+            <ScalarProperty Name="idCor" ColumnName="idCor" />
+            <ScalarProperty Name="idModeloVeiculo" ColumnName="idModeloVeiculo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblVendas"><EntityTypeMapping TypeName="CarOnlineModel.tblVendas"><MappingFragment StoreEntitySet="tblVendas">
+            <ScalarProperty Name="idVenda" ColumnName="idVenda" />
+            <ScalarProperty Name="preco" ColumnName="preco" />
+            <ScalarProperty Name="dataVenda" ColumnName="dataVenda" />
+            <ScalarProperty Name="idVeiculo" ColumnName="idVeiculo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblTipoPermissao">
+            <EntityTypeMapping TypeName="CarOnlineModel.tblTipoPermissao">
+              <MappingFragment StoreEntitySet="tblTipoPermissao">
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="idTipoPermissao" ColumnName="idTipoPermissao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ConsultaVeiculo" FunctionName="CarOnlineModel.Store.ConsultarVeiculo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CarOnlineModel.ConsultaVeiculo_Result">
+                <ScalarProperty Name="idVeiculo" ColumnName="idVeiculo" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Cor" ColumnName="Cor" />
+                <ScalarProperty Name="TipoCombustivel" ColumnName="TipoCombustivel" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="Preco" ColumnName="Preco" />
+                <ScalarProperty Name="QuiloMetragem" ColumnName="QuiloMetragem" />
+                <ScalarProperty Name="Portas" ColumnName="Portas" />
+                <ScalarProperty Name="Cadastro" ColumnName="Cadastro" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tblSeguradora">
+            <EntityTypeMapping TypeName="CarOnlineModel.tblSeguradora">
+              <MappingFragment StoreEntitySet="tblSeguradora">
+                <ScalarProperty Name="dataCadastro" ColumnName="dataCadastro" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="idSeguradora" ColumnName="idSeguradora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFotosVeiculo">
+            <EntityTypeMapping TypeName="CarOnlineModel.tblFotosVeiculo">
+              <MappingFragment StoreEntitySet="tblFotosVeiculo">
+                <ScalarProperty Name="idVeiculo" ColumnName="idVeiculo" />
+                <ScalarProperty Name="dataCadastro" ColumnName="dataCadastro" />
+                <ScalarProperty Name="urlFoto" ColumnName="urlFoto" />
+                <ScalarProperty Name="idFotoVeiculo" ColumnName="idFotoVeiculo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblParametro">
+            <EntityTypeMapping TypeName="CarOnlineModel.tblParametro">
+              <MappingFragment StoreEntitySet="tblParametro">
+                <ScalarProperty Name="idTipoParametro" ColumnName="idTipoParametro" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="idParametro" ColumnName="idParametro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTipoParametro">
+            <EntityTypeMapping TypeName="CarOnlineModel.tblTipoParametro">
+              <MappingFragment StoreEntitySet="tblTipoParametro">
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="idTipoParametro" ColumnName="idTipoParametro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="RelatorioCarrosVendidos" FunctionName="CarOnlineModel.Store.RelatorioCarrosVendidos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CarOnlineModel.RelatorioCarrosVendidos_Result">
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="ValorVenda" ColumnName="ValorVenda" />
+                <ScalarProperty Name="Combustivel" ColumnName="Combustivel" />
+                <ScalarProperty Name="dataVenda" ColumnName="dataVenda" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RelatorioCarrosCadastrados" FunctionName="CarOnlineModel.Store.RelatorioCarrosCadastrados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CarOnlineModel.RelatorioCarrosCadastrados_Result">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="Cor" ColumnName="Cor" />
+                <ScalarProperty Name="Quilometragem" ColumnName="Quilometragem" />
+                <ScalarProperty Name="Motor" ColumnName="Motor" />
+                <ScalarProperty Name="Cadastro" ColumnName="Cadastro" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarParametro" FunctionName="CarOnlineModel.Store.ConsultarParametro">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CarOnlineModel.ConsultarParametro_Result">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="CarOnlineModelo">
+        <EntityTypeShape EntityType="CarOnlineModel.tblAdministrador" Width="1.5" PointX="0.75" PointY="7" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarOnlineModel.tblCargo" Width="1.5" PointX="14.25" PointY="5.125" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarOnlineModel.tblCidade" Width="1.5" PointX="14.25" PointY="8" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarOnlineModel.tblCor" Width="1.5" PointX="5.25" PointY="1" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarOnlineModel.tblEstado" Width="1.5" PointX="12" PointY="7.875" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarOnlineModel.tblFuncionario" Width="1.5" PointX="16.5" PointY="7.25" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarOnlineModel.tblMarcaVeiculo" Width="1.5" PointX="3" PointY="4" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarOnlineModel.tblModeloVeiculo" Width="1.5" PointX="5.25" PointY="3.875" Height="1.9802864583333326" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarOnlineModel.tblPais" Width="1.5" PointX="9.75" PointY="8" Height="1.9802864583333344" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarOnlineModel.tblTipoCombustivel" Width="1.5" PointX="7.5" PointY="12.125" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarOnlineModel.tblTipoVeiculo" Width="1.5" PointX="0.75" PointY="4.125" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarOnlineModel.tblUsuario" Width="1.5" PointX="7.5" PointY="8.25" Height="2.5571907552083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarOnlineModel.tblVeiculo" Width="1.5" PointX="7.5" PointY="3" Height="4.2879036458333326" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarOnlineModel.tblVendas" Width="1.5" PointX="9.75" PointY="0.75" Height="2.172587890625" IsExpanded="true" />
+        <AssociationConnector Association="CarOnlineModel.FK_tblFuncionario_tblCargo" ManuallyRouted="false">
+          <ConnectorPoint PointX="15.75" PointY="6.0189925130208337" />
+          <ConnectorPoint PointX="17.25" PointY="6.0189925130208337" />
+          <ConnectorPoint PointX="17.25" PointY="7.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="CarOnlineModel.FK_tblCidade_tblEstado" ManuallyRouted="false">
+          <ConnectorPoint PointX="13.5" PointY="8.9901432291666659" />
+          <ConnectorPoint PointX="14.25" PointY="8.9901432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="CarOnlineModel.FK_tblFuncionario_tblCidade" ManuallyRouted="false">
+          <ConnectorPoint PointX="15.75" PointY="8.9901432291666659" />
+          <ConnectorPoint PointX="16.5" PointY="8.9901432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="CarOnlineModel.FK_tblVeiculo_tblCor" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="1.7978417968749998" />
+          <ConnectorPoint PointX="8.25" PointY="1.7978417968749998" />
+          <ConnectorPoint PointX="8.25" PointY="3" />
+        </AssociationConnector>
+        <AssociationConnector Association="CarOnlineModel.FK_tblEstado_tblPais" ManuallyRouted="false">
+          <ConnectorPoint PointX="11.25" PointY="8.9901432291666676" />
+          <ConnectorPoint PointX="12" PointY="8.9901432291666676" />
+        </AssociationConnector>
+        <AssociationConnector Association="CarOnlineModel.FK_tblMarcaVeiculo_tblTipoVeiculo" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.9228417968750016" />
+          <ConnectorPoint PointX="3" PointY="4.9228417968750016" />
+        </AssociationConnector>
+        <AssociationConnector Association="CarOnlineModel.FK_tblModeloVeiculo_tblMarcaVeiculo" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="4.9276432291666659" />
+          <ConnectorPoint PointX="5.25" PointY="4.9276432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="CarOnlineModel.FK_tblVeiculo_tblModeloVeiculo" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="4.8651432291666659" />
+          <ConnectorPoint PointX="7.5" PointY="4.8651432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="CarOnlineModel.FK_tblVendas_tblVeiculo" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.6562525" PointY="3" />
+          <ConnectorPoint PointX="8.6562525" PointY="1.2739208984375" />
+          <ConnectorPoint PointX="9.75" PointY="1.2739208984375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="CarOnlineModel.tblTipoPermissao" Width="1.5" PointX="0.75" PointY="10.75" Height="1.7879850260416674" />
+        <AssociationConnector Association="CarOnlineModel.FK_tblAdministrador_tblTipoPermissao" >
+          <ConnectorPoint PointX="1.5" PointY="10.75" />
+          <ConnectorPoint PointX="1.5" PointY="9.3648893229166656" />
+        </AssociationConnector>
+        <AssociationConnector Association="CarOnlineModel.FK_tblFuncionario_tblTipoPermissao" >
+          <ConnectorPoint PointX="2.25" PointY="11.011495768229169" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="11.011495768229169" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="11.011495768229169" />
+          <ConnectorPoint PointX="16.5" PointY="11.011495768229169" />
+        </AssociationConnector>
+        <AssociationConnector Association="CarOnlineModel.FK_tblVeiculo_tblUsuario" >
+          <ConnectorPoint PointX="8.25" PointY="8.25" />
+          <ConnectorPoint PointX="8.25" PointY="7.480205078125" />
+        </AssociationConnector>
+        <AssociationConnector Association="CarOnlineModel.FK_tblVeiculo_tblTipoCombustivel" >
+          <ConnectorPoint PointX="7.5011528461538459" PointY="12.125" />
+          <ConnectorPoint PointX="7.125" PointY="11.748847153846153" />
+          <ConnectorPoint PointX="7.125" PointY="7.855205078125" />
+          <ConnectorPoint PointX="7.5" PointY="7.480205078125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="CarOnlineModel.tblSeguradora" Width="1.5" PointX="0.75" PointY="0.75" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="CarOnlineModel.tblFotosVeiculo" Width="1.5" PointX="9.75" PointY="4.25" Height="1.9802864583333388" />
+        <AssociationConnector Association="CarOnlineModel.FK_tblFotosVeiculo_tblVeiculo" >
+          <ConnectorPoint PointX="9" PointY="5.2401432291666694" />
+          <ConnectorPoint PointX="9.75" PointY="5.2401432291666694" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="CarOnlineModel.tblParametro" Width="1.5" PointX="12.625" PointY="11.875" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="CarOnlineModel.tblTipoParametro" Width="1.5" PointX="10.375" PointY="12.125" Height="1.5956835937500031" />
+        <AssociationConnector Association="CarOnlineModel.FK_tblParametro_tblTipoParametro" >
+          <ConnectorPoint PointX="11.875" PointY="12.922841796875002" />
+          <ConnectorPoint PointX="12.625" PointY="12.922841796875002" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="@Url.Content("~/Content/css/reset.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/administrativo.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.8.3.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-mascaras.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.form.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.blockUI.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.livequery.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-1.7.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/administrativo.js")" type="text/javascript"></script>
+    <title>Login</title>
+</head>
+<body>
+    
+    <div id="areaLogin">
+        <p class="mensagemRetorno">@TempData["mensagemRetorno"]</p>
+        <br />
+        @using (Html.BeginForm("ValidarLogin", "Login", new { area = "Administrativo" }, FormMethod.Post, new { @class="formularioLogin" }))
+        {
+            <p class="titulo">Área Administrativa</p>
+            <br />
+            <br />
+            <p><label for="" class="label">E-mail:</label>@Html.TextBox("emailAdministrador", null, new { @class = "campoTexto campoEmailLogin", maxlength="60" })</p>
+            <span class="textoExemplo">Exemplo:joao@gmail.com</span>
+            <br />
+            <p><label for="" class="label">Senha :</label>@Html.Password("senhaAdministrador", null, new { @class = "campoTexto campoSenhaLogin", maxlength = "8" })</p>
+            <br />
+            <br />
+            <p><input type="submit" value="Logar" class="botao" /><input class="botao" type="reset" value="Limpar" /></p>
+        }
+    </div>
+</body>
+</html>

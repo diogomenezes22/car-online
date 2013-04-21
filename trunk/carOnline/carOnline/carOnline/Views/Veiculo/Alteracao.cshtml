@@ -1,0 +1,65 @@
+﻿@model carOnline.Models.tblVeiculo
+@{
+    ViewBag.Title = "Meus veículos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+
+<div id="areaFotoVeiculo">
+@{
+    List<string> fotos = @ViewBag.fotos;
+    @:<table>
+    foreach(string foto in fotos)
+    {
+       <tr><td><img src="@Url.Content(@foto)" width="140px" alt="" height="120px" /></td></tr>
+    }
+    @:</table>
+}
+
+</div>
+
+<div id="areaVeiculo">
+    <p class="mensagemRetorno">@TempData["mensagemRetorno"]</p>
+    <br />
+    <p class="titulo">Alteração de Veículo</p>
+    <br />
+    @CarOnlineHelper.FileList(Convert.ToInt32(@Model.idVeiculo))
+    @using (Html.BeginForm("Alterar", "Veiculo", FormMethod.Post, new {@class="formularioVeiculo" }))
+    {
+        <br /><br />
+        <input type="hidden" value="@Model.idVeiculo" id="idVeiculo" name="idVeiculo" />
+        <p><label for="TipoVeiculo" class="label">Tipo de Veículo :      </label>@Html.DropDownList("TipoVeiculo", null, new { @class = "campoTexto" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
+        
+
+        <p><label for="marcas" class="label">Marca :                </label>
+          @Html.DropDownList("marcas", null, new { @class = "campoTexto ListaMarcas" })  
+          @*<select id="marcas" name="marcas" class="campoTexto ListaMarcas"></select>*@
+          <span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span>
+        </p>
+
+        <p><label for="modelos" class="label">Modelo :               </label>
+             @Html.DropDownList("modelos", null, new { @class = "campoTexto ListaModelos" })  
+            @*<select  id="modelos" name="modelos" class="campoTexto ListaModelos"></select>*@
+            <span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span>
+        </p>
+        
+        <p><label for="Ano" class="label">Ano :                  </label>@Html.DropDownList("Ano", null, new { @class = "campoTexto" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
+        <p><label for="TipoCombustivel" class="label">Tipo de Combustível :  </label>@Html.DropDownList("TipoCombustivel", null, new { @class = "campoTexto" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
+        <p><label for="botor" class="label">Motor :                </label>@Html.TextBoxFor(m => m.motor, new { @class = "campoTexto", maxlength = "200" })</p>
+        <p><label for="Cor" class="label">Cor :                  </label>@Html.DropDownList("Cor", null, new { @class = "campoTexto" })</p>
+        
+        <p><label for="portas"  class="label">Portas :              </label>@Html.TextBoxFor(m => m.portas, new { @class = "NumeroPortas campoTexto", size = "2" })</p>
+        <p><label for="quilometragem"  class="label">Quilometragem :       </label>@Html.TextBoxFor(m => m.quilometragem, new { @class = "Quilometragem campoTexto campoQuilometragemVeiculo" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
+        <p><label for="descricao"  class="label">Descrição :           </label>@Html.TextAreaFor(m => m.descricao, new { @class = "campoTexto textArea campoDescricaoVeiculo" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
+        <p><label for="preco"  class="label">Preço :               </label>@Html.TextBoxFor(m => m.preco, new { @class = "Preco campoTexto campoPrecoVeiculo" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
+        
+        <br />
+        <br />
+        <p><input type="submit" value="Alterar" class="botao" /></p>
+    }
+</div>
+<br />
+<br />
+

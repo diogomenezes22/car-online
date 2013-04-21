@@ -1,0 +1,64 @@
+﻿#dataHora
+{
+    float:right;
+}
+#cabecalho
+{
+    width:600px;
+    height:auto;
+    padding:10px;
+    margin:auto;
+    text-align:center;
+    font-family:Verdana;
+    font-size:large;
+}
+
+
+#areaRegistros
+{
+    width:auto;
+    margin:auto;
+}
+
+
+/*Tabelas de Dados*/
+
+.webGrid
+{
+    margin:auto;
+    border-collapse:collapse;
+    width:auto;
+    
+}
+.header
+{
+    color:#fff;
+}
+.webGrid th
+{
+    padding:10px;
+    border: 1px solid #888;
+    font-family:Verdana;
+    font-weight:bold;
+    background-color:#bbb;
+    
+}
+.webGrid a
+{
+    color:#444;
+    text-decoration:none;
+}
+.webGrid td
+{
+     padding:10px;
+    border: 1px solid #888;
+    font-family:Verdana;
+    font-size:small;
+
+}
+
+.alt
+{
+    background-color:#228B22;
+    color:#fff;
+}

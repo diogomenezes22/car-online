@@ -1,0 +1,33 @@
+﻿@using carOnline.Models
+@model List<ConsultarParametro_Result>
+@{
+    ViewBag.Title = "Consulta";
+    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+}
+    <br />
+    <br />
+<div id="areaConsulta">
+    <p class="mensagemSucesso">@TempData["mensagemRetorno"]</p>
+    <br />
+    <p class="titulo">Consulta de Parâmetros</p>
+    <br />
+    <br />
+    @{
+        var gridParametros = new WebGrid(Model, canPage: true, canSort: true, rowsPerPage: 3);
+        gridParametros.Pager(WebGridPagerModes.NextPrevious);
+        @gridParametros.GetHtml(
+            tableStyle:"webGrid",
+            htmlAttributes:new {id="tabelaParametros"},
+            alternatingRowStyle:"alt",
+            columns:gridParametros.Columns(
+                gridParametros.Column("Codigo"),
+                gridParametros.Column("Descricao"),
+                gridParametros.Column("Valor"),
+                gridParametros.Column("Tipo"),
+                gridParametros.Column(header:"Alterar",format :@<text>@Html.ActionLink("Alterar","Alteracao","Parametro",new {id = item.Codigo},new {@class="links"})</text>)
+            )  
+        );
+    }
+</div>
+<br />
+<br /> 

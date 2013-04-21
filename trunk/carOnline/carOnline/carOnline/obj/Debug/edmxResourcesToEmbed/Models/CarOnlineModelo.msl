@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CarOnlineModelStoreContainer" CdmEntityContainer="CarOnlineEntities">
+    <EntitySetMapping Name="tblAdministrador">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblAdministrador">
+        <MappingFragment StoreEntitySet="tblAdministrador">
+          <ScalarProperty Name="idTipoPermissao" ColumnName="idTipoPermissao" />
+          <ScalarProperty Name="idAdministrador" ColumnName="idAdministrador" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="dataCadastro" ColumnName="dataCadastro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCargo">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblCargo">
+        <MappingFragment StoreEntitySet="tblCargo">
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+          <ScalarProperty Name="idCargo" ColumnName="idCargo" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCidade">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblCidade">
+        <MappingFragment StoreEntitySet="tblCidade">
+          <ScalarProperty Name="idCidade" ColumnName="idCidade" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCor">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblCor">
+        <MappingFragment StoreEntitySet="tblCor">
+          <ScalarProperty Name="idCor" ColumnName="idCor" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEstado">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblEstado">
+        <MappingFragment StoreEntitySet="tblEstado">
+          <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="sigla" ColumnName="sigla" />
+          <ScalarProperty Name="idPais" ColumnName="idPais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFuncionario">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblFuncionario">
+        <MappingFragment StoreEntitySet="tblFuncionario">
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="idTipoPermissao" ColumnName="idTipoPermissao" />
+          <ScalarProperty Name="idFuncionario" ColumnName="idFuncionario" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="idCidade" ColumnName="idCidade" />
+          <ScalarProperty Name="bairro" ColumnName="bairro" />
+          <ScalarProperty Name="endereco" ColumnName="endereco" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="dataCadastro" ColumnName="dataCadastro" />
+          <ScalarProperty Name="idCargo" ColumnName="idCargo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMarcaVeiculo">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblMarcaVeiculo">
+        <MappingFragment StoreEntitySet="tblMarcaVeiculo">
+          <ScalarProperty Name="idMarcaVeiculo" ColumnName="idMarcaVeiculo" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="idTipoVeiculo" ColumnName="idTipoVeiculo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblModeloVeiculo">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblModeloVeiculo">
+        <MappingFragment StoreEntitySet="tblModeloVeiculo">
+          <ScalarProperty Name="idModeloVeiculo" ColumnName="idModeloVeiculo" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="idMarcaVeiculo" ColumnName="idMarcaVeiculo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPais">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblPais">
+        <MappingFragment StoreEntitySet="tblPais">
+          <ScalarProperty Name="idPais" ColumnName="idPais" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="sigla" ColumnName="sigla" />
+          <ScalarProperty Name="iso" ColumnName="iso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTipoCombustivel">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblTipoCombustivel">
+        <MappingFragment StoreEntitySet="tblTipoCombustivel">
+          <ScalarProperty Name="idTipoCombustivel" ColumnName="idTipoCombustivel" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTipoVeiculo">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblTipoVeiculo">
+        <MappingFragment StoreEntitySet="tblTipoVeiculo">
+          <ScalarProperty Name="idTipoVeiculo" ColumnName="idTipoVeiculo" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsuario">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblUsuario">
+        <MappingFragment StoreEntitySet="tblUsuario">
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="dataCadastro" ColumnName="dataCadastro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblVeiculo">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblVeiculo">
+        <MappingFragment StoreEntitySet="tblVeiculo">
+          <ScalarProperty Name="motor" ColumnName="motor" />
+          <ScalarProperty Name="idTipoCombustivel" ColumnName="idTipoCombustivel" />
+          <ScalarProperty Name="ano" ColumnName="ano" />
+          <ScalarProperty Name="dataCadastro" ColumnName="dataCadastro" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="idVeiculo" ColumnName="idVeiculo" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="preco" ColumnName="preco" />
+          <ScalarProperty Name="quilometragem" ColumnName="quilometragem" />
+          <ScalarProperty Name="portas" ColumnName="portas" />
+          <ScalarProperty Name="idCor" ColumnName="idCor" />
+          <ScalarProperty Name="idModeloVeiculo" ColumnName="idModeloVeiculo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblVendas">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblVendas">
+        <MappingFragment StoreEntitySet="tblVendas">
+          <ScalarProperty Name="idVenda" ColumnName="idVenda" />
+          <ScalarProperty Name="preco" ColumnName="preco" />
+          <ScalarProperty Name="dataVenda" ColumnName="dataVenda" />
+          <ScalarProperty Name="idVeiculo" ColumnName="idVeiculo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTipoPermissao">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblTipoPermissao">
+        <MappingFragment StoreEntitySet="tblTipoPermissao">
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="idTipoPermissao" ColumnName="idTipoPermissao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ConsultaVeiculo" FunctionName="CarOnlineModel.Store.ConsultarVeiculo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarOnlineModel.ConsultaVeiculo_Result">
+          <ScalarProperty Name="idVeiculo" ColumnName="idVeiculo" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Cor" ColumnName="Cor" />
+          <ScalarProperty Name="TipoCombustivel" ColumnName="TipoCombustivel" />
+          <ScalarProperty Name="Ano" ColumnName="Ano" />
+          <ScalarProperty Name="Preco" ColumnName="Preco" />
+          <ScalarProperty Name="QuiloMetragem" ColumnName="QuiloMetragem" />
+          <ScalarProperty Name="Portas" ColumnName="Portas" />
+          <ScalarProperty Name="Cadastro" ColumnName="Cadastro" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tblSeguradora">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblSeguradora">
+        <MappingFragment StoreEntitySet="tblSeguradora">
+          <ScalarProperty Name="dataCadastro" ColumnName="dataCadastro" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="idSeguradora" ColumnName="idSeguradora" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFotosVeiculo">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblFotosVeiculo">
+        <MappingFragment StoreEntitySet="tblFotosVeiculo">
+          <ScalarProperty Name="idVeiculo" ColumnName="idVeiculo" />
+          <ScalarProperty Name="dataCadastro" ColumnName="dataCadastro" />
+          <ScalarProperty Name="urlFoto" ColumnName="urlFoto" />
+          <ScalarProperty Name="idFotoVeiculo" ColumnName="idFotoVeiculo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblParametro">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblParametro">
+        <MappingFragment StoreEntitySet="tblParametro">
+          <ScalarProperty Name="idTipoParametro" ColumnName="idTipoParametro" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="idParametro" ColumnName="idParametro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTipoParametro">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblTipoParametro">
+        <MappingFragment StoreEntitySet="tblTipoParametro">
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="idTipoParametro" ColumnName="idTipoParametro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="RelatorioCarrosVendidos" FunctionName="CarOnlineModel.Store.RelatorioCarrosVendidos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarOnlineModel.RelatorioCarrosVendidos_Result">
+          <ScalarProperty Name="Ano" ColumnName="Ano" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="ValorVenda" ColumnName="ValorVenda" />
+          <ScalarProperty Name="Combustivel" ColumnName="Combustivel" />
+          <ScalarProperty Name="dataVenda" ColumnName="dataVenda" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RelatorioCarrosCadastrados" FunctionName="CarOnlineModel.Store.RelatorioCarrosCadastrados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarOnlineModel.RelatorioCarrosCadastrados_Result">
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Ano" ColumnName="Ano" />
+          <ScalarProperty Name="Cor" ColumnName="Cor" />
+          <ScalarProperty Name="Quilometragem" ColumnName="Quilometragem" />
+          <ScalarProperty Name="Motor" ColumnName="Motor" />
+          <ScalarProperty Name="Cadastro" ColumnName="Cadastro" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarParametro" FunctionName="CarOnlineModel.Store.ConsultarParametro">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarOnlineModel.ConsultarParametro_Result">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

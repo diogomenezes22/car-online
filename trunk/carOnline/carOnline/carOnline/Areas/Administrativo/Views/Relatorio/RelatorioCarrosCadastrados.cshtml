@@ -1,0 +1,54 @@
+﻿@using carOnline.Models
+@model List<RelatorioCarrosCadastrados_Result>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Relatório de Carros Cadastrados</title>
+    <link href="@Url.Content("~/Content/css/reset.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/relatorio.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="corpoRelatorio">
+    <p id="dataHora">@DateTime.Now</p>
+        <div id="cabecalho">
+            <p class="tituloRelatorio">Relatório de Carros Cadastrados</p>
+        </div>
+        <hr />
+        <br />
+        <div id="areaRegistros">
+        @{
+            var gridVeiculos = new WebGrid(Model, canPage: false, canSort: false);
+            //gridVeiculos.Pager(WebGridPagerModes.NextPrevious);
+            @gridVeiculos.GetHtml(
+                tableStyle:"webGrid",
+                htmlAttributes:new {id="tabelaVeiculos"},
+                alternatingRowStyle:"alt",
+                columns:gridVeiculos.Columns(
+                    gridVeiculos.Column("Tipo"),
+                    gridVeiculos.Column("Marca"),
+                    gridVeiculos.Column("Modelo"),
+                    gridVeiculos.Column("Ano"),
+                    gridVeiculos.Column("Cor"),
+                    gridVeiculos.Column("Quilometragem"),
+                    gridVeiculos.Column("Motor"),
+                    gridVeiculos.Column("Cadastro")
+               )
+            );
+        }
+        </div>
+        <br />
+        <br />
+        <hr />
+        <br />
+        <br />
+        <div id="rodape">
+            
+        </div>
+    </div>
+</body>
+</html>

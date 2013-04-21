@@ -1,0 +1,29 @@
+﻿@model List<carOnline.Models.tblCargo>
+@{
+    ViewBag.Title = "Cargo";
+    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+}
+<br />
+<br />
+<div id="areaParametrosCargo">
+    <input type="hidden" class="urlAlterarParametroCargo" value="@Url.Action("AlterarParametroCargo", "Parametro", new { area = "Administrativo" })" />
+    <br />
+    <p class="titulo">Parâmetro de Cargo</p>
+    <br />
+    <div class="loadingParametros"><img src="@Url.Content("~/Content/images/prettyPhoto/facebook/loader.gif")" alt="" width="24px" height="24px" /> </div>
+    @{
+        foreach(var cargo in Model)
+        {
+            if(cargo.ativo =="S")
+            {
+                <p><input type="checkbox" class="listaCargos" value="@cargo.idCargo"  checked="checked" />@cargo.descricao </p>
+            }
+            else
+            {
+                <p><input type="checkbox" class="listaCargos" value="@cargo.idCargo" />@cargo.descricao </p>
+            }
+        }
+    }
+</div>
+<br />
+<br /> 

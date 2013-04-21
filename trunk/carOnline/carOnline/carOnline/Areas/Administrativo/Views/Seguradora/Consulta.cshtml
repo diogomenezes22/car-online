@@ -1,0 +1,35 @@
+﻿@using carOnline.Models
+@model List<tblSeguradora>
+@{
+    ViewBag.Title = "Consulta";
+    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+}
+
+<br />
+<br />
+<div id="areaConsultaSeguradora">
+    <p class="mensagemSucesso">@TempData["mensagemRetorno"]</p>
+    <br />
+    <p class="titulo">Consulta de Seguradora</p>
+    <br />
+    <br />
+
+    @{
+        var gridSeguradoras = new WebGrid(Model, canPage: true, canSort: true, rowsPerPage: 3);
+        gridSeguradoras.Pager(WebGridPagerModes.NextPrevious);
+        @gridSeguradoras.GetHtml(
+            tableStyle:"webGrid",
+            htmlAttributes:new {id="tabelaSeguradoras"},
+            alternatingRowStyle:"alt",
+            columns:gridSeguradoras.Columns(
+                gridSeguradoras.Column("idSeguradora","Código"),
+                gridSeguradoras.Column("nome","Nome"),
+                gridSeguradoras.Column("email","Email"),
+                gridSeguradoras.Column(header:"Alterar",format :@<text>@Html.ActionLink("Alterar","Alteracao","Seguradora",new {id = item.idSeguradora},new {@class="links"})</text>),
+                gridSeguradoras.Column(header:"Deletar",format :@<text><a class="links linkDeletarSeguradora" href="#" id="@item.idSeguradora">Deletar</a></text>)
+            )  
+        );
+    }
+</div>
+<br />
+<br /> 
