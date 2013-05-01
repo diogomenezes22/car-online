@@ -16,6 +16,14 @@ namespace carOnline.Areas.Administrativo.Controllers
         #region Relatório de Carros Cadastrados
         public ActionResult FormularioRelatorioCarrosCadastrados()
         {
+            using(CarOnlineEntities DB = new CarOnlineEntities())
+            {
+                List<tblMarcaVeiculo> marcas = DB.tblMarcaVeiculo.ToList<tblMarcaVeiculo>();
+                List<tblModeloVeiculo> modelos = DB.tblModeloVeiculo.ToList<tblModeloVeiculo>();
+
+                @ViewBag.ListaMarcas = new SelectList(marcas, "idMarcaVeiculo", "descricao");
+                @ViewBag.ListaModelos = new SelectList(modelos, "idModeloVeiculo", "descricao");
+            }
             return View();
         }
         public ActionResult RelatorioCarrosCadastros()
@@ -32,9 +40,21 @@ namespace carOnline.Areas.Administrativo.Controllers
         {
             List<RelatorioCarrosCadastrados_Result> listaCarros = new List<RelatorioCarrosCadastrados_Result>();
 
+            int marca  = Convert.ToInt32(formulario["ListaMarcas"]);
+            int modelo = Convert.ToInt32(formulario["ListaModelos"]);
+
+            string porMarca  = formulario["porMarca"];
+            string porModelo = formulario["porModelo"];
+
+            if (porMarca == null)
+                marca  = 0;
+            if (porModelo == null)
+                modelo = 0;
+
             using (CarOnlineEntities DB = new CarOnlineEntities())
             {
-                listaCarros = DB.RelatorioCarrosCadastrados(formulario["dataInicial"], formulario["dataFinal"]).ToList<RelatorioCarrosCadastrados_Result>();
+                
+                listaCarros = DB.RelatorioCarrosCadastrados(formulario["dataInicial"], formulario["dataFinal"],marca,modelo).ToList<RelatorioCarrosCadastrados_Result>();
             }
             var pdf = new ViewAsPdf
             {
@@ -48,6 +68,14 @@ namespace carOnline.Areas.Administrativo.Controllers
         #region Relatório de Carros Vendidos
         public ActionResult FormularioRelatorioCarrosVendidos()
         {
+            using (CarOnlineEntities DB = new CarOnlineEntities())
+            {
+                List<tblMarcaVeiculo> marcas = DB.tblMarcaVeiculo.ToList<tblMarcaVeiculo>();
+                List<tblModeloVeiculo> modelos = DB.tblModeloVeiculo.ToList<tblModeloVeiculo>();
+
+                @ViewBag.ListaMarcas = new SelectList(marcas, "idMarcaVeiculo", "descricao");
+                @ViewBag.ListaModelos = new SelectList(modelos, "idModeloVeiculo", "descricao");
+            }
             return View();
         }
         public ActionResult RelatorioCarrosVendidos()
@@ -62,10 +90,18 @@ namespace carOnline.Areas.Administrativo.Controllers
         public ActionResult RelatorioCarrosVendidosPDF(FormCollection formulario)
         {
             List<RelatorioCarrosVendidos_Result> listaVendas = new List<RelatorioCarrosVendidos_Result>();
+            int marca  = Convert.ToInt32(formulario["ListaMarcas"]);
+            int modelo = Convert.ToInt32(formulario["ListaModelos"]);
+            string porMarca = formulario["porMarca"];
+            string porModelo = formulario["porModelo"];
 
+            if (porMarca == null)
+                marca = 0;
+            if (porModelo == null)
+                modelo = 0;
             using (CarOnlineEntities DB = new CarOnlineEntities())
             {
-                listaVendas = DB.RelatorioCarrosVendidos(formulario["dataInicial"], formulario["dataFinal"]).ToList<RelatorioCarrosVendidos_Result>();
+                listaVendas = DB.RelatorioCarrosVendidos(formulario["dataInicial"], formulario["dataFinal"],marca,modelo).ToList<RelatorioCarrosVendidos_Result>();
                 double TotalVenda = 0;
                 foreach (var registro in listaVendas)
                 {

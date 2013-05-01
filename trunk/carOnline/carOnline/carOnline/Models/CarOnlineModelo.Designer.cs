@@ -570,7 +570,9 @@ namespace carOnline.Models
         /// </summary>
         /// <param name="dataInicial">No Metadata Documentation available.</param>
         /// <param name="dataFinal">No Metadata Documentation available.</param>
-        public ObjectResult<RelatorioCarrosVendidos_Result> RelatorioCarrosVendidos(global::System.String dataInicial, global::System.String dataFinal)
+        /// <param name="marca">No Metadata Documentation available.</param>
+        /// <param name="modelo">No Metadata Documentation available.</param>
+        public ObjectResult<RelatorioCarrosVendidos_Result> RelatorioCarrosVendidos(global::System.String dataInicial, global::System.String dataFinal, Nullable<global::System.Int32> marca, Nullable<global::System.Int32> modelo)
         {
             ObjectParameter dataInicialParameter;
             if (dataInicial != null)
@@ -592,7 +594,27 @@ namespace carOnline.Models
                 dataFinalParameter = new ObjectParameter("dataFinal", typeof(global::System.String));
             }
     
-            return base.ExecuteFunction<RelatorioCarrosVendidos_Result>("RelatorioCarrosVendidos", dataInicialParameter, dataFinalParameter);
+            ObjectParameter marcaParameter;
+            if (marca.HasValue)
+            {
+                marcaParameter = new ObjectParameter("marca", marca);
+            }
+            else
+            {
+                marcaParameter = new ObjectParameter("marca", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter modeloParameter;
+            if (modelo.HasValue)
+            {
+                modeloParameter = new ObjectParameter("modelo", modelo);
+            }
+            else
+            {
+                modeloParameter = new ObjectParameter("modelo", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<RelatorioCarrosVendidos_Result>("RelatorioCarrosVendidos", dataInicialParameter, dataFinalParameter, marcaParameter, modeloParameter);
         }
     
         /// <summary>
@@ -600,7 +622,9 @@ namespace carOnline.Models
         /// </summary>
         /// <param name="dataInicial">No Metadata Documentation available.</param>
         /// <param name="dataFinal">No Metadata Documentation available.</param>
-        public ObjectResult<RelatorioCarrosCadastrados_Result> RelatorioCarrosCadastrados(global::System.String dataInicial, global::System.String dataFinal)
+        /// <param name="marca">No Metadata Documentation available.</param>
+        /// <param name="modelo">No Metadata Documentation available.</param>
+        public ObjectResult<RelatorioCarrosCadastrados_Result> RelatorioCarrosCadastrados(global::System.String dataInicial, global::System.String dataFinal, Nullable<global::System.Int32> marca, Nullable<global::System.Int32> modelo)
         {
             ObjectParameter dataInicialParameter;
             if (dataInicial != null)
@@ -622,7 +646,27 @@ namespace carOnline.Models
                 dataFinalParameter = new ObjectParameter("dataFinal", typeof(global::System.String));
             }
     
-            return base.ExecuteFunction<RelatorioCarrosCadastrados_Result>("RelatorioCarrosCadastrados", dataInicialParameter, dataFinalParameter);
+            ObjectParameter marcaParameter;
+            if (marca.HasValue)
+            {
+                marcaParameter = new ObjectParameter("marca", marca);
+            }
+            else
+            {
+                marcaParameter = new ObjectParameter("marca", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter modeloParameter;
+            if (modelo.HasValue)
+            {
+                modeloParameter = new ObjectParameter("modelo", modelo);
+            }
+            else
+            {
+                modeloParameter = new ObjectParameter("modelo", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<RelatorioCarrosCadastrados_Result>("RelatorioCarrosCadastrados", dataInicialParameter, dataFinalParameter, marcaParameter, modeloParameter);
         }
     
         /// <summary>

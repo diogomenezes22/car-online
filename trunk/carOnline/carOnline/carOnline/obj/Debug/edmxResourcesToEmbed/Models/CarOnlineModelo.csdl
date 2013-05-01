@@ -86,10 +86,14 @@
     <FunctionImport Name="RelatorioCarrosVendidos" ReturnType="Collection(CarOnlineModel.RelatorioCarrosVendidos_Result)">
       <Parameter Name="dataInicial" Mode="In" Type="String" />
       <Parameter Name="dataFinal" Mode="In" Type="String" />
+      <Parameter Name="marca" Mode="In" Type="Int32" />
+      <Parameter Name="modelo" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="RelatorioCarrosCadastrados" ReturnType="Collection(CarOnlineModel.RelatorioCarrosCadastrados_Result)">
       <Parameter Name="dataInicial" Mode="In" Type="String" />
       <Parameter Name="dataFinal" Mode="In" Type="String" />
+      <Parameter Name="marca" Mode="In" Type="Int32" />
+      <Parameter Name="modelo" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="ConsultarParametro" ReturnType="Collection(CarOnlineModel.ConsultarParametro_Result)" />
   </EntityContainer>

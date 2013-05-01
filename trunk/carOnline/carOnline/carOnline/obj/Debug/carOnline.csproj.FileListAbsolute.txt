@@ -54,3 +54,11 @@ C:\Users\Wellington\Documents\Visual Studio 2010\Projects\carOnline\carOnline\ob
 C:\Users\Wellington\Documents\Visual Studio 2010\Projects\carOnline\carOnline\obj\Debug\carOnline.pdb
 C:\Users\geraldo.borges\Pictures\carOnline\carOnline\bin\Rotativa.dll
 C:\Users\geraldo\Pictures\carOnline\carOnline\bin\Rotativa.dll
+C:\Users\geraldo\Pictures\CarOnline\carOnline\carOnline\carOnline\bin\carOnline.dll
+C:\Users\geraldo\Pictures\CarOnline\carOnline\carOnline\carOnline\bin\carOnline.pdb
+C:\Users\geraldo\Pictures\CarOnline\carOnline\carOnline\carOnline\bin\EntityFramework.dll
+C:\Users\geraldo\Pictures\CarOnline\carOnline\carOnline\carOnline\bin\Rotativa.dll
+C:\Users\geraldo\Pictures\CarOnline\carOnline\carOnline\carOnline\bin\EntityFramework.xml
+C:\Users\geraldo\Pictures\CarOnline\carOnline\carOnline\carOnline\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\geraldo\Pictures\CarOnline\carOnline\carOnline\carOnline\obj\Debug\carOnline.dll
+C:\Users\geraldo\Pictures\CarOnline\carOnline\carOnline\carOnline\obj\Debug\carOnline.pdb

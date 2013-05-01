@@ -52,7 +52,7 @@ jQuery(document).ready(function () {
     }
 
     //--------------------AO PASSAR O MOUSE POR CIMA DAS OPÇÕES MOSTRA O MENU DE CADA UMA --------------------\\
-    
+
     jQuery(".areaConfiguracaoBotao").mouseover(function () {
         var referencia = "#" + jQuery(this).attr("id");
         MostrarEsconderMenuAdministrativo(referencia, ".botoesOcultos", true);
@@ -318,5 +318,33 @@ jQuery(document).ready(function () {
             jQuery(this).attr("checked", "checked");
         }
     });
+
+
+    //----------------------------------------AJAX PARA OS RELATORIOS-----------------------------\\
+
+    jQuery(".porMarca").removeAttr("checked");
+    jQuery(".porModelo").removeAttr("checked");
+
+    jQuery(".porMarca").click(function () {
+        if (jQuery(this).is(":checked")) {
+            jQuery(".areaEscolhaMarca").toggle();
+        }
+        else {
+            jQuery(".areaEscolhaMarca").toggle();
+        }
+    });
+
+
+    jQuery(".porModelo").click(function () {
+        if (jQuery(this).is(":checked")) {
+            jQuery(".areaEscolhaModelo").toggle();
+        }
+        else {
+            jQuery(".areaEscolhaModelo").toggle();
+        }
+    });
+
+
+
 
 });
