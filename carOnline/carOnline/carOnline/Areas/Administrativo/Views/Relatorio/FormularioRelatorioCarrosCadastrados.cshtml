@@ -11,6 +11,18 @@
 
     @using (@Html.BeginForm("RelatorioCarrosCadastradosPDF","Relatorio",FormMethod.Post))
     {
+        <p><input type="checkbox" class="porMarca" id="porMarca" name="porMarca" />Por Marca </p>
+        <p><input type="checkbox" class="porModelo" id="porModelo" name="porModelo" />Por Modelo </p>
+        <p class="areaEscolhaMarca">
+            <label for="marcas" class="label">Marca: </label>
+            @Html.DropDownList("ListaMarcas", null, new { @class = "campoTexto" }) 
+        </p>
+
+        <p class="areaEscolhaModelo">
+            <label for="modelos" class="label">Modelo: </label>
+            @Html.DropDownList("ListaModelos", null, new { @class = "campoTexto" })
+        </p>
+        
         <p> <label class="label">Data Inicial: </label><input type="text" id="dataInicial" name="dataInicial" class="CALENDARIO campoTexto" /></p>
         <p> <label class="label">Data Final: </label><input  type="text" id="dataFinal" name="dataFinal" class="CALENDARIO campoTexto" /></p>
         <br />

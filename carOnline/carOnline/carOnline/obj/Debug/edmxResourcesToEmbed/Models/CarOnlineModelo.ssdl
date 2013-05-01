@@ -448,9 +448,13 @@
   <Function Name="RelatorioCarrosCadastrados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="dataInicial" Type="varchar" Mode="In" />
     <Parameter Name="dataFinal" Type="varchar" Mode="In" />
+    <Parameter Name="marca" Type="int" Mode="In" />
+    <Parameter Name="modelo" Type="int" Mode="In" />
   </Function>
   <Function Name="RelatorioCarrosVendidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="dataInicial" Type="varchar" Mode="In" />
     <Parameter Name="dataFinal" Type="varchar" Mode="In" />
+    <Parameter Name="marca" Type="int" Mode="In" />
+    <Parameter Name="modelo" Type="int" Mode="In" />
   </Function>
 </Schema>

@@ -704,6 +704,14 @@ a.botoesJanelaModal:hover
     font-family:Verdana;
     color:#444;
 }
+.areaEscolhaMarca
+{
+    display:none;
+}
+.areaEscolhaModelo
+{
+    display:none;
+}
 #areaFormularioRelatorioCarrosCadastrados .label
 {
     float:left;
