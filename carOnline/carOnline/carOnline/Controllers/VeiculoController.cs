@@ -407,6 +407,13 @@ namespace carOnline.Controllers
             //string tabelaArquivos   = "";
             FileInfo arquivo = new FileInfo(caminhoFisico + nomeArquivo);
             bool salvarArquivo;
+
+            //Tamanho máximo permitido
+            string strTamanhoArquivo = Ferramenta.ConvertByteToMB(file.ContentLength).ToString();
+
+            //Tamanho do arquivo
+            string strTamanhoMaximo = Ferramenta.ConvertByteToMB(tamanhoArquivo).ToString();
+
             #endregion
 
             //Busca o tamanho máximo do arquivo da tabela de parâmetros
@@ -456,7 +463,7 @@ namespace carOnline.Controllers
                 }
                 else
                 {
-                    mensagem = "O tamanho do arquivo é inválido.Verifique o tamanho máximo permitido.";
+                    mensagem = "O tamanho do arquivo é inválido ("+strTamanhoArquivo+" MB).O máximo permitido é "+strTamanhoMaximo+" MB.";
                     return Content(mensagem);
                 }
             }

@@ -15,7 +15,8 @@
     <input type="hidden" class="idVeiculoUsuario" value="@idVeiculo"/> 
     <input type="hidden" class="urlBuscarTabelaArquivo" value="@url.Action("BuscarTabelaArquivo", "Veiculo")" />   
     <div class="areaFileList">
-        <form class="ajaxUploadForm" action="@url.Action("GravarFotos", "Veiculo", new { idVeiculo = @idVeiculo, tamanhoArquivo = 1000000 })" method="post" enctype="multipart/form-data">
+                                                                                                                                  <!--1048576 = 1mb-->
+        <form class="ajaxUploadForm" action="@url.Action("GravarFotos", "Veiculo", new { idVeiculo = @idVeiculo, tamanhoArquivo = 1048576 })" method="post" enctype="multipart/form-data">
             <label class="Label">Arquivo: <input type="file" id="myFile" name="file" /></label>
             <input class="botoes botaoSalvarFileList" data-idVeiculo="@idVeiculo" type="submit" value="Salvar Arquivo" />
         </form>
