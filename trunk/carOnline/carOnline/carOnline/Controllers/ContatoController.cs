@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Helpers;
+using carOnline.Models;
 
 namespace carOnline.Controllers
 {
@@ -21,15 +22,16 @@ namespace carOnline.Controllers
         [HttpPost]
         public ActionResult EnviarEmail(string Email, string Assunto, string Mensagem)
         {
-            WebMail.SmtpServer = "smtp.live.com";
-            WebMail.SmtpPort = 587;
-            WebMail.EnableSsl = false;
-            WebMail.UserName = "fw_vitor@hotmail.com";
-            WebMail.From = Email;
-            WebMail.Password = "";
-            WebMail.Send("lecogrunge@gmail.com", Assunto, Mensagem);
-            
-            return View();
+            try
+            {
+                Ferramenta.EnviarEmail(Email, "wellington_fernands@yahoo.com.br", Assunto, Mensagem);
+                ViewBag.Msg = "Contato enviado com sucesso! Em breve responderemos.";
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                throw (e);
+            }
         }
     }
 }
