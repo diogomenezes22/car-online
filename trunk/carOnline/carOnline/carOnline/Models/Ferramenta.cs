@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Text.RegularExpressions;
 using carOnline.Models;
+using System.Net;
+using System.Net.Mail;
+
 namespace carOnline.Models
 {
     public class Ferramenta
@@ -108,6 +111,35 @@ namespace carOnline.Models
 
         #endregion
 
+
+        public static void EnviarEmail(string de, string para, string assunto, string mensagem)
+        {
+            //Define as configuraçãoes padrões da mensagem
+            MailMessage mailMsg = new MailMessage(de, para, assunto, mensagem);
+
+            //Para anexar um arquivo
+            //Localmente
+            //mailMsg.Attachments.Add(new Attachment(@"C:\tt.txt"));
+
+
+            //Define as configurações do servidor de email como HOST e PORTA exemplo "smtp.personalportfolio.com.br", 587 ou 25
+            SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+            
+            //Ativar Servidor Seguro
+            client.EnableSsl = true;
+
+            //Se precisa de autenticação informe o usuário e senha
+            client.Credentials = new NetworkCredential("lecogrunge@gmail.com", "76456999");
+
+            //Se não precisa de autenticação
+            //client.UseDefaultCredentials = true;
+
+            //Define se o corpo da mensagem é HTML ou não passe os parâmetros como true or false
+            mailMsg.IsBodyHtml = true;
+
+            //Enviar o email
+            client.Send(mailMsg);
+        }
 
     }
 }
