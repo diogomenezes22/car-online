@@ -40,7 +40,7 @@
                 <div id="confirm">
                     @using (Html.BeginForm("EnviarEmail", "Contato", FormMethod.Post, new { @class = "formularioContato" }))
                     {                    
-                        <!--<div class="success"><div class="success_txt">Contact form submitted!<br/><strong> We will be in touch soon.</strong></div></div>-->
+                        <div class="success"><div class="success_txt"> @ViewBag.Msg <br/></div></div>
                         <fieldset>
                             <span style="font-weight:bold;font-size:16px;">Nome</span>
                             <label class="name" style="margin-bottom: 30px;">
