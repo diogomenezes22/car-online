@@ -1,4 +1,5 @@
-﻿@{
+﻿@Model 
+@{
     ViewBag.Title = "Contato";
 }
 
@@ -17,12 +18,11 @@
                 </div>
                 <div class="extra-wrap">
                     <dl class="dl1">
-                        <dt>The Company Name Inc. <br/>
-                        8901 Marmora Road, <br/>
-                        Glasgow, D04 89GR.</dt>
-                        <dd><span>+1 800 559 6580</span>Freephone:</dd>
-                        <dd><span>+1 800 603 6035</span>Telephone:</dd>
-                        <dd><span>+1 800 889 9898</span>FAX:</dd>
+                        <dt>Unidade Timbiras: R. Timbiras, 1532, Centro. <br/>
+                        Unidade Goitacazes: R. Goitacazes, 1.762, Barro Preto, <br /></dt>
+                        <dd><span>31 8559 6580</span>Telefone 1:</dd>
+                        <dd><span>31 8603 6035</span>Telefone 2:</dd>
+                        <dd><span>31 8089 9898</span>FAX:</dd>
                         <dd>E-mail: <a class="link-2" href="#"><span class="__cf_email__" data-cfemail="6805090104280c0d05070401060346071a0f">[email&nbsp;protected]</span><script type="text/javascript">
                         /* <![CDATA[ */
                         (function(){try{var s,a,i,j,r,c,l,b=document.getElementsByTagName("script");l=b[b.length-1].previousSibling;a=l.getAttribute('data-cfemail');if(a){s='';r=parseInt(a.substr(0,2),16);for(j=2;a.length-j;j+=2){c=parseInt(a.substr(j,2),16)^r;s+=String.fromCharCode(c);}s=document.createTextNode(s);l.parentNode.replaceChild(s,l);}}catch(e){}})();
@@ -33,34 +33,42 @@
             </div>
             <div class="grid_7">
                 <div class="ident-bot-6">
-                    <h2>Cadastro de</h2>
-                    <h2 class="h2 ident-top-1">Usuário</h2>
+                    <h2>Formulário de</h2>
+                    <h2 class="h2 ident-top-1">Contato</h2>
                 </div>
  
                 <div id="confirm">
-                    <form id="form1">
-                        <div class="success"><div class="success_txt">Contact form submitted!<br/><strong> We will be in touch soon.</strong></div></div>
+                    @using (Html.BeginForm("EnviarEmail", "Contato", FormMethod.Post, new { @class = "formularioContato" }))
+                    {                    
+                        <!--<div class="success"><div class="success_txt">Contact form submitted!<br/><strong> We will be in touch soon.</strong></div></div>-->
                         <fieldset>
-                            <label class="name">
-                                <input type="text" value="Loren Ipsum"/>
-                                <span class="error">*This is not a valid name.</span> <span class="empty">*This field is required.</span>
+                            <span style="font-weight:bold;font-size:16px;">Nome</span>
+                            <label class="name" style="margin-bottom: 30px;">
+                                @Html.TextBox("Nome", null, new { @class = "campoTexto ", maxlength = "60", size = "40" })                                
+                                <!--<span class="error">*This is not a valid name.</span> <span class="empty">*This field is required.</span>-->
                             </label>
-                            <label class="email">
-                                <input type="text" value="Loren Ipsum"/>
-                                <span class="error">*This is not a valid email address.</span> <span class="empty">*This field is required.</span>
+
+                            <span style="font-weight:bold;font-size:16px;">E-mail</span>
+                            <label class="email" style="margin-bottom: 30px;">
+                                @Html.TextBox("Email", null, new { @class = "campoTexto ", maxlength = "60", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span>
+                                <!--<span class="error">*This is not a valid name.</span> <span class="empty">*This field is required.</span>-->
                             </label>
-                            <label class="phone">
-                                <input type="text" value="Loren Ipsum"/>
-                                <span class="error">*This is not a valid phone number.</span> <span class="empty">*This field is required.</span>
+
+                            <span style="font-weight:bold;font-size:16px;">Assunto</span>
+                            <label class="assunto" style="margin-bottom: 30px;">
+                                @Html.TextBox("Assunto", null, new { @class = "campoTexto ", maxlength = "60", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span>
+                                <!--<span class="error">*This is not a valid name.</span> <span class="empty">*This field is required.</span>-->
                             </label>
-                            <label class="message">
-                                <textarea>Messagem</textarea>
-                                <span class="error">*The message is too short.</span> <span class="empty">*This field is required.</span>
+
+                            <span style="font-weight:bold;font-size:16px;">Mensagem</span>
+                            <label class="mensagem" style="margin-bottom: 30px;">
+                                @Html.TextArea("Mensagem", null, new { @class = "campoTexto ", rows = "6", cols = "60" })
+                                <!--<span class="error">*This is not a valid name.</span> <span class="empty">*This field is required.</span>-->
                             </label>
                             <div class="clear"></div>
-                            <div class="btns"><a href="#" class="button" data-type="reset">Limpar</a><a href="#" class="button" data-type="submit">Enviar</a></div>
+                            <div class="btns"><a href="#" class="button" data-type="reset">Limpar</a><a href="#" class="button botao_link2" data-type="submit">Enviar</a></div>
                         </fieldset>
-                    </form>
+                    }
                 </div> 
             </div>
             <div class="clear"></div>
