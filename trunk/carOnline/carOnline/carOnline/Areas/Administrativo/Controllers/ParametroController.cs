@@ -21,15 +21,19 @@ namespace carOnline.Areas.Administrativo.Controllers
                 return View();
             }
         }
-        public ActionResult CadastrarParametroImagem(tblParametro parametro,FormCollection formulario)
+        public ActionResult CadastrarParametroImagem(tblParametro parametro, FormCollection formulario)
         {
-            using(TransactionScope transacao = new TransactionScope())
+            using (TransactionScope transacao = new TransactionScope())
             {
                 try
                 {
-                    using(CarOnlineEntities DB = new CarOnlineEntities())
+                    using (CarOnlineEntities DB = new CarOnlineEntities())
                     {
                         parametro.idTipoParametro = Convert.ToInt32(formulario["TipoParametro"]);
+
+                        if (Ferramenta.IsDouble(parametro.valor))
+                            parametro.valor = Ferramenta.ConvertIntegerToMB(Convert.ToDouble(parametro.valor)).ToString();
+
                         DB.tblParametro.AddObject(parametro);
                         DB.SaveChanges();
                         TempData["mensagemRetorno"] = "Parâmetro cadastrado com sucesso!";
@@ -37,7 +41,7 @@ namespace carOnline.Areas.Administrativo.Controllers
                         return RedirectToAction("Consulta");
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     transacao.Dispose();
                     TempData["mensagemRetorno"] = "Não foi possível cadastrar o parâmetro!";
@@ -51,7 +55,7 @@ namespace carOnline.Areas.Administrativo.Controllers
             {
                 using (CarOnlineEntities DB = new CarOnlineEntities())
                 {
-                    List<ConsultarParametro_Result> listaParametro = DB.ConsultarParametro().ToList<ConsultarParametro_Result>();
+                    List<ConsultarParametro_Result> listaParametro = Ferramenta.UpdateParametersToMB(DB.ConsultarParametro().ToList<ConsultarParametro_Result>());
                     return View(listaParametro);
                 }
             }
@@ -66,6 +70,9 @@ namespace carOnline.Areas.Administrativo.Controllers
                 ViewBag.TipoParametro = new SelectList(tipoParametro, "idTipoParametro", "descricao");
 
                 tblParametro parametro = DB.tblParametro.FirstOrDefault(p => p.idParametro.Equals(id));
+
+                parametro.valor = Ferramenta.IsDouble(parametro.valor) ? Ferramenta.ConvertByteToMB(Convert.ToDouble(parametro.valor)).ToString() : parametro.valor;
+
                 return View(parametro);
             }
         }
@@ -76,10 +83,14 @@ namespace carOnline.Areas.Administrativo.Controllers
             {
                 using (CarOnlineEntities DB = new CarOnlineEntities())
                 {
-                    parametro                 = DB.tblParametro.FirstOrDefault(a => a.idParametro.Equals(idParametro));
+                    parametro = DB.tblParametro.FirstOrDefault(a => a.idParametro.Equals(idParametro));
                     parametro.idTipoParametro = Convert.ToInt32(formulario["TipoParametro"]);
-                    parametro.descricao       = formulario["descricao"];
-                    parametro.valor           = formulario["valor"];
+                    parametro.descricao = formulario["descricao"];
+                    parametro.valor = formulario["valor"];
+
+                    if (Ferramenta.IsDouble(parametro.valor))
+                        parametro.valor = Ferramenta.ConvertIntegerToMB(Convert.ToDouble(parametro.valor)).ToString();
+
                     DB.SaveChanges();
                 }
                 TempData["mensagemRetorno"] = "Parâmetro alterado com sucesso!";
@@ -100,14 +111,14 @@ namespace carOnline.Areas.Administrativo.Controllers
         public ActionResult AlterarParametroCargo(int idCargo, string ativo)
         {
             string mensagem = "";
-            using(TransactionScope transacao = new TransactionScope())
+            using (TransactionScope transacao = new TransactionScope())
             {
                 tblCargo cargo = new tblCargo();
                 try
                 {
                     using (CarOnlineEntities DB = new CarOnlineEntities())
                     {
-                        cargo       = DB.tblCargo.FirstOrDefault(c => c.idCargo.Equals(idCargo));
+                        cargo = DB.tblCargo.FirstOrDefault(c => c.idCargo.Equals(idCargo));
                         cargo.ativo = ativo;
                         DB.SaveChanges();
                         transacao.Complete();
