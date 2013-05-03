@@ -315,8 +315,8 @@ namespace carOnline.Controllers
             if (tipoCaminho == "F")
             {
                // return @"C:/Users/Wellington/Documents/Visual Studio 2010/Projects/carOnline/carOnline/Content/images/veiculos/" + idVeiculo + "/";
-                //return @"C:/Users/geraldo.borges/Pictures/carOnline/carOnline/Content/images/veiculos/" + idVeiculo + "/";
-                 return @"C:/Users/geraldo/Pictures/carOnline/carOnline/Content/images/veiculos/" + idVeiculo + "/";
+                return @"C:/Users/geraldo.borges/Pictures/carOnline/Content/images/veiculos/" + idVeiculo + "/";
+                 //return @"C:/Users/geraldo/Pictures/carOnline/Content/images/veiculos/" + idVeiculo + "/";
                 
             }
             else

@@ -33,6 +33,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("CarOnlineModel", "FK_tblVeiculo_tblTipoCombustivel", "tblTipoCombustivel", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(carOnline.Models.tblTipoCombustivel), "tblVeiculo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(carOnline.Models.tblVeiculo), true)]
 [assembly: EdmRelationshipAttribute("CarOnlineModel", "FK_tblFotosVeiculo_tblVeiculo", "tblVeiculo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(carOnline.Models.tblVeiculo), "tblFotosVeiculo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(carOnline.Models.tblFotosVeiculo), true)]
 [assembly: EdmRelationshipAttribute("CarOnlineModel", "FK_tblParametro_tblTipoParametro", "tblTipoParametro", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(carOnline.Models.tblTipoParametro), "tblParametro", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(carOnline.Models.tblParametro), true)]
+[assembly: EdmRelationshipAttribute("CarOnlineModel", "FK_tblEnquete_tblAdministrador", "tblAdministrador", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(carOnline.Models.tblAdministrador), "tblEnquete", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(carOnline.Models.tblEnquete), true)]
+[assembly: EdmRelationshipAttribute("CarOnlineModel", "FK_tblOpcaoEnquete_tblEnquete", "tblEnquete", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(carOnline.Models.tblEnquete), "tblOpcaoEnquete", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(carOnline.Models.tblOpcaoEnquete), true)]
 
 #endregion
 
@@ -387,6 +389,38 @@ namespace carOnline.Models
             }
         }
         private ObjectSet<tblTipoParametro> _tblTipoParametro;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tblEnquete> tblEnquete
+        {
+            get
+            {
+                if ((_tblEnquete == null))
+                {
+                    _tblEnquete = base.CreateObjectSet<tblEnquete>("tblEnquete");
+                }
+                return _tblEnquete;
+            }
+        }
+        private ObjectSet<tblEnquete> _tblEnquete;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tblOpcaoEnquete> tblOpcaoEnquete
+        {
+            get
+            {
+                if ((_tblOpcaoEnquete == null))
+                {
+                    _tblOpcaoEnquete = base.CreateObjectSet<tblOpcaoEnquete>("tblOpcaoEnquete");
+                }
+                return _tblOpcaoEnquete;
+            }
+        }
+        private ObjectSet<tblOpcaoEnquete> _tblOpcaoEnquete;
 
         #endregion
         #region AddTo Methods
@@ -541,6 +575,22 @@ namespace carOnline.Models
         public void AddTotblTipoParametro(tblTipoParametro tblTipoParametro)
         {
             base.AddObject("tblTipoParametro", tblTipoParametro);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tblEnquete EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotblEnquete(tblEnquete tblEnquete)
+        {
+            base.AddObject("tblEnquete", tblEnquete);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tblOpcaoEnquete EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotblOpcaoEnquete(tblOpcaoEnquete tblOpcaoEnquete)
+        {
+            base.AddObject("tblOpcaoEnquete", tblOpcaoEnquete);
         }
 
         #endregion
@@ -904,6 +954,28 @@ namespace carOnline.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tblTipoPermissao>("CarOnlineModel.FK_tblAdministrador_tblTipoPermissao", "tblTipoPermissao", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("CarOnlineModel", "FK_tblEnquete_tblAdministrador", "tblEnquete")]
+        public EntityCollection<tblEnquete> tblEnquete
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tblEnquete>("CarOnlineModel.FK_tblEnquete_tblAdministrador", "tblEnquete");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tblEnquete>("CarOnlineModel.FK_tblEnquete_tblAdministrador", "tblEnquete", value);
                 }
             }
         }
@@ -1310,6 +1382,228 @@ namespace carOnline.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tblVeiculo>("CarOnlineModel.FK_tblVeiculo_tblCor", "tblVeiculo", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="CarOnlineModel", Name="tblEnquete")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tblEnquete : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new tblEnquete object.
+        /// </summary>
+        /// <param name="idEnquete">Initial value of the idEnquete property.</param>
+        /// <param name="descricao">Initial value of the descricao property.</param>
+        /// <param name="dataCadastro">Initial value of the dataCadastro property.</param>
+        /// <param name="dataVigencia">Initial value of the dataVigencia property.</param>
+        /// <param name="idAdministrador">Initial value of the idAdministrador property.</param>
+        public static tblEnquete CreatetblEnquete(global::System.Int32 idEnquete, global::System.String descricao, global::System.DateTime dataCadastro, global::System.DateTime dataVigencia, global::System.Int32 idAdministrador)
+        {
+            tblEnquete tblEnquete = new tblEnquete();
+            tblEnquete.idEnquete = idEnquete;
+            tblEnquete.descricao = descricao;
+            tblEnquete.dataCadastro = dataCadastro;
+            tblEnquete.dataVigencia = dataVigencia;
+            tblEnquete.idAdministrador = idAdministrador;
+            return tblEnquete;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idEnquete
+        {
+            get
+            {
+                return _idEnquete;
+            }
+            set
+            {
+                if (_idEnquete != value)
+                {
+                    OnidEnqueteChanging(value);
+                    ReportPropertyChanging("idEnquete");
+                    _idEnquete = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idEnquete");
+                    OnidEnqueteChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idEnquete;
+        partial void OnidEnqueteChanging(global::System.Int32 value);
+        partial void OnidEnqueteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String descricao
+        {
+            get
+            {
+                return _descricao;
+            }
+            set
+            {
+                OndescricaoChanging(value);
+                ReportPropertyChanging("descricao");
+                _descricao = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("descricao");
+                OndescricaoChanged();
+            }
+        }
+        private global::System.String _descricao;
+        partial void OndescricaoChanging(global::System.String value);
+        partial void OndescricaoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime dataCadastro
+        {
+            get
+            {
+                return _dataCadastro;
+            }
+            set
+            {
+                OndataCadastroChanging(value);
+                ReportPropertyChanging("dataCadastro");
+                _dataCadastro = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("dataCadastro");
+                OndataCadastroChanged();
+            }
+        }
+        private global::System.DateTime _dataCadastro;
+        partial void OndataCadastroChanging(global::System.DateTime value);
+        partial void OndataCadastroChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime dataVigencia
+        {
+            get
+            {
+                return _dataVigencia;
+            }
+            set
+            {
+                OndataVigenciaChanging(value);
+                ReportPropertyChanging("dataVigencia");
+                _dataVigencia = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("dataVigencia");
+                OndataVigenciaChanged();
+            }
+        }
+        private global::System.DateTime _dataVigencia;
+        partial void OndataVigenciaChanging(global::System.DateTime value);
+        partial void OndataVigenciaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idAdministrador
+        {
+            get
+            {
+                return _idAdministrador;
+            }
+            set
+            {
+                OnidAdministradorChanging(value);
+                ReportPropertyChanging("idAdministrador");
+                _idAdministrador = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idAdministrador");
+                OnidAdministradorChanged();
+            }
+        }
+        private global::System.Int32 _idAdministrador;
+        partial void OnidAdministradorChanging(global::System.Int32 value);
+        partial void OnidAdministradorChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("CarOnlineModel", "FK_tblEnquete_tblAdministrador", "tblAdministrador")]
+        public tblAdministrador tblAdministrador
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tblAdministrador>("CarOnlineModel.FK_tblEnquete_tblAdministrador", "tblAdministrador").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tblAdministrador>("CarOnlineModel.FK_tblEnquete_tblAdministrador", "tblAdministrador").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<tblAdministrador> tblAdministradorReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tblAdministrador>("CarOnlineModel.FK_tblEnquete_tblAdministrador", "tblAdministrador");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tblAdministrador>("CarOnlineModel.FK_tblEnquete_tblAdministrador", "tblAdministrador", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("CarOnlineModel", "FK_tblOpcaoEnquete_tblEnquete", "tblOpcaoEnquete")]
+        public EntityCollection<tblOpcaoEnquete> tblOpcaoEnquete
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tblOpcaoEnquete>("CarOnlineModel.FK_tblOpcaoEnquete_tblEnquete", "tblOpcaoEnquete");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tblOpcaoEnquete>("CarOnlineModel.FK_tblOpcaoEnquete_tblEnquete", "tblOpcaoEnquete", value);
                 }
             }
         }
@@ -2472,6 +2766,174 @@ namespace carOnline.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tblVeiculo>("CarOnlineModel.FK_tblVeiculo_tblModeloVeiculo", "tblVeiculo", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="CarOnlineModel", Name="tblOpcaoEnquete")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tblOpcaoEnquete : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new tblOpcaoEnquete object.
+        /// </summary>
+        /// <param name="idOpcaoEnquete">Initial value of the idOpcaoEnquete property.</param>
+        public static tblOpcaoEnquete CreatetblOpcaoEnquete(global::System.Int32 idOpcaoEnquete)
+        {
+            tblOpcaoEnquete tblOpcaoEnquete = new tblOpcaoEnquete();
+            tblOpcaoEnquete.idOpcaoEnquete = idOpcaoEnquete;
+            return tblOpcaoEnquete;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idOpcaoEnquete
+        {
+            get
+            {
+                return _idOpcaoEnquete;
+            }
+            set
+            {
+                if (_idOpcaoEnquete != value)
+                {
+                    OnidOpcaoEnqueteChanging(value);
+                    ReportPropertyChanging("idOpcaoEnquete");
+                    _idOpcaoEnquete = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idOpcaoEnquete");
+                    OnidOpcaoEnqueteChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idOpcaoEnquete;
+        partial void OnidOpcaoEnqueteChanging(global::System.Int32 value);
+        partial void OnidOpcaoEnqueteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idEnquete
+        {
+            get
+            {
+                return _idEnquete;
+            }
+            set
+            {
+                OnidEnqueteChanging(value);
+                ReportPropertyChanging("idEnquete");
+                _idEnquete = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idEnquete");
+                OnidEnqueteChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idEnquete;
+        partial void OnidEnqueteChanging(Nullable<global::System.Int32> value);
+        partial void OnidEnqueteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String descricao
+        {
+            get
+            {
+                return _descricao;
+            }
+            set
+            {
+                OndescricaoChanging(value);
+                ReportPropertyChanging("descricao");
+                _descricao = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("descricao");
+                OndescricaoChanged();
+            }
+        }
+        private global::System.String _descricao;
+        partial void OndescricaoChanging(global::System.String value);
+        partial void OndescricaoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> quantidadeVotos
+        {
+            get
+            {
+                return _quantidadeVotos;
+            }
+            set
+            {
+                OnquantidadeVotosChanging(value);
+                ReportPropertyChanging("quantidadeVotos");
+                _quantidadeVotos = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("quantidadeVotos");
+                OnquantidadeVotosChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _quantidadeVotos;
+        partial void OnquantidadeVotosChanging(Nullable<global::System.Int32> value);
+        partial void OnquantidadeVotosChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("CarOnlineModel", "FK_tblOpcaoEnquete_tblEnquete", "tblEnquete")]
+        public tblEnquete tblEnquete
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tblEnquete>("CarOnlineModel.FK_tblOpcaoEnquete_tblEnquete", "tblEnquete").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tblEnquete>("CarOnlineModel.FK_tblOpcaoEnquete_tblEnquete", "tblEnquete").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<tblEnquete> tblEnqueteReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tblEnquete>("CarOnlineModel.FK_tblOpcaoEnquete_tblEnquete", "tblEnquete");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tblEnquete>("CarOnlineModel.FK_tblOpcaoEnquete_tblEnquete", "tblEnquete", value);
                 }
             }
         }

@@ -140,6 +140,15 @@
                             <p>@Html.ActionLink("Parâmetros de Cargo", "Cargo", "Parametro", new { area = "Administrativo" }, new { @title = "Parâmetros de Cargo", @class = "Links" }) </p>
                         </div>
                     </div>
+                    <div class="areaConfiguracaoBotao" id="areaBotaoEnquete">
+                        <img src="@Url.Content("~/Content/images/enquete.png")" alt="" title="Enquetes" width="128px" height="128px" />
+                        <div class="botoesOcultos">
+                            <p class="areatituloBotao">Enquetes</p>
+                            <br />
+                            <p>@Html.ActionLink("Cadastro de Enquetes", "Cadastro", "Enquete", new { area = "Administrativo" }, new { @title = "Cadastro de Enquetes", @class = "Links" }) </p>
+                            <p>@Html.ActionLink("Consulta de Enquetes", "Consulta", "Enquete", new { area = "Administrativo" }, new { @title = "Consulta de Enquetes", @class = "Links" }) </p>
+                        </div>
+                    </div>
                 }
            </div>
         <!--</div>-->
