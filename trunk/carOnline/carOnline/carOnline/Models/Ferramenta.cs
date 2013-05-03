@@ -4,15 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Text.RegularExpressions;
 using carOnline.Models;
-using System.Net;
-using System.Net.Mail;
-
 namespace carOnline.Models
 {
     public class Ferramenta
     {
 
         #region Utils
+
+        public const double OneMegaByte = 1048576;
+
         /// <summary>
         /// Diogo - Converte um valor em bytes para mbytes, levando em consideração que 1mb = 1048576 bytes
         /// </summary>
@@ -20,9 +20,17 @@ namespace carOnline.Models
         /// <returns>Retorna o valor de entrada convertido em bytes</returns>
         public static double ConvertByteToMB(double value)
         {
-            double mbValueInByte = 1048576;
+            return value / OneMegaByte;
+        }
 
-            return value / mbValueInByte;
+        /// <summary>
+        /// Converte valores inteiros para MegaBytes
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static double ConvertIntegerToMB(double value)
+        {
+            return value * OneMegaByte;
         }
 
         public static bool EmailCadastrado(string email, string tabela)
@@ -74,7 +82,7 @@ namespace carOnline.Models
         }
 
         #endregion
-        
+
         #region Validations
 
         public static bool ValidarEmail(string email)
@@ -98,6 +106,18 @@ namespace carOnline.Models
             return Int32.TryParse(strInt, out number);
         }
 
+
+        /// <summary>
+        /// Diogo - Verifica se um valor de entrada pode ser do tipo double
+        /// </summary>
+        /// <param name="strInt"></param>
+        /// <returns></returns>
+        public static bool IsDouble(string strDouble)
+        {
+            double number;
+            return Double.TryParse(strDouble, out number);
+        }
+
         /// <summary>
         /// Diogo - Verifica se um valor de entrada pode ser do tipo DateTime
         /// </summary>
@@ -111,8 +131,29 @@ namespace carOnline.Models
 
         #endregion
 
+        /// <summary>
+        /// Aplica a uma lista de parâmetros a conversão de seu campo valor para MegaBytes
+        /// </summary>
+        /// <param name="listParameters"></param>
+        /// <returns></returns>
+        public static List<ConsultarParametro_Result> UpdateParametersToMB(List<ConsultarParametro_Result> listParameters)
+        {
 
-        public static void EnviarEmail(string de, string para, string assunto, string mensagem)
+            int size = listParameters.Count;
+
+            if (size > 0)
+                for (int i = 0; i < size; i++)
+                    listParameters[i].Valor = IsDouble(listParameters[i].Valor) ? ConvertByteToMB(Convert.ToDouble(listParameters[i].Valor)).ToString() : listParameters[i].Valor;
+
+            return listParameters;
+        }
+
+        public static string Limit(string value) 
+        {
+            return "";
+        }
+		
+		        public static void EnviarEmail(string de, string para, string assunto, string mensagem)
         {
             //Define as configuraçãoes padrões da mensagem
             MailMessage mailMsg = new MailMessage(de, para, assunto, mensagem);
