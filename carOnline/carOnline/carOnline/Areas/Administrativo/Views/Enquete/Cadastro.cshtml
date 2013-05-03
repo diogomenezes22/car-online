@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+}
+
+<br />
+<br />
+<div id="areaEnquete">
+    <p class="mensagemRetorno">@TempData["mensagemRetorno"]</p>
+    <br />
+    <p class="titulo">Cadastro de Enquete</p>
+    <br />
+    <p><label for="nomeEnquete">Nome da enquete: </label></p>
+    <p>@Html.TextArea("nomeEnquete", new {@rows="4", @cols="10" })</p>
+    <br />
+    <div id="areaOpcaoEnquete">
+        
+    </div>
+    <br />
+    <br />
+    <p class="areaBotaoSalvarEnquete"><a href="#" class="botaoSalvarEnquete">Salvar Enquete</a></p>
+</div> 
+<br />
+<br /> 
