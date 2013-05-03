@@ -370,8 +370,8 @@ jQuery(document).ready(function () {
                     //$(idFileList).unblock();
                     $(".ajaxUploadForm").resetForm();
                 }
-                else if (responseText == "O tamanho do arquivo é inválido.Verifique o tamanho máximo permitido.") {
-                    alert(responseText.toString());
+                else if (responseText.tipoErro=="TamanhoArquivo") {
+                    alert(responseText.mensagem.toString());
                     $(idFileList).unblock();
                     $(".ajaxUploadForm").resetForm();
                 }

@@ -404,6 +404,7 @@ namespace carOnline.Controllers
             nomeArquivo = nomeArquivo.Replace(" ", "");
             string path = Path.Combine(Server.MapPath(caminhoVirtual), nomeArquivo);
             string mensagem = "";
+            string tipoErro = "";
             //string tabelaArquivos   = "";
             FileInfo arquivo = new FileInfo(caminhoFisico + nomeArquivo);
             bool salvarArquivo;
@@ -412,7 +413,7 @@ namespace carOnline.Controllers
             string strTamanhoArquivo = Ferramenta.ConvertByteToMB(file.ContentLength).ToString();
 
             //Tamanho do arquivo
-            string strTamanhoMaximo = Ferramenta.ConvertByteToMB(tamanhoArquivo).ToString();
+            string strTamanhoMaximo; 
 
             #endregion
 
@@ -423,6 +424,7 @@ namespace carOnline.Controllers
                 tamanhoArquivo = Convert.ToInt32(parametros.valor);
             }
 
+            strTamanhoMaximo = Ferramenta.ConvertByteToMB(tamanhoArquivo).ToString();
 
             if ((file.ContentType == "image/jpeg") || (file.ContentType == "image/gif") || (file.ContentType == "image/png"))
             {
@@ -463,8 +465,10 @@ namespace carOnline.Controllers
                 }
                 else
                 {
+                    tipoErro = "TamanhoArquivo";
                     mensagem = "O tamanho do arquivo é inválido ("+strTamanhoArquivo+" MB).O máximo permitido é "+strTamanhoMaximo+" MB.";
-                    return Content(mensagem);
+                    var data = new {mensagem,tipoErro};
+                    return Json(data);
                 }
             }
 
