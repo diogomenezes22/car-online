@@ -10,11 +10,13 @@
           <EntitySet Name="tblCargo" EntityType="CarOnlineModel.Store.tblCargo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblCidade" EntityType="CarOnlineModel.Store.tblCidade" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblCor" EntityType="CarOnlineModel.Store.tblCor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblEnquete" EntityType="CarOnlineModel.Store.tblEnquete" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblEstado" EntityType="CarOnlineModel.Store.tblEstado" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblFotosVeiculo" EntityType="CarOnlineModel.Store.tblFotosVeiculo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblFuncionario" EntityType="CarOnlineModel.Store.tblFuncionario" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblMarcaVeiculo" EntityType="CarOnlineModel.Store.tblMarcaVeiculo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblModeloVeiculo" EntityType="CarOnlineModel.Store.tblModeloVeiculo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblOpcaoEnquete" EntityType="CarOnlineModel.Store.tblOpcaoEnquete" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblPais" EntityType="CarOnlineModel.Store.tblPais" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblParametro" EntityType="CarOnlineModel.Store.tblParametro" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblSeguradora" EntityType="CarOnlineModel.Store.tblSeguradora" store:Type="Tables" Schema="dbo" />
@@ -32,6 +34,10 @@
           <AssociationSet Name="FK_tblCidade_tblEstado" Association="CarOnlineModel.Store.FK_tblCidade_tblEstado">
             <End Role="tblEstado" EntitySet="tblEstado" />
             <End Role="tblCidade" EntitySet="tblCidade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEnquete_tblAdministrador" Association="CarOnlineModel.Store.FK_tblEnquete_tblAdministrador">
+            <End Role="tblAdministrador" EntitySet="tblAdministrador" />
+            <End Role="tblEnquete" EntitySet="tblEnquete" />
           </AssociationSet>
           <AssociationSet Name="FK_tblEstado_tblPais" Association="CarOnlineModel.Store.FK_tblEstado_tblPais">
             <End Role="tblPais" EntitySet="tblPais" />
@@ -60,6 +66,10 @@
           <AssociationSet Name="FK_tblModeloVeiculo_tblMarcaVeiculo" Association="CarOnlineModel.Store.FK_tblModeloVeiculo_tblMarcaVeiculo">
             <End Role="tblMarcaVeiculo" EntitySet="tblMarcaVeiculo" />
             <End Role="tblModeloVeiculo" EntitySet="tblModeloVeiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOpcaoEnquete_tblEnquete" Association="CarOnlineModel.Store.FK_tblOpcaoEnquete_tblEnquete">
+            <End Role="tblEnquete" EntitySet="tblEnquete" />
+            <End Role="tblOpcaoEnquete" EntitySet="tblOpcaoEnquete" />
           </AssociationSet>
           <AssociationSet Name="FK_tblParametro_tblTipoParametro" Association="CarOnlineModel.Store.FK_tblParametro_tblTipoParametro">
             <End Role="tblTipoParametro" EntitySet="tblTipoParametro" />
@@ -120,6 +130,16 @@
           <Property Name="idCor" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="descricao" Type="varchar" Nullable="false" MaxLength="30" />
         </EntityType>
+        <EntityType Name="tblEnquete">
+          <Key>
+            <PropertyRef Name="idEnquete" />
+          </Key>
+          <Property Name="idEnquete" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="dataCadastro" Type="datetime" Nullable="false" />
+          <Property Name="dataVigencia" Type="datetime" Nullable="false" />
+          <Property Name="idAdministrador" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="tblEstado">
           <Key>
             <PropertyRef Name="idEstado" />
@@ -170,6 +190,15 @@
           <Property Name="idModeloVeiculo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="descricao" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="idMarcaVeiculo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblOpcaoEnquete">
+          <Key>
+            <PropertyRef Name="idOpcaoEnquete" />
+          </Key>
+          <Property Name="idOpcaoEnquete" Type="int" Nullable="false" />
+          <Property Name="idEnquete" Type="int" />
+          <Property Name="descricao" Type="varchar" MaxLength="200" />
+          <Property Name="quantidadeVotos" Type="int" />
         </EntityType>
         <EntityType Name="tblPais">
           <Key>
@@ -290,6 +319,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblEnquete_tblAdministrador">
+          <End Role="tblAdministrador" Type="CarOnlineModel.Store.tblAdministrador" Multiplicity="1" />
+          <End Role="tblEnquete" Type="CarOnlineModel.Store.tblEnquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAdministrador">
+              <PropertyRef Name="idAdministrador" />
+            </Principal>
+            <Dependent Role="tblEnquete">
+              <PropertyRef Name="idAdministrador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblEstado_tblPais">
           <End Role="tblPais" Type="CarOnlineModel.Store.tblPais" Multiplicity="1" />
           <End Role="tblEstado" Type="CarOnlineModel.Store.tblEstado" Multiplicity="*" />
@@ -371,6 +412,18 @@
             </Principal>
             <Dependent Role="tblModeloVeiculo">
               <PropertyRef Name="idMarcaVeiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOpcaoEnquete_tblEnquete">
+          <End Role="tblEnquete" Type="CarOnlineModel.Store.tblEnquete" Multiplicity="0..1" />
+          <End Role="tblOpcaoEnquete" Type="CarOnlineModel.Store.tblOpcaoEnquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEnquete">
+              <PropertyRef Name="idEnquete" />
+            </Principal>
+            <Dependent Role="tblOpcaoEnquete">
+              <PropertyRef Name="idEnquete" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -562,6 +615,16 @@
             <Parameter Name="modelo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ConsultarParametro" ReturnType="Collection(CarOnlineModel.ConsultarParametro_Result)" />
+          <EntitySet Name="tblEnquete" EntityType="CarOnlineModel.tblEnquete" />
+          <EntitySet Name="tblOpcaoEnquete" EntityType="CarOnlineModel.tblOpcaoEnquete" />
+          <AssociationSet Name="FK_tblEnquete_tblAdministrador" Association="CarOnlineModel.FK_tblEnquete_tblAdministrador">
+            <End Role="tblAdministrador" EntitySet="tblAdministrador" />
+            <End Role="tblEnquete" EntitySet="tblEnquete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOpcaoEnquete_tblEnquete" Association="CarOnlineModel.FK_tblOpcaoEnquete_tblEnquete">
+            <End Role="tblEnquete" EntitySet="tblEnquete" />
+            <End Role="tblOpcaoEnquete" EntitySet="tblOpcaoEnquete" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tblAdministrador">
           <Key>
@@ -574,6 +637,7 @@
           <Property Name="dataCadastro" Type="DateTime" Nullable="false" />
           <Property Type="Int32" Name="idTipoPermissao" Nullable="false" />
           <NavigationProperty Name="tblTipoPermissao" Relationship="CarOnlineModel.FK_tblAdministrador_tblTipoPermissao" FromRole="tblAdministrador" ToRole="tblTipoPermissao" />
+          <NavigationProperty Name="tblEnquete" Relationship="CarOnlineModel.FK_tblEnquete_tblAdministrador" FromRole="tblAdministrador" ToRole="tblEnquete" />
         </EntityType>
         <EntityType Name="tblCargo">
           <Key>
@@ -991,6 +1055,52 @@
           <Property Type="String" Name="Valor" Nullable="false" MaxLength="300" />
           <Property Type="String" Name="Tipo" Nullable="false" MaxLength="60" />
         </ComplexType>
+        <EntityType Name="tblEnquete">
+          <Key>
+            <PropertyRef Name="idEnquete" />
+          </Key>
+          <Property Type="Int32" Name="idEnquete" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="descricao" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="dataCadastro" Nullable="false" />
+          <Property Type="DateTime" Name="dataVigencia" Nullable="false" />
+          <Property Type="Int32" Name="idAdministrador" Nullable="false" />
+          <NavigationProperty Name="tblAdministrador" Relationship="CarOnlineModel.FK_tblEnquete_tblAdministrador" FromRole="tblEnquete" ToRole="tblAdministrador" />
+          <NavigationProperty Name="tblOpcaoEnquete" Relationship="CarOnlineModel.FK_tblOpcaoEnquete_tblEnquete" FromRole="tblEnquete" ToRole="tblOpcaoEnquete" />
+        </EntityType>
+        <EntityType Name="tblOpcaoEnquete">
+          <Key>
+            <PropertyRef Name="idOpcaoEnquete" />
+          </Key>
+          <Property Type="Int32" Name="idOpcaoEnquete" Nullable="false" />
+          <Property Type="Int32" Name="idEnquete" />
+          <Property Type="String" Name="descricao" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="quantidadeVotos" />
+          <NavigationProperty Name="tblEnquete" Relationship="CarOnlineModel.FK_tblOpcaoEnquete_tblEnquete" FromRole="tblOpcaoEnquete" ToRole="tblEnquete" />
+        </EntityType>
+        <Association Name="FK_tblEnquete_tblAdministrador">
+          <End Type="CarOnlineModel.tblAdministrador" Role="tblAdministrador" Multiplicity="1" />
+          <End Type="CarOnlineModel.tblEnquete" Role="tblEnquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAdministrador">
+              <PropertyRef Name="idAdministrador" />
+            </Principal>
+            <Dependent Role="tblEnquete">
+              <PropertyRef Name="idAdministrador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOpcaoEnquete_tblEnquete">
+          <End Type="CarOnlineModel.tblEnquete" Role="tblEnquete" Multiplicity="0..1" />
+          <End Type="CarOnlineModel.tblOpcaoEnquete" Role="tblOpcaoEnquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEnquete">
+              <PropertyRef Name="idEnquete" />
+            </Principal>
+            <Dependent Role="tblOpcaoEnquete">
+              <PropertyRef Name="idEnquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1194,6 +1304,27 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="tblEnquete">
+            <EntityTypeMapping TypeName="CarOnlineModel.tblEnquete">
+              <MappingFragment StoreEntitySet="tblEnquete">
+                <ScalarProperty Name="idAdministrador" ColumnName="idAdministrador" />
+                <ScalarProperty Name="dataVigencia" ColumnName="dataVigencia" />
+                <ScalarProperty Name="dataCadastro" ColumnName="dataCadastro" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="idEnquete" ColumnName="idEnquete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOpcaoEnquete">
+            <EntityTypeMapping TypeName="CarOnlineModel.tblOpcaoEnquete">
+              <MappingFragment StoreEntitySet="tblOpcaoEnquete">
+                <ScalarProperty Name="quantidadeVotos" ColumnName="quantidadeVotos" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="idEnquete" ColumnName="idEnquete" />
+                <ScalarProperty Name="idOpcaoEnquete" ColumnName="idOpcaoEnquete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1271,7 +1402,7 @@
         <EntityTypeShape EntityType="CarOnlineModel.tblTipoPermissao" Width="1.5" PointX="0.75" PointY="10.75" Height="1.7879850260416674" />
         <AssociationConnector Association="CarOnlineModel.FK_tblAdministrador_tblTipoPermissao" >
           <ConnectorPoint PointX="1.5" PointY="10.75" />
-          <ConnectorPoint PointX="1.5" PointY="9.3648893229166656" />
+          <ConnectorPoint PointX="1.5" PointY="9.5571907552083335" />
         </AssociationConnector>
         <AssociationConnector Association="CarOnlineModel.FK_tblFuncionario_tblTipoPermissao" >
           <ConnectorPoint PointX="2.25" PointY="11.011495768229169" />
@@ -1300,6 +1431,16 @@
         <AssociationConnector Association="CarOnlineModel.FK_tblParametro_tblTipoParametro" >
           <ConnectorPoint PointX="11.875" PointY="12.922841796875002" />
           <ConnectorPoint PointX="12.625" PointY="12.922841796875002" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="CarOnlineModel.tblEnquete" Width="1.5" PointX="3" PointY="7.125" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="CarOnlineModel.tblOpcaoEnquete" Width="1.5" PointX="5.25" PointY="7.25" Height="1.9802864583333388" />
+        <AssociationConnector Association="CarOnlineModel.FK_tblEnquete_tblAdministrador" >
+          <ConnectorPoint PointX="2.25" PointY="8.3074446614583337" />
+          <ConnectorPoint PointX="3" PointY="8.3074446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="CarOnlineModel.FK_tblOpcaoEnquete_tblEnquete" >
+          <ConnectorPoint PointX="4.5" PointY="8.24014322916667" />
+          <ConnectorPoint PointX="5.25" PointY="8.24014322916667" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
