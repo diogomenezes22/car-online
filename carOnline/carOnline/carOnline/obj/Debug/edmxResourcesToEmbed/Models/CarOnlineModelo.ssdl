@@ -5,11 +5,13 @@
     <EntitySet Name="tblCargo" EntityType="CarOnlineModel.Store.tblCargo" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblCidade" EntityType="CarOnlineModel.Store.tblCidade" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblCor" EntityType="CarOnlineModel.Store.tblCor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblEnquete" EntityType="CarOnlineModel.Store.tblEnquete" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblEstado" EntityType="CarOnlineModel.Store.tblEstado" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblFotosVeiculo" EntityType="CarOnlineModel.Store.tblFotosVeiculo" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblFuncionario" EntityType="CarOnlineModel.Store.tblFuncionario" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblMarcaVeiculo" EntityType="CarOnlineModel.Store.tblMarcaVeiculo" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblModeloVeiculo" EntityType="CarOnlineModel.Store.tblModeloVeiculo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblOpcaoEnquete" EntityType="CarOnlineModel.Store.tblOpcaoEnquete" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblPais" EntityType="CarOnlineModel.Store.tblPais" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblParametro" EntityType="CarOnlineModel.Store.tblParametro" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblSeguradora" EntityType="CarOnlineModel.Store.tblSeguradora" store:Type="Tables" Schema="dbo" />
@@ -27,6 +29,10 @@
     <AssociationSet Name="FK_tblCidade_tblEstado" Association="CarOnlineModel.Store.FK_tblCidade_tblEstado">
       <End Role="tblEstado" EntitySet="tblEstado" />
       <End Role="tblCidade" EntitySet="tblCidade" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEnquete_tblAdministrador" Association="CarOnlineModel.Store.FK_tblEnquete_tblAdministrador">
+      <End Role="tblAdministrador" EntitySet="tblAdministrador" />
+      <End Role="tblEnquete" EntitySet="tblEnquete" />
     </AssociationSet>
     <AssociationSet Name="FK_tblEstado_tblPais" Association="CarOnlineModel.Store.FK_tblEstado_tblPais">
       <End Role="tblPais" EntitySet="tblPais" />
@@ -55,6 +61,10 @@
     <AssociationSet Name="FK_tblModeloVeiculo_tblMarcaVeiculo" Association="CarOnlineModel.Store.FK_tblModeloVeiculo_tblMarcaVeiculo">
       <End Role="tblMarcaVeiculo" EntitySet="tblMarcaVeiculo" />
       <End Role="tblModeloVeiculo" EntitySet="tblModeloVeiculo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOpcaoEnquete_tblEnquete" Association="CarOnlineModel.Store.FK_tblOpcaoEnquete_tblEnquete">
+      <End Role="tblEnquete" EntitySet="tblEnquete" />
+      <End Role="tblOpcaoEnquete" EntitySet="tblOpcaoEnquete" />
     </AssociationSet>
     <AssociationSet Name="FK_tblParametro_tblTipoParametro" Association="CarOnlineModel.Store.FK_tblParametro_tblTipoParametro">
       <End Role="tblTipoParametro" EntitySet="tblTipoParametro" />
@@ -115,6 +125,16 @@
     <Property Name="idCor" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="descricao" Type="varchar" Nullable="false" MaxLength="30" />
   </EntityType>
+  <EntityType Name="tblEnquete">
+    <Key>
+      <PropertyRef Name="idEnquete" />
+    </Key>
+    <Property Name="idEnquete" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="descricao" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="dataCadastro" Type="datetime" Nullable="false" />
+    <Property Name="dataVigencia" Type="datetime" Nullable="false" />
+    <Property Name="idAdministrador" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="tblEstado">
     <Key>
       <PropertyRef Name="idEstado" />
@@ -165,6 +185,16 @@
     <Property Name="idModeloVeiculo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="descricao" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="idMarcaVeiculo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblOpcaoEnquete">
+    <Key>
+      <PropertyRef Name="idOpcaoEnquete" />
+    </Key>
+    <Property Name="idOpcaoEnquete" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idEnquete" Type="int" />
+    <Property Name="descricao" Type="varchar" MaxLength="200" />
+    <Property Name="tipo" Type="varchar" MaxLength="20" />
+    <Property Name="quantidadeVotos" Type="int" />
   </EntityType>
   <EntityType Name="tblPais">
     <Key>
@@ -285,6 +315,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tblEnquete_tblAdministrador">
+    <End Role="tblAdministrador" Type="CarOnlineModel.Store.tblAdministrador" Multiplicity="1" />
+    <End Role="tblEnquete" Type="CarOnlineModel.Store.tblEnquete" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAdministrador">
+        <PropertyRef Name="idAdministrador" />
+      </Principal>
+      <Dependent Role="tblEnquete">
+        <PropertyRef Name="idAdministrador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tblEstado_tblPais">
     <End Role="tblPais" Type="CarOnlineModel.Store.tblPais" Multiplicity="1" />
     <End Role="tblEstado" Type="CarOnlineModel.Store.tblEstado" Multiplicity="*" />
@@ -366,6 +408,18 @@
       </Principal>
       <Dependent Role="tblModeloVeiculo">
         <PropertyRef Name="idMarcaVeiculo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOpcaoEnquete_tblEnquete">
+    <End Role="tblEnquete" Type="CarOnlineModel.Store.tblEnquete" Multiplicity="0..1" />
+    <End Role="tblOpcaoEnquete" Type="CarOnlineModel.Store.tblOpcaoEnquete" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEnquete">
+        <PropertyRef Name="idEnquete" />
+      </Principal>
+      <Dependent Role="tblOpcaoEnquete">
+        <PropertyRef Name="idEnquete" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

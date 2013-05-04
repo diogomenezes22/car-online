@@ -754,7 +754,39 @@ a.botoesJanelaModal:hover
 }   
 
 
+/*------------------------CONFIGURAÇÃO DA ENQUETE--------------------*/
 
+#areaEnquete
+{
+        width:500px;
+    height:auto;
+    margin:auto;
+    padding:20px;
+    border:1px solid #888;
+    border-radius:5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    font-family:Verdana;
+    color:#444;
+}
+
+#areaOpcaoEnquete
+{
+    width:80%;
+    height:auto;
+    padding:10px;
+    border:1px solid #888;
+}
+.botaoRemoverOpcaoEnquete
+{
+    font-family:Verdana;
+    font-size:0.8em;
+    font-weight:bold;
+    color:#f00;
+    text-decoration:none;
+    float:left;
+    margin-top:4px;
+}
 
 
 

@@ -96,6 +96,16 @@
       <Parameter Name="modelo" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="ConsultarParametro" ReturnType="Collection(CarOnlineModel.ConsultarParametro_Result)" />
+    <EntitySet Name="tblEnquete" EntityType="CarOnlineModel.tblEnquete" />
+    <EntitySet Name="tblOpcaoEnquete" EntityType="CarOnlineModel.tblOpcaoEnquete" />
+    <AssociationSet Name="FK_tblEnquete_tblAdministrador" Association="CarOnlineModel.FK_tblEnquete_tblAdministrador">
+      <End Role="tblAdministrador" EntitySet="tblAdministrador" />
+      <End Role="tblEnquete" EntitySet="tblEnquete" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOpcaoEnquete_tblEnquete" Association="CarOnlineModel.FK_tblOpcaoEnquete_tblEnquete">
+      <End Role="tblEnquete" EntitySet="tblEnquete" />
+      <End Role="tblOpcaoEnquete" EntitySet="tblOpcaoEnquete" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="tblAdministrador">
     <Key>
@@ -108,6 +118,7 @@
     <Property Name="dataCadastro" Type="DateTime" Nullable="false" />
     <Property Type="Int32" Name="idTipoPermissao" Nullable="false" />
     <NavigationProperty Name="tblTipoPermissao" Relationship="CarOnlineModel.FK_tblAdministrador_tblTipoPermissao" FromRole="tblAdministrador" ToRole="tblTipoPermissao" />
+    <NavigationProperty Name="tblEnquete" Relationship="CarOnlineModel.FK_tblEnquete_tblAdministrador" FromRole="tblAdministrador" ToRole="tblEnquete" />
   </EntityType>
   <EntityType Name="tblCargo">
     <Key>
@@ -525,4 +536,51 @@
     <Property Type="String" Name="Valor" Nullable="false" MaxLength="300" />
     <Property Type="String" Name="Tipo" Nullable="false" MaxLength="60" />
   </ComplexType>
+  <EntityType Name="tblEnquete">
+    <Key>
+      <PropertyRef Name="idEnquete" />
+    </Key>
+    <Property Type="Int32" Name="idEnquete" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="descricao" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="dataCadastro" Nullable="false" />
+    <Property Type="DateTime" Name="dataVigencia" Nullable="false" />
+    <Property Type="Int32" Name="idAdministrador" Nullable="false" />
+    <NavigationProperty Name="tblAdministrador" Relationship="CarOnlineModel.FK_tblEnquete_tblAdministrador" FromRole="tblEnquete" ToRole="tblAdministrador" />
+    <NavigationProperty Name="tblOpcaoEnquete" Relationship="CarOnlineModel.FK_tblOpcaoEnquete_tblEnquete" FromRole="tblEnquete" ToRole="tblOpcaoEnquete" />
+  </EntityType>
+  <EntityType Name="tblOpcaoEnquete">
+    <Key>
+      <PropertyRef Name="idOpcaoEnquete" />
+    </Key>
+    <Property Type="Int32" Name="idOpcaoEnquete" Nullable="false" />
+    <Property Type="Int32" Name="idEnquete" />
+    <Property Type="String" Name="descricao" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="quantidadeVotos" />
+    <NavigationProperty Name="tblEnquete" Relationship="CarOnlineModel.FK_tblOpcaoEnquete_tblEnquete" FromRole="tblOpcaoEnquete" ToRole="tblEnquete" />
+    <Property Type="String" Name="tipo" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_tblEnquete_tblAdministrador">
+    <End Type="CarOnlineModel.tblAdministrador" Role="tblAdministrador" Multiplicity="1" />
+    <End Type="CarOnlineModel.tblEnquete" Role="tblEnquete" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAdministrador">
+        <PropertyRef Name="idAdministrador" />
+      </Principal>
+      <Dependent Role="tblEnquete">
+        <PropertyRef Name="idAdministrador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOpcaoEnquete_tblEnquete">
+    <End Type="CarOnlineModel.tblEnquete" Role="tblEnquete" Multiplicity="0..1" />
+    <End Type="CarOnlineModel.tblOpcaoEnquete" Role="tblOpcaoEnquete" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEnquete">
+        <PropertyRef Name="idEnquete" />
+      </Principal>
+      <Dependent Role="tblOpcaoEnquete">
+        <PropertyRef Name="idEnquete" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
