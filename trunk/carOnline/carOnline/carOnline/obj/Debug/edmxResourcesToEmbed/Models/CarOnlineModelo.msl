@@ -254,5 +254,27 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="tblEnquete">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblEnquete">
+        <MappingFragment StoreEntitySet="tblEnquete">
+          <ScalarProperty Name="idAdministrador" ColumnName="idAdministrador" />
+          <ScalarProperty Name="dataVigencia" ColumnName="dataVigencia" />
+          <ScalarProperty Name="dataCadastro" ColumnName="dataCadastro" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="idEnquete" ColumnName="idEnquete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOpcaoEnquete">
+      <EntityTypeMapping TypeName="CarOnlineModel.tblOpcaoEnquete">
+        <MappingFragment StoreEntitySet="tblOpcaoEnquete">
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="quantidadeVotos" ColumnName="quantidadeVotos" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="idEnquete" ColumnName="idEnquete" />
+          <ScalarProperty Name="idOpcaoEnquete" ColumnName="idOpcaoEnquete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

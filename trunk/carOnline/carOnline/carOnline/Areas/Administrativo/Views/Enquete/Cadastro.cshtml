@@ -6,13 +6,29 @@
 <br />
 <br />
 <div id="areaEnquete">
+    <input type="hidden" class="urlSalvarEnquete" value="@Url.Action("Cadastrar", "Enquete", new { area="Administrativo" })" />
     <p class="mensagemRetorno">@TempData["mensagemRetorno"]</p>
     <br />
     <p class="titulo">Cadastro de Enquete</p>
     <br />
     <p><label for="nomeEnquete">Nome da enquete: </label></p>
-    <p>@Html.TextArea("nomeEnquete", new {@rows="4", @cols="10" })</p>
+    <p>@Html.TextArea("nomeEnquete", new {@rows="4", @cols="30" })</p>
     <br />
+    <br />
+    <p><label>Vigência :</label>@Html.TextBox("dataVigencia",null,new {@class="CALENDARIO campoTexto"})</p>
+    <br />
+    <p>
+        <label >Tipo de Opção:</label>
+        <select id="tipoOpcaoEnquete" class="campoTexto">
+            <option value="RadioButton">RadioButton</option>
+            <option value="CheckBox">CheckBox</option>
+        </select>
+    </p>
+    <br />
+    <p><a href="#" class="adicionarOpcaoEnquete">Adicionar Opções</a></p>
+    <p><label>Texto opção:</label><input type="text" id="textoOpcao" class="campoTexto" size="40"/> </p>
+    <br />
+    <p>Máximo de 5 opções e mínimo 2 opções</p>
     <div id="areaOpcaoEnquete">
         
     </div>

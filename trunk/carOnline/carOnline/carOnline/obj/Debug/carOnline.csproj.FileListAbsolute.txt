@@ -67,3 +67,8 @@ C:\Users\geraldo.borges\Pictures\CarOnline\obj\Debug\carOnline.dll
 C:\Users\geraldo.borges\Pictures\CarOnline\bin\carOnline.dll
 C:\Users\geraldo.borges\Pictures\CarOnline\bin\carOnline.pdb
 C:\Users\geraldo.borges\Pictures\CarOnline\obj\Debug\carOnline.pdb
+C:\Users\isaias\Desktop\CarOnline\bin\carOnline.dll
+C:\Users\isaias\Desktop\CarOnline\bin\carOnline.pdb
+C:\Users\isaias\Desktop\CarOnline\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\isaias\Desktop\CarOnline\obj\Debug\carOnline.dll
+C:\Users\isaias\Desktop\CarOnline\obj\Debug\carOnline.pdb

@@ -2895,6 +2895,30 @@ namespace carOnline.Models
         private Nullable<global::System.Int32> _quantidadeVotos;
         partial void OnquantidadeVotosChanging(Nullable<global::System.Int32> value);
         partial void OnquantidadeVotosChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String tipo
+        {
+            get
+            {
+                return _tipo;
+            }
+            set
+            {
+                OntipoChanging(value);
+                ReportPropertyChanging("tipo");
+                _tipo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("tipo");
+                OntipoChanged();
+            }
+        }
+        private global::System.String _tipo;
+        partial void OntipoChanging(global::System.String value);
+        partial void OntipoChanged();
 
         #endregion
     

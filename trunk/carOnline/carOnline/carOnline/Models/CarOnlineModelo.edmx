@@ -195,9 +195,10 @@
           <Key>
             <PropertyRef Name="idOpcaoEnquete" />
           </Key>
-          <Property Name="idOpcaoEnquete" Type="int" Nullable="false" />
+          <Property Name="idOpcaoEnquete" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="idEnquete" Type="int" />
           <Property Name="descricao" Type="varchar" MaxLength="200" />
+          <Property Name="tipo" Type="varchar" MaxLength="20" />
           <Property Name="quantidadeVotos" Type="int" />
         </EntityType>
         <EntityType Name="tblPais">
@@ -1076,6 +1077,7 @@
           <Property Type="String" Name="descricao" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="quantidadeVotos" />
           <NavigationProperty Name="tblEnquete" Relationship="CarOnlineModel.FK_tblOpcaoEnquete_tblEnquete" FromRole="tblOpcaoEnquete" ToRole="tblEnquete" />
+          <Property Type="String" Name="tipo" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_tblEnquete_tblAdministrador">
           <End Type="CarOnlineModel.tblAdministrador" Role="tblAdministrador" Multiplicity="1" />
@@ -1318,6 +1320,7 @@
           <EntitySetMapping Name="tblOpcaoEnquete">
             <EntityTypeMapping TypeName="CarOnlineModel.tblOpcaoEnquete">
               <MappingFragment StoreEntitySet="tblOpcaoEnquete">
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
                 <ScalarProperty Name="quantidadeVotos" ColumnName="quantidadeVotos" />
                 <ScalarProperty Name="descricao" ColumnName="descricao" />
                 <ScalarProperty Name="idEnquete" ColumnName="idEnquete" />

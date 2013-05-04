@@ -251,6 +251,8 @@
     <Content Include="Rotativa\ssleay32.dll" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\administrativo.js" />
+    <Content Include="Scripts\data.format.js" />
+    <Content Include="Scripts\enquete.js" />
     <Content Include="Scripts\funcoes.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
