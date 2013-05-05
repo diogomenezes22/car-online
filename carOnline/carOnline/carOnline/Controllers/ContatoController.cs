@@ -24,13 +24,22 @@ namespace carOnline.Controllers
         {
             try
             {
-                Ferramenta.EnviarEmail(Email, "wellington_fernands@yahoo.com.br", Assunto, Mensagem);
-                ViewBag.Msg = "Contato enviado com sucesso! Em breve responderemos.";
-                return RedirectToAction("Index");
+                if (Ferramenta.ValidarEmail(Email))
+                {
+                    Ferramenta.EnviarEmail(Email, "geraldo.estudos.trabalho@gmail.com", Assunto, Mensagem);
+                    TempData["mensagemContato"] = "Contato enviado com sucesso! Em breve responderemos.";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["mensagemContato"] = "O formato do e-mail é inválido.";
+                    return RedirectToAction("Index");
+                }
             }
             catch (Exception e)
             {
-                throw (e);
+                TempData["mensagemContato"] = "Não foi possível enviar o email.Contate o administrador ou tente mais tarde!";
+                return RedirectToAction("Index");
             }
         }
     }

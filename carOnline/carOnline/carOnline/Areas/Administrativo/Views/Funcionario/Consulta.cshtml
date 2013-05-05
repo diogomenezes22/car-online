@@ -2,34 +2,45 @@
 @model List<tblFuncionario>
 @{
     ViewBag.Title = "Consulta";
-    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+    Layout = "~/Areas/Administrativo/Views/Shared/_Admin.cshtml";
 }
-<br />
-<br />
-<div id="areaConsulta">
-    <p class="mensagemSucesso">@TempData["mensagemRetorno"]</p>
-    <br />
-    <p class="titulo">Consulta de Funcionário</p>
-    <br />
-    <br />
 
-    @{
-        var gridFuncionarios = new WebGrid(Model, canPage: true, canSort: true, rowsPerPage: 3);
-        gridFuncionarios.Pager(WebGridPagerModes.NextPrevious);
-        //@gridFuncionarios.GetHtml();
-        @gridFuncionarios.GetHtml(
-            tableStyle:"webGrid",
-            htmlAttributes:new {id="tabelaFuncionarios"},
-            alternatingRowStyle:"alt",
-            columns:gridFuncionarios.Columns(
-                gridFuncionarios.Column("idFuncionario","Código"),
-                gridFuncionarios.Column("nome","Nome"),
-                gridFuncionarios.Column("email","Email"),
-                gridFuncionarios.Column(header:"Alterar",format :@<text>@Html.ActionLink("Alterar","Alteracao","Funcionario",new {id = item.idFuncionario},new {@class="links"})</text>),
-                gridFuncionarios.Column(header:"Deletar",format :@<text><a class="links linkDeletarFuncionario" href="#" id="@item.idFuncionario">Deletar</a></text>)
-            )  
-        );
-    }
-</div>
-<br />
-<br /> 
+<div class="panel-wrapper">	
+
+	<div class="panel-wrapper fixed">	        
+        <div id="Msg-error">
+            @TempData["mensagemRetorno"]
+            <span class="mensagemValidacao" title="">@Html.ValidationMessage("nome")</span>
+            <span class="mensagemValidacao" title="">@Html.ValidationMessage("email")</span>
+            <span class="mensagemValidacao" title="">@Html.ValidationMessage("senha")</span>
+        </div><!-- MOSTRAR MsgAlerta DE VALIDACAO -->
+		
+            <div class="panel">
+			    <div class="title">
+				    <h4>Consulta de Funcionário</h4>	
+			    </div>
+
+                @{
+                    var gridFuncionarios = new WebGrid(Model, canPage: true, canSort: true, rowsPerPage: 3);
+                    gridFuncionarios.Pager(WebGridPagerModes.NextPrevious);
+                    //@gridFuncionarios.GetHtml();
+                    @gridFuncionarios.GetHtml(
+                        tableStyle:"webGrid",
+                        htmlAttributes:new {id="tabelaFuncionarios"},
+                        alternatingRowStyle:"alt",
+                        columns:gridFuncionarios.Columns(
+                            gridFuncionarios.Column("idFuncionario","Código"),
+                            gridFuncionarios.Column("nome","Nome"),
+                            gridFuncionarios.Column("email","Email"),
+                            gridFuncionarios.Column(header:"Alterar",format :@<text>@Html.ActionLink("Alterar","Alteracao","Funcionario",new {id = item.idFuncionario},new {@class="links"})</text>),
+                            gridFuncionarios.Column(header:"Deletar",format :@<text><a class="links linkDeletarFuncionario" href="#" id="@item.idFuncionario">Deletar</a></text>)
+                        )  
+                    );
+                }
+            </div><!-- panel -->
+
+			<div class="shadow"></div>			
+
+		</div><!-- panel-wrapper fixed -->	
+
+	</div><!-- panel-wrapper -->

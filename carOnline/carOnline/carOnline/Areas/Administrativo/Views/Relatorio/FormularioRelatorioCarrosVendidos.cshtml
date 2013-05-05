@@ -1,33 +1,45 @@
 ﻿@{
     ViewBag.Title = "FormularioRelatorioCarrosVendidos";
-    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+    Layout = "~/Areas/Administrativo/Views/Shared/_Admin.cshtml";
 }
 
-<br />
-<div id="areaFormularioRelatorioCarrosVendidos">
-    <p class="titulo">Relatório de Carros Vendidos</p>
-    <br />
-    <br />
+<div class="panel-wrapper">	
 
-    @using (@Html.BeginForm("RelatorioCarrosVendidosPDF", "Relatorio", FormMethod.Post))
-    {
+		<div class="panel-wrapper fixed">	        
+
+			<div class="panel">
+
+				<div class="title">
+					<h4>Relatório de Carros Vendidos</h4>	
+				</div>
+
+                <div id="Msg-error">
+                    @TempData["mensagemRetorno"]
+                </div><!-- MOSTRAR MsgAlerta DE VALIDACAO -->
+
+            @using (@Html.BeginForm("RelatorioCarrosVendidosPDF", "Relatorio", FormMethod.Post))
+            {
  
-        <p><input type="checkbox" class="porMarca" id="porMarca" name="porMarca" />Por Marca </p>
-        <p><input type="checkbox" class="porModelo" id="porModelo" name="porModelo" />Por Modelo </p>
-        <p class="areaEscolhaMarca">
-            <label for="marcas" class="label">Marca: </label>
-            @Html.DropDownList("ListaMarcas", null, new { @class = "campoTexto" }) 
-        </p>
+                <p><input type="checkbox" class="porMarca" id="porMarca" name="porMarca" />Por Marca </p>
+                <p><input type="checkbox" class="porModelo" id="porModelo" name="porModelo" />Por Modelo </p>
+                <p class="areaEscolhaMarca">
+                    <label for="marcas" class="label">Marca: </label>
+                    @Html.DropDownList("ListaMarcas", null, new { @class = "campoTexto" }) 
+                </p>
 
-        <p class="areaEscolhaModelo">
-            <label for="modelos" class="label">Modelo: </label>
-            @Html.DropDownList("ListaModelos", null, new { @class = "campoTexto" })
-        </p>
-        <p> <label class="label">Data Inicial: </label><input type="text" id="dataInicial" name="dataInicial" class="CALENDARIO campoTexto" /></p>
-        <p> <label class="label">Data Final: </label><input  type="text" id="dataFinal" name="dataFinal" class="CALENDARIO campoTexto" /></p>
-        <br />
-        <p><input type="submit" value="Gerar Relatório" class="botao" /><input type="reset" value="Limpar" class="botao" /></p>
-    }
-</div>
-<br />
-<br />
+                <p class="areaEscolhaModelo">
+                    <label for="modelos" class="label">Modelo: </label>
+                    @Html.DropDownList("ListaModelos", null, new { @class = "campoTexto" })
+                </p>
+                <p> <label class="label">Data Inicial: </label><input type="text" id="dataInicial" name="dataInicial" class="CALENDARIO campoTexto" /></p>
+                <p> <label class="label">Data Final: </label><input  type="text" id="dataFinal" name="dataFinal" class="CALENDARIO campoTexto" /></p>
+                <br />
+                <p><input type="submit" value="Gerar Relatório" class="button-red" /> <input type="reset" value="Limpar" class="button-red" /></p>
+            }
+            </div><!-- panel -->
+
+			<div class="shadow"></div>			
+
+		</div><!-- panel-wrapper fixed -->	
+
+	</div><!-- panel-wrapper --> 

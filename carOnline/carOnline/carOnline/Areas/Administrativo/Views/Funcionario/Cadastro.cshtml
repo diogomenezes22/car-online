@@ -2,41 +2,91 @@
 
 @{
     ViewBag.Title = "Cadastro";
-    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+    Layout = "~/Areas/Administrativo/Views/Shared/_Admin.cshtml";
 }
-<br />
-<br />
+	<div class="panel-wrapper">	
 
-<div id="areaCadastroFuncionario">
-    <p class="mensagemRetorno">@TempData["mensagemRetorno"]</p>
-    <br />
-    <p class="titulo">Cadastro de Funcionário</p>
-    <br />
-    @using (Html.BeginForm("Cadastrar", "Funcionario", new { area = "Administrativo" }, FormMethod.Post, new {@class="formularioCadastroFuncionario" }))
-    {
-        <input type="hidden" class="urlBuscarCidade" value="@Url.Action("BuscarCidade", "Funcionario", new { area = "Administrativo" })" />
-        <p><label for="nome" class="label">Nome  :</label>@Html.TextBoxFor(m => m.nome, new { @class = "campoTexto campoNomeFuncionario", maxlength = "60", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
-        <p><label for="email" class="label">Email :</label>@Html.TextBoxFor(m => m.email, new { @class = "campoTexto campoEmailFuncionario", maxlength = "60", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
-        <p><label for="senha" class="label">Senha :</label>@Html.PasswordFor(Model => Model.senha, new { @class = "campoTexto campoSenhaFuncionario", maxlength = "8" })<span class="campoObrigatorio" title="Este campo é obrigatório!">*</span></p>
-        <p><label for="telefone"  class="label">Telefone :</label>@Html.TextBoxFor(m => m.telefone, new { @class = "TELEFONE campoTexto" })</p>
-        <p><label for="celular" class="label">Celular  :</label>@Html.TextBoxFor(m => m.celular, new { @class = "NOVO_FORMATO_TELEFONE campoTexto" })</p>
-        <p><label for="endereco" class="label">Endereço  :</label>@Html.TextBoxFor(m => m.endereco, new { @class = "campoTexto campoEnderecoFuncionario" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
-        <p><label for="bairro" class="label">Bairro  :</label>@Html.TextBoxFor(m => m.bairro, new { @class = "campoTexto campo campoBairroFuncionario" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
-        <p><label for="TipoPermissao" class="label">Permissão  :</label>@Html.DropDownList("TipoPermissao", null, new { @class = "campoTexto" })</p>
-        <p><label for="Cargos" class="label">Cargo  :</label>@Html.DropDownList("Cargos", null, new { @class = "campoTexto" })</p>
-        <p><label for="Paises" class="label">País  :</label>@Html.DropDownList("Paises", null, new { @class = "campoTexto" })</p>
-        <p><label for="Estados" class="label">Estado  :</label>@Html.DropDownList("Estados", null, new { @class = "campoTexto" })</p>
-        <p>
-            <label for="Cidades" class="label">Cidade  :</label>
-            @Html.DropDownList("Cidades", null, new { @class = "listaCidades campoTexto" })
-            @*<select class="listaCidades campoTexto" id="Cidades campoCidadeFuncionario" name="Cidades">
-            </select>*@
-            <span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span>
-        </p>
-        <br />
-        <br />
-        <p><input type="submit" value="Cadastrar" class="botao" /><input type="reset" class="botaoLimparCidades botao" value="limpar" /></p>
-    }
-</div>
-<br />
-<br /> 
+		<div class="panel-wrapper fixed">	        
+
+			<div class="panel">
+
+				<div class="title">
+					<h4>Cadastro de Funcionário</h4>	
+				</div>
+
+                <div id="Msg-error">
+                    @TempData["mensagemRetorno"]
+                    <p><span class="mensagemValidacao" title="">@Html.ValidationMessage("nome")</span></p>
+                    <p><span class="mensagemValidacao" title="">@Html.ValidationMessage("email")</span></p>
+                    <p><span class="mensagemValidacao" title="">@Html.ValidationMessage("senha")</span></p>
+                </div><!-- MOSTRAR MsgAlerta DE VALIDACAO -->
+               
+                @using (Html.BeginForm("Cadastrar", "Funcionario", new { area = "Administrativo" }, FormMethod.Post, new {@class="formularioCadastroFuncionario" }))
+                {
+                    <input type="hidden" class="urlBuscarCidade" value="@Url.Action("BuscarCidade", "Funcionario", new { area = "Administrativo" })" />
+                    
+                    <div class="group fixed">
+						<label for="nome">Nome:</label>
+						@Html.TextBoxFor(m => Model.nome, new { @class = "campoTexto campoEmailAdministrador", maxlength = "60", size = "40" })<span class="campoObrigatorio" title="Este campo é obrigatório!">
+					</div>
+
+                    <div class="group fixed">
+						<label for="email">E-mail:</label>
+						@Html.TextBoxFor(m => m.email, new { @class = "campoTexto campoEmailFuncionario", maxlength = "60", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!"></span>
+					</div>
+                    
+                    <div class="group fixed">
+						<label for="senha">Senha:</label>
+						@Html.PasswordFor(Model => Model.senha, new { @class = "campoTexto campoSenhaFuncionario", maxlength = "8" })<span class="campoObrigatorio" title="Este campo é obrigatório!"></span>
+					</div>
+                    
+                    <div class="group fixed">
+					    <label for="telefone">Telefone:</label>
+					    @Html.TextBoxFor(m => m.telefone, new { @class = "TELEFONE campoTexto" })
+				    </div>                    
+                    
+                    <div class="group fixed">
+					    <label for="celular">Celular:</label>
+					    @Html.TextBoxFor(m => m.celular, new { @class = "NOVO_FORMATO_TELEFONE campoTexto" })
+				    </div>                    
+                    
+                    <div class="group fixed">
+					    <label for="endereco">Endereço:</label>
+					    @Html.TextBoxFor(m => m.endereco, new { @class = "campoTexto campoEnderecoFuncionario" })<span class="campoObrigatorio"  title="Este campo é obrigatório!"></span>
+				    </div>                    
+                    
+                    <div class="group fixed">
+					    <label for="bairro">Bairro:</label>
+					    @Html.TextBoxFor(m => m.bairro, new { @class = "campoTexto campo campoBairroFuncionario" })<span class="campoObrigatorio"  title="Este campo é obrigatório!"></span>
+				    </div>                                        
+                    
+                    <div class="group fixed">
+					    <label for="tipoPermissao">Tipo de Permissão:</label>
+					    @Html.DropDownList("TipoPermissao", null, new { @class = "campoTexto" })
+				    </div>                   
+                    
+                    <div class="group fixed">
+					    <label for="pais">País:</label>
+                        @Html.DropDownList("Paises", null, new { @class = "campoTexto" })
+				    </div>                   
+                    
+                    <div class="group fixed">
+					    <label for="estados">Estados:</label>
+                        @Html.DropDownList("Estados", null, new { @class = "campoTexto" })
+				    </div>                   
+                    
+                    <div class="group fixed">
+					    <label for="cidades">Cidade:</label>
+                        @Html.DropDownList("Cidades", null, new { @class = "listaCidades campoTexto" })
+                        <span class="campoObrigatorio"  title="Este campo é obrigatório!"></span>
+				    </div>                   
+                    
+                    <p><input type="submit" value="Cadastrar" class="button-red" /> <input type="reset" class="botaoLimparCidades button-red" value="limpar" /></p>
+                }
+                </div><!-- panel -->
+
+			<div class="shadow"></div>			
+
+		</div><!-- panel-wrapper fixed -->	
+
+	</div><!-- panel-wrapper -->

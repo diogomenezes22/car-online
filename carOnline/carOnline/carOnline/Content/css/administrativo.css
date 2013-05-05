@@ -243,7 +243,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', end
 #areaCadastro
 {
     width:420px;
-    height:240px;
+    height:auto;
     margin:auto;
     padding:20px;
     border:1px solid #888;

@@ -2,29 +2,51 @@
 
 @{
     ViewBag.Title = "Alteracao";
-    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+    Layout = "~/Areas/Administrativo/Views/Shared/_Admin.cshtml";
 }
 
-<br />
-<br />
+        <div class="panel-wrapper">	
 
-<div id="areaSeguradora">
-    <p class="mensagemRetorno">@TempData["mensagemRetorno"]</p>
-    <br />
-    <p class="titulo">Alteração de Seguradora</p>
-    <br />
-    @using (Html.BeginForm("Alterar", "Seguradora", new { area = "Administrativo" }, FormMethod.Post, new {@class="formularioCadastroSeguradora" }))
-    {
-        <input type="hidden" id="idSeguradora" name="idSeguradora" value="@Model.idSeguradora" />
-        <p><label for="nome" class="label">Nome  :</label>@Html.TextBoxFor(m => m.nome, new { @class = "campoTexto campoNomeSeguradora", maxlength = "60", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
-        <p><label for="email" class="label">Email :</label>@Html.TextBoxFor(m => m.email, new { @class = "campoTexto campoEmailSeguradora", maxlength = "60", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
-        <p><label for="telefone"  class="label">Telefone :</label>@Html.TextBoxFor(m => m.telefone, new { @class = "TELEFONE campoTexto" })</p>
-        <p><label for="celular" class="label">Celular  :</label>@Html.TextBoxFor(m => m.celular, new { @class = "NOVO_FORMATO_TELEFONE campoTexto" })</p>
+		    <div class="panel-wrapper fixed">	        
 
-        <br />
-        <br />
-        <p><input type="submit" value="Alterar" class="botao" /></p>
-    }
-</div>
-<br />
-<br /> 
+			    <div class="panel">
+
+				    <div class="title">
+					    <h4>Alteração de Seguradora</h4>	
+				    </div>
+
+                    <div id="Msg-error">
+                        @TempData["mensagemRetorno"]
+                    </div><!-- MOSTRAR MsgAlerta DE VALIDACAO -->
+                    @using (Html.BeginForm("Alterar", "Seguradora", new { area = "Administrativo" }, FormMethod.Post, new {@class="formularioCadastroSeguradora" }))
+                    {
+                        <input type="hidden" id="idSeguradora" name="idSeguradora" value="@Model.idSeguradora" />
+                        <div class="group fixed">
+					        <label for="nome">Nome:</label>
+                            @Html.TextBoxFor(m => m.nome, new { @class = "campoTexto campoNomeSeguradora", maxlength = "60", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!"></span>
+				        </div>     
+                                      
+                        <div class="group fixed">
+					        <label for="email">E-mail:</label>
+                            @Html.TextBoxFor(m => m.email, new { @class = "campoTexto campoEmailSeguradora", maxlength = "60", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!"></span>
+				        </div>                   
+                        
+                        <div class="group fixed">
+					        <label for="telefone">Telefone:</label>
+                            @Html.TextBoxFor(m => m.telefone, new { @class = "TELEFONE campoTexto" })
+				        </div>                   
+                        
+                        <div class="group fixed">
+					        <label for="celular">Celular:</label>
+                            @Html.TextBoxFor(m => m.celular, new { @class = "NOVO_FORMATO_TELEFONE campoTexto" })
+				        </div>                   
+
+                        <p><input type="submit" value="Alterar" class="button-red" /></p>
+                    }
+                </div><!-- panel -->
+
+			<div class="shadow"></div>			
+
+		</div><!-- panel-wrapper fixed -->	
+
+	</div><!-- panel-wrapper -->

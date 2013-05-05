@@ -11,7 +11,7 @@ jQuery(document).ready(function () {
     //------------------------------MASCARAS----------------------------\\
     //Transforma todos os inputs do tipo text em calendários desde que usem a classe .CALENDARIO
     jQuery('.CALENDARIO').livequery(function () {
-        jQuery(this).datepicker();
+        jQuery(this).datepicker(this, "dateFormat", "dd-mm-yy");
     });
     //Adiciona uma máscara de CNPJ em todos os inputs do tipo text que usam a classe .CNPJ
     jQuery('.CNPJ').livequery(function () {
@@ -343,6 +343,7 @@ jQuery(document).ready(function () {
             jQuery(".areaEscolhaModelo").toggle();
         }
     });
+
 
 
 

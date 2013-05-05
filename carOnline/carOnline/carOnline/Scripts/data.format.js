@@ -10,10 +10,10 @@
 * Accepts a date, a mask, or a date and a mask.
 * Returns a formatted version of the given date.
 * The date defaults to the current date/time.
-* The mask defaults to dateFormat.masks.default.
+* The mask defaults to formatarData.masks.default.
 */
 
-var dateFormat = function () {
+var formatarData = function () {
     var token = /d{1,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LloSZ]|"[^"]*"|'[^']*'/g,
 		timezone = /\b(?:[PMCEA][SDP]T|(?:Pacific|Mountain|Central|Eastern|Atlantic) (?:Standard|Daylight|Prevailing) Time|(?:GMT|UTC)(?:[-+]\d{4})?)\b/g,
 		timezoneClip = /[^-+\dA-Z]/g,
@@ -26,7 +26,7 @@ var dateFormat = function () {
 
     // Regexes and supporting functions are cached through closure
     return function (date, mask, utc) {
-        var dF = dateFormat;
+        var dF = formatarData;
 
         // You can't provide utc if you skip other args (use the "UTC:" mask prefix)
         if (arguments.length == 1 && Object.prototype.toString.call(date) == "[object String]" && !/\d/.test(date)) {
@@ -93,7 +93,7 @@ var dateFormat = function () {
 } ();
 
 // Some common format strings
-dateFormat.masks = {
+formatarData.masks = {
     "default": "ddd mmm dd yyyy HH:MM:ss",
     shortDate: "m/d/yy",
     mediumDate: "mmm d, yyyy",
@@ -109,7 +109,7 @@ dateFormat.masks = {
 };
 
 // Internationalization strings
-dateFormat.i18n = {
+formatarData.i18n = {
     dayNames: [
 		"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat",
 		"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
@@ -122,5 +122,5 @@ dateFormat.i18n = {
 
 // For convenience...
 Date.prototype.format = function (mask, utc) {
-    return dateFormat(this, mask, utc);
+    return formatarData(this, mask, utc);
 };

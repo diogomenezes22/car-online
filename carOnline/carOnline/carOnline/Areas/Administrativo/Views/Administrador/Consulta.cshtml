@@ -2,33 +2,45 @@
 @model List<tblAdministrador>
 @{
     ViewBag.Title = "Consulta";
-    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+    Layout = "~/Areas/Administrativo/Views/Shared/_Admin.cshtml";
 }
-    <br />
-    <br />
-<div id="areaConsulta">
-    <p class="mensagemSucesso">@TempData["mensagemRetorno"]</p>
-    <br />
-    <p class="titulo">Consulta de Administrador</p>
-    <br />
-    <br />
-    @{
-        var gridAdministradores = new WebGrid(Model, canPage: true, canSort: true, rowsPerPage: 3);
-        gridAdministradores.Pager(WebGridPagerModes.NextPrevious);
-        //@gridAdministradores.GetHtml();
-        @gridAdministradores.GetHtml(
-            tableStyle:"webGrid",
-            htmlAttributes:new {id="tabelaAdministradores"},
-            alternatingRowStyle:"alt",
-            columns:gridAdministradores.Columns(
-                gridAdministradores.Column("idAdministrador","Código"),
-                gridAdministradores.Column("nome","Nome"),
-                gridAdministradores.Column("email","Email"),
-                gridAdministradores.Column(header:"Alterar",format :@<text>@Html.ActionLink("Alterar","Alteracao","Administrador",new {id = item.idAdministrador},new {@class="links"})</text>),
-                gridAdministradores.Column(header:"Deletar",format :@<text><a class="links linkDeletarAdministrador" href="#" id="@item.idAdministrador">Deletar</a></text>)
-            )  
-        );
-    }
-</div>
-<br />
-<br /> 
+	<div class="panel-wrapper">	
+
+		<div class="panel-wrapper fixed">	        
+            <div id="Msg-error">
+                @TempData["mensagemRetorno"]
+                <span class="mensagemValidacao" title="">@Html.ValidationMessage("nome")</span>
+                <span class="mensagemValidacao" title="">@Html.ValidationMessage("email")</span>
+                <span class="mensagemValidacao" title="">@Html.ValidationMessage("senha")</span>
+            </div><!-- MOSTRAR MsgAlerta DE VALIDACAO -->
+			
+            <div class="panel">
+				    <div class="title">
+					    <h4>Consulta de Administrador</h4>	
+				    </div>
+                    
+                        @{
+                        var gridAdministradores = new WebGrid(Model, canPage: true, canSort: true, rowsPerPage: 3);
+                        gridAdministradores.Pager(WebGridPagerModes.NextPrevious);
+                        //@gridAdministradores.GetHtml();
+                        @gridAdministradores.GetHtml(
+                            tableStyle:"webGrid",
+                            htmlAttributes:new {id="tabelaAdministradores"},
+                            alternatingRowStyle:"alt",
+                            columns:gridAdministradores.Columns(
+                                gridAdministradores.Column("idAdministrador","Código"),
+                                gridAdministradores.Column("nome","Nome"),
+                                gridAdministradores.Column("email","Email"),
+                                gridAdministradores.Column(header:"Alterar",format :@<text>@Html.ActionLink("Alterar","Alteracao","Administrador",new {id = item.idAdministrador},new {@class="links"})</text>),
+                                gridAdministradores.Column(header:"Deletar",format :@<text><a class="links linkDeletarAdministrador" href="#" id="@item.idAdministrador">Deletar</a></text>)
+                            )  
+                        );
+                    }
+                
+                </div><!-- panel -->
+
+			<div class="shadow"></div>			
+
+		</div><!-- panel-wrapper fixed -->	
+
+	</div><!-- panel-wrapper --> 
