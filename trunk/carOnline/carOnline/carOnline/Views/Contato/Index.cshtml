@@ -40,7 +40,7 @@
                 <div id="confirm">
                     @using (Html.BeginForm("EnviarEmail", "Contato", FormMethod.Post, new { @class = "formularioContato" }))
                     {                    
-                        <div class="success"><div class="success_txt"> @ViewBag.Msg <br/></div></div>
+                        <div class="success"><div class="success_txt"> @TempData["mensagemContato"] <br/></div></div>
                         <fieldset>
                             <span style="font-weight:bold;font-size:16px;">Nome</span>
                             <label class="name" style="margin-bottom: 30px;">
@@ -66,7 +66,7 @@
                                 <!--<span class="error">*This is not a valid name.</span> <span class="empty">*This field is required.</span>-->
                             </label>
                             <div class="clear"></div>
-                            <div class="btns"><a href="#" class="button botao_link2" data-type="submit">Enviar</a></div>
+                            <div class="btns"><input type="submit" class="button botaoEnviarContato" value="Enviar" data-type="submit"/></div>
                         </fieldset>
                     }
                 </div> 

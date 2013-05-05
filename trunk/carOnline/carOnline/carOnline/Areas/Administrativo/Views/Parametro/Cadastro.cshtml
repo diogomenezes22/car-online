@@ -1,29 +1,45 @@
 ﻿@model carOnline.Models.tblParametro
 @{
     ViewBag.Title = "Parametro";
-    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+    Layout = "~/Areas/Administrativo/Views/Shared/_Admin.cshtml";
 }
+	<div class="panel-wrapper">	
 
-<br />
-<br />
+		<div class="panel-wrapper fixed">	        
 
-<div id="areaParametros">
-    <p class="mensagemRetorno">@TempData["mensagemRetorno"]</p>
-    <br />
-    <p class="titulo">Cadastro de Parâmetros</p>
-    <br />
-    @using (Html.BeginForm("CadastrarParametroImagem", "Parametro", new { area = "Administrativo" }, FormMethod.Post, new { @class = "formularioParametro" }))
-    {
-        <p><label for="descricao" class="label">Descricao  :</label>@Html.TextAreaFor(m => m.descricao, new { @class = "campoTexto campoDescricaoParametro", maxlength = "200", rows="4",cols="30" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
-        <p><label for="valor" class="label">Valor :</label>@Html.TextBoxFor(m => m.valor, new { @class = "campoTexto campoValorParametro", maxlength = "300", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!">*</span></p>
+			<div class="panel">
 
-        <p><label for="TipoParametro" class="label">Tipo do Parâmetro  :</label>@Html.DropDownList("TipoParametro", null, new { @class = "campoTexto" })</p>
+				<div class="title">
+					<h4>Cadastro de Seguradora</h4>	
+				</div>
 
-        <br />
-        <br />
-        <p><input type="submit" value="Cadastrar" class="botao" /><input type="reset" class="botao" value="limpar" /></p>
-    }
-</div>
-<br />
-<br /> 
+                <div id="Msg-error">
+                    @TempData["mensagemRetorno"]
+                </div><!-- MOSTRAR MsgAlerta DE VALIDACAO -->
+                
+                @using (Html.BeginForm("CadastrarParametroImagem", "Parametro", new { area = "Administrativo" }, FormMethod.Post, new { @class = "formularioParametro" }))
+                {
+                    <div class="group fixed">
+					    <label for="descricao">Descrição:</label>
+                        @Html.TextAreaFor(m => m.descricao, new { @class = "campoTexto campoDescricaoParametro", maxlength = "200", rows = "4", cols = "30" })<span class="campoObrigatorio"  title="Este campo é obrigatório!"></span>
+				    </div>   
+                    
+                    <div class="group fixed">
+					    <label for="valor">Valor:</label>
+                        @Html.TextBoxFor(m => m.valor, new { @class = "campoTexto campoValorParametro", maxlength = "300", size = "40" })<span class="campoObrigatorio"  title="Este campo é obrigatório!"></span>
+				    </div>   
+                    
+                    <div class="group fixed">
+					    <label for="TipoParametro">Tipo de Parâmetro:</label>
+                        @Html.DropDownList("TipoParametro", null, new { @class = "campoTexto" })
+				    </div>   
+                    
+                    <p><input type="submit" value="Cadastrar" class="button-red" /> <input type="reset" class="button-red" value="limpar" /></p>
+                 }
+                </div><!-- panel -->
 
+			<div class="shadow"></div>			
+
+		</div><!-- panel-wrapper fixed -->	
+
+	</div><!-- panel-wrapper -->

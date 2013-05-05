@@ -2,26 +2,53 @@
 
 @{
     ViewBag.Title = "Alteracao";
-    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+    Layout = "~/Areas/Administrativo/Views/Shared/_Admin.cshtml";
 }
 
-<br />
-<br />
-<div id="areaAlteracao">
-    <p class="mensagemRetorno">@TempData["mensagemRetorno"]</p>
-    <br />
-    <p class="titulo">Alteração de Administrador</p>
-    <br />
-    @using (Html.BeginForm("Alterar", "Administrador", new { area = "Administrativo" }, FormMethod.Post, new { @class = "formularioCadastroAdministrador" }))
-    {
-        <input type="hidden" value="@Model.idAdministrador" id="idAdministrador" name="idAdministrador" />
-        <p><label for="nome" class="label">Nome  :</label>@Html.TextBoxFor(m => Model.nome, new { @class = "campoTexto campoNomeAdministrador", maxlength = "60", size = "40" })<span class="campoObrigatorio" title="Este campo é obrigatório!">*</span></p>
-        <p><label for="email" class="label">Email :</label>@Html.TextBoxFor(m => Model.email, new { @class = "campoTexto campoEmailAdministrador", maxlength = "60", size = "40" })<span class="campoObrigatorio" title="Este campo é obrigatório!">*</span></p>
-        <p><label for="senha" class="label">Senha :</label>@Html.PasswordFor(m => Model.senha, new { @class = "campoTexto  campoSenhaAdministrador", maxlength = "8" })<span class="campoObrigatorio" title="Este campo é obrigatório!">*</span></p>
-        <br />
-        <br />
-        <p><input type="submit" value="Alterar" class="botao" /></p>
-    }
-</div> 
-<br />
-<br /> 
+	<div class="panel-wrapper">	
+
+		<div class="panel-wrapper fixed">	        
+
+			<div class="panel">
+
+				    <div class="title">
+					    <h4>Alteração de Administrador</h4>	
+				    </div>
+
+                    <div id="Msg-error">
+                        @TempData["mensagemRetorno"]
+                    </div><!-- MOSTRAR MsgAlerta DE VALIDACAO -->
+                    
+                    <div id="areaCadastro">                        
+                        @using (Html.BeginForm("Alterar", "Administrador", new { area = "Administrativo" }, FormMethod.Post, new { @class = "formularioCadastroAdministrador" }))
+                        {                            
+                            <input type="hidden" value="@Model.idAdministrador" id="idAdministrador" name="idAdministrador" />
+                            
+                            <div class="group fixed">
+						        <label for="nome">Nome:</label>
+						        @Html.TextBoxFor(m => Model.nome, new { @class = "campoTexto campoNomeAdministrador", maxlength = "60", size = "40" })<span class="campoObrigatorio" title="Este campo é obrigatório!">*</span>
+					        </div>
+                            <div class="group fixed">
+						        <label for="nome">E-mail:</label>
+						        @Html.TextBoxFor(m => Model.email, new { @class = "campoTexto campoEmailAdministrador", maxlength = "60", size = "40" })<span class="campoObrigatorio" title="Este campo é obrigatório!">*</span>
+					        </div>
+                            <div class="group fixed">
+						        <label for="nome">Senha:</label>
+						        @Html.PasswordFor(m => Model.senha, new { @class = "campoTexto campoSenhaAdministrador", maxlength = "8" })<span class="campoObrigatorio" title="Este campo é obrigatório!">*</span>
+					        </div>
+                            
+                            <p>
+                                <input type="submit" value="Alterar" class="button-red" />
+                                <input type="reset"  class="button-red" value="limpar" />
+                            </p>
+                        }
+                    </div>
+                </div><!-- panel -->
+
+			<div class="shadow"></div>			
+
+		</div><!-- panel-wrapper fixed -->	
+
+	</div><!-- panel-wrapper -->
+
+

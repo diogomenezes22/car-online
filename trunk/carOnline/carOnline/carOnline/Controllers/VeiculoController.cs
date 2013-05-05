@@ -453,30 +453,35 @@ namespace carOnline.Controllers
                                 transacao.Complete();
                                 //Retorna a tabela para a página
                                 //return Content(MontarTabelaArquivo(caminhoFisico, idVeiculo));
-                                return RedirectToAction("Alteracao", new { id = idVeiculo });
+                               // return RedirectToAction("Alteracao", new { id = idVeiculo });
+
+                                mensagem = "Arquivo gravado com sucesso!";
+                                var data = new { mensagem };
+                                return Json(data);
                             }
                         }
                         catch (Exception ex)
                         {
                             transacao.Dispose();
                             mensagem = "Não foi possível gravar o arquivo.Contate o administrador ou tente mais tarde.";
-                            return Content(mensagem);
+                            var data = new { mensagem };
+                            return Json(data);
                         }
                     }
                 }
                 else
                 {
-                    tipoErro = "TamanhoArquivo";
-                    mensagem = "O tamanho do arquivo é inválido ("+strTamanhoArquivo+" MB).O máximo permitido é "+strTamanhoMaximo+" MB.";
-                    var data = new {mensagem,tipoErro};
+                    mensagem = "O tamanho do arquivo é inválido ("+Math.Round(Convert.ToDecimal(strTamanhoArquivo),2)+" MB).O máximo permitido é "+strTamanhoMaximo+" MB.";
+                    var data = new {mensagem};
                     return Json(data);
                 }
             }
 
             else
             {
-                mensagem = "Esse arquivo não é uma imagem!";
-                return Content(mensagem);
+                mensagem = "O formato do arquivo é inválido formatos válidos(.jpg .gif . png)";
+                var data = new { mensagem };
+                return Json(data);
             }
         }
 

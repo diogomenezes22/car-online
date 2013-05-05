@@ -2,34 +2,44 @@
 @model List<tblSeguradora>
 @{
     ViewBag.Title = "Consulta";
-    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+    Layout = "~/Areas/Administrativo/Views/Shared/_Admin.cshtml";
 }
 
-<br />
-<br />
-<div id="areaConsultaSeguradora">
-    <p class="mensagemSucesso">@TempData["mensagemRetorno"]</p>
-    <br />
-    <p class="titulo">Consulta de Seguradora</p>
-    <br />
-    <br />
+<div class="panel-wrapper">	
 
-    @{
-        var gridSeguradoras = new WebGrid(Model, canPage: true, canSort: true, rowsPerPage: 3);
-        gridSeguradoras.Pager(WebGridPagerModes.NextPrevious);
-        @gridSeguradoras.GetHtml(
-            tableStyle:"webGrid",
-            htmlAttributes:new {id="tabelaSeguradoras"},
-            alternatingRowStyle:"alt",
-            columns:gridSeguradoras.Columns(
-                gridSeguradoras.Column("idSeguradora","Código"),
-                gridSeguradoras.Column("nome","Nome"),
-                gridSeguradoras.Column("email","Email"),
-                gridSeguradoras.Column(header:"Alterar",format :@<text>@Html.ActionLink("Alterar","Alteracao","Seguradora",new {id = item.idSeguradora},new {@class="links"})</text>),
-                gridSeguradoras.Column(header:"Deletar",format :@<text><a class="links linkDeletarSeguradora" href="#" id="@item.idSeguradora">Deletar</a></text>)
-            )  
-        );
-    }
-</div>
-<br />
-<br /> 
+	<div class="panel-wrapper fixed">	
+            
+        <div id="Msg-error">
+            @TempData["mensagemRetorno"]
+            <span class="mensagemValidacao" title="">@Html.ValidationMessage("nome")</span>
+            <span class="mensagemValidacao" title="">@Html.ValidationMessage("email")</span>
+            <span class="mensagemValidacao" title="">@Html.ValidationMessage("senha")</span>
+        </div><!-- MOSTRAR MsgAlerta DE VALIDACAO -->
+	
+    	<div class="panel">
+				<div class="title">
+					<h4>Consulta de Seguradora</h4>	
+				</div>
+                @{
+                    var gridSeguradoras = new WebGrid(Model, canPage: true, canSort: true, rowsPerPage: 3);
+                    gridSeguradoras.Pager(WebGridPagerModes.NextPrevious);
+                    @gridSeguradoras.GetHtml(
+                        tableStyle:"webGrid",
+                        htmlAttributes:new {id="tabelaSeguradoras"},
+                        alternatingRowStyle:"alt",
+                        columns:gridSeguradoras.Columns(
+                            gridSeguradoras.Column("idSeguradora","Código"),
+                            gridSeguradoras.Column("nome","Nome"),
+                            gridSeguradoras.Column("email","Email"),
+                            gridSeguradoras.Column(header:"Alterar",format :@<text>@Html.ActionLink("Alterar","Alteracao","Seguradora",new {id = item.idSeguradora},new {@class="links"})</text>),
+                            gridSeguradoras.Column(header:"Deletar",format :@<text><a class="links linkDeletarSeguradora" href="#" id="@item.idSeguradora">Deletar</a></text>)
+                        )  
+                    );
+                }
+                </div><!-- panel -->
+
+			<div class="shadow"></div>			
+
+		</div><!-- panel-wrapper fixed -->	
+
+	</div><!-- panel-wrapper --> 

@@ -99,7 +99,7 @@ jQuery(document).ready(function () {
 
     /*-------------------------AJAX DELETAR USUARIO-------------------------------*/
 
-    
+
     var idUsuario = 0;
     jQuery(".linkDeletarUsuario").click(function () {
         idUsuario = jQuery(this).attr("id");
@@ -351,49 +351,20 @@ jQuery(document).ready(function () {
     $(function () {
         //CONFIGURA AS OPÇÕES DO FORMULÁRIO
         var options = {
-            iframe: true,
+            //iframe: true,
             datatype: "json",
             //ANTES DE ENVIAR O FORMULÁRIO
             beforeSubmit: function (formData, jqForm, options) {
                 alert("Enviando!");
-                /*if (!(ArquivoSelecionado(idComponenteBotaoSalvarFileList))) {
-                alert("Selecione um arquivo.");
-                return false;
-                }*/
-                //DesabilitaBotaoGrupo(idGrupoBotaoSalvarFileList);
-                //$(idFileList).block({ message: "<h1 class='loadingSalvarArquivos'><img src='/Content/Images/loadingSalvarArquivos.gif' class='loading' /> Salvando Arquivo...</h1>" });
             },
             //SE NÃO DER ERRO NO UPLOAD
-            success: function (responseText, statusText, xhr, $form) {
-                if (responseText == "Não foi possível gravar o arquivo.Contate o administrador ou tente mais tarde.") {
-                    alert(responseText.toString());
-                    //$(idFileList).unblock();
+            success: function (data) {
+                if (data.mensagem != "Arquivo gravado com sucesso!") {
+                    alert(data.mensagem);
                     $(".ajaxUploadForm").resetForm();
                 }
-                else if (responseText.tipoErro=="TamanhoArquivo") {
-                    alert(responseText.mensagem.toString());
-                    $(idFileList).unblock();
-                    $(".ajaxUploadForm").resetForm();
-                }
-                else if (responseText == "Já existe um arquivo com esse nome.") {
-                    alert("Já existe um arquivo chamado " + RetornaNomeArquivo(idComponenteBotaoSalvarFileList));
-                    //CriarJanelaModal("janelaModalSubstituirArquivo","Aviso",)
-                }
-                else if (responseText == "Esse arquivo não é uma imagem!") {
-                    alert("Esse arquivo não é uma imagem!");
-                    //CriarJanelaModal("janelaModalSubstituirArquivo","Aviso",)
-                }
-                else if (responseText != "") {
-                    //HabilitarBotaoGrupo(idGrupoBotaoSalvarFileList);
-                    //$(idFileList).unblock();
-                    $(".ajaxUploadForm").resetForm();
+                else {
                     location.reload();
-                    /*jQuery(".areaTabelaArquivos").each(function () {
-                    //if (jQuery(this).attr("data-idComponente") == idComponenteBotaoSalvarFileList && jQuery(this).attr("data-idGrupo") == idGrupoBotaoSalvarFileList) {
-                    jQuery(this).html("");
-                    jQuery(this).html(responseText.toString());
-                    //}
-                    });*/
                 }
             },
             complete: function () {
@@ -413,5 +384,18 @@ jQuery(document).ready(function () {
     });
 
     //---------FIM - eventos fileList
+
+
+    /*-----------------------------VALIDAÇÃO DO CONTATO-----------------------------*/
+    jQuery(".formularioContato").submit(function () {
+        var emailContato = $.trim(jQuery("#Email").val());
+        var assunto = $.trim(jQuery("#Assunto").val());
+
+        if (emailContato == "" || assunto == "") {
+            alert("O campo de email e assunto é obrigatório!");
+            return false;
+        }
+    });
+
 
 });

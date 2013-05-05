@@ -1,29 +1,43 @@
 ﻿@model List<carOnline.Models.tblCargo>
 @{
     ViewBag.Title = "Cargo";
-    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+    Layout = "~/Areas/Administrativo/Views/Shared/_Admin.cshtml";
 }
-<br />
-<br />
-<div id="areaParametrosCargo">
-    <input type="hidden" class="urlAlterarParametroCargo" value="@Url.Action("AlterarParametroCargo", "Parametro", new { area = "Administrativo" })" />
-    <br />
-    <p class="titulo">Parâmetro de Cargo</p>
-    <br />
-    <div class="loadingParametros"><img src="@Url.Content("~/Content/images/prettyPhoto/facebook/loader.gif")" alt="" width="24px" height="24px" /> </div>
-    @{
-        foreach(var cargo in Model)
-        {
-            if(cargo.ativo =="S")
-            {
-                <p><input type="checkbox" class="listaCargos" value="@cargo.idCargo"  checked="checked" />@cargo.descricao </p>
-            }
-            else
-            {
-                <p><input type="checkbox" class="listaCargos" value="@cargo.idCargo" />@cargo.descricao </p>
-            }
-        }
-    }
-</div>
-<br />
-<br /> 
+<div class="panel-wrapper">	
+
+		<div class="panel-wrapper fixed">	        
+
+			<div class="panel">
+
+				<div class="title">
+					<h4>Parâmetro de Cargo</h4>	
+				</div>
+
+                <div id="Msg-error">
+                    @TempData["mensagemRetorno"]
+                </div><!-- MOSTRAR MsgAlerta DE VALIDACAO -->
+
+                <div id="areaParametrosCargo">
+                    <input type="hidden" class="urlAlterarParametroCargo" value="@Url.Action("AlterarParametroCargo", "Parametro", new { area = "Administrativo" })" />
+                    
+                    <div class="loadingParametros"><img src="@Url.Content("~/Content/images/prettyPhoto/facebook/loader.gif")" alt="" width="24px" height="24px" /> </div>
+                    @{
+                        foreach(var cargo in Model)
+                        {
+                            if(cargo.ativo =="S")
+                            {
+                                <p><input type="checkbox" class="listaCargos" value="@cargo.idCargo"  checked="checked" />@cargo.descricao </p>
+                            }
+                            else
+                            {
+                                <p><input type="checkbox" class="listaCargos" value="@cargo.idCargo" />@cargo.descricao </p>
+                            }
+                        }
+                    }
+                </div><!-- panel -->
+
+			<div class="shadow"></div>			
+
+		</div><!-- panel-wrapper fixed -->	
+
+	</div><!-- panel-wrapper --> 

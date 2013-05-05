@@ -1,13 +1,12 @@
 ﻿@{
     ViewBag.Title = "Cadastro";
-    Layout = "~/Areas/Administrativo/Views/Shared/_LayoutAreaAdministrativa.cshtml";
+    Layout = "~/Areas/Administrativo/Views/Shared/_Admin.cshtml";
 }
 
 <br />
 <br />
 <div id="areaEnquete">
     <input type="hidden" class="urlSalvarEnquete" value="@Url.Action("Cadastrar", "Enquete", new { area="Administrativo" })" />
-    <p class="mensagemRetorno">@TempData["mensagemRetorno"]</p>
     <br />
     <p class="titulo">Cadastro de Enquete</p>
     <br />

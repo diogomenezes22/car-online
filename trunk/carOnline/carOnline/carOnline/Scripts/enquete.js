@@ -9,6 +9,7 @@
 
 
 jQuery(document).ready(function () {
+
     var identificador = 1;
     var quantidadeOpcoes = 1;
     jQuery(".adicionarOpcaoEnquete").click(function () {
@@ -57,29 +58,70 @@ jQuery(document).ready(function () {
         }
     });
 
+
+
+    function convertDate(stringdate) {
+        // Internet Explorer does not like dashes in dates when converting, 
+        // so lets use a regular expression to get the year, month, and day 
+        var DateRegex = /([^-]*)-([^-]*)-([^-]*)/;
+        var DateRegexResult = stringdate.match(DateRegex);
+        var DateResult;
+        var StringDateResult = "";
+
+        // try creating a new date in a format that both Firefox and Internet Explorer understand
+        try {
+            DateResult = new Date(DateRegexResult[2] + "/" + DateRegexResult[3] + "/" + DateRegexResult[1]);
+        }
+        // if there is an error, catch it and try to set the date result using a simple conversion
+        catch (err) {
+            DateResult = new Date(stringdate);
+        }
+
+        // format the date properly for viewing
+        StringDateResult = (DateResult.getMonth() + 1) + "/" + (DateResult.getDate() + 1) + "/" + (DateResult.getFullYear());
+
+        return StringDateResult;
+    }
+
+
     jQuery(".botaoSalvarEnquete").click(function () {
+
+        var qtdOpcoes = 0;
+        jQuery("#areaOpcaoEnquete p").each(function () {
+
+            qtdOpcoes++;
+        });
+
+
         var nomeEnquete = $.trim(jQuery("#nomeEnquete").val());
-        var dataVigencia = $.trim(jQuery("#dataVigencia").val());
+        var dataVigenciaInicial = $.trim(jQuery("#dataVigencia").val());
 
-
-        var sDate = dateFormat(dataVigencia, "yyyy/mm/dd HH:MM:ss");
-
+        var erros = 0;
         var tipoOpcao = jQuery("#tipoOpcaoEnquete").val();
         var URL = jQuery(".urlSalvarEnquete").val();
+
+        var sDate = "";
+
+        if (dataVigenciaInicial != "") {
+            sDate = dataVigenciaInicial;
+        }
         if (nomeEnquete == "") {
             alert("Informe um nome para a enquete!");
-            jQuery("#nomeEnquete").focus();
-            return false;
+            erros++;
         }
-        else if (quantidadeOpcoes < 2) {
-            alert("A enquete deve ter pelo menos 2 opções!");
-            return false;
-        }
-        else if (dataVigencia == "") {
+        if (sDate == "") {
             alert("Informe uma data de vigência!");
-            return false;
+            erros++;
         }
-        else {
+        if (qtdOpcoes < 2) {
+            alert("A enquete deve ter pelo menos 2 opções!");
+            erros++;
+            alert(erros);
+        }
+
+
+
+        if (erros == 0) {
             var vetorOpcoesEnquete = {};
             jQuery("#areaOpcaoEnquete").each(function () {
                 var opcoes = $.map($('span', this), function (e) { return e; });
@@ -107,6 +149,7 @@ jQuery(document).ready(function () {
                 },
                 success: function (Resultado) {
                     alert("Enquete salva com sucesso!");
+                    location.reload();
                 },
                 error: function (data) {
                     alert("Não foi possível salvar a enquete.Contate o administrador e tente mais tarde!");
