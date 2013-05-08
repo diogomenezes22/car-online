@@ -1,19 +1,69 @@
-﻿@{
+﻿@{  
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
+@using carOnline.Models;
+<div>
+    @{
+        CarOnlineEntities entity = new CarOnlineEntities();
+        const string radioButtonType = "radiobutton";
+        
+        //Obtendo as última enquetes válidas
+        var ultimasEnquetes = entity.tblEnquete.Where(w => w.dataVigencia >= DateTime.Now).OrderByDescending(o => o.idEnquete);
 
-    <div class="slider-holder">
-        <div class="slider">
-            <ul class="items">
-                <li><img src="../../Content/images/slide-1.jpg" alt=""/></li>
-                <li><img src="../../Content/images/slide-2.jpg" alt=""/></li>
-                <li><img src="../../Content/images/slide-3.jpg" alt=""/></li>
-                <li><img src="../../Content/images/slide-4.jpg" alt=""/></li>
-            </ul>
-        </div>
-        <a class="play"></a>
-    </div> 
+        //Última enquete cadastrada
+        var ultimaEnquete = ultimasEnquetes.Count() > 0 ? ultimasEnquetes.First() : null;
+
+        if (ultimaEnquete != null)
+        {
+
+            //Iniciando o formulário
+            using (Html.BeginForm("Votar","Home"))
+            {
+              
+                //Titulo da enquete
+                <p>@ultimaEnquete.descricao</p>
+        
+                //Opções da enquete
+                foreach (var opcao in ultimaEnquete.tblOpcaoEnquete)
+                {
+                    <br />
+        
+                    if (opcao.tipo.ToLower() == radioButtonType)
+                    {
+                    <span>@Html.RadioButton("idOpcaoEnquete", opcao.idOpcaoEnquete, false)</span>
+                    }
+                    else
+                    {
+                        <span>@Html.CheckBox("idOpcaoEnquete",false)</span>
+                    }
+        
+         //Descrição da opção            
+         <span>@opcao.descricao</span>
+                
+              }
+           <input type="submit" value="votar" name="votar" id="votar" />
+         }
+     }
+        
+    }
+</div>
+<div class="slider-holder">
+    <div class="slider">
+        <ul class="items">
+            <li>
+                <img src="../../Content/images/slide-1.jpg" alt="" /></li>
+            <li>
+                <img src="../../Content/images/slide-2.jpg" alt="" /></li>
+            <li>
+                <img src="../../Content/images/slide-3.jpg" alt="" /></li>
+            <li>
+                <img src="../../Content/images/slide-4.jpg" alt="" /></li>
+        </ul>
+    </div>
+    <a class="play"></a>
+</div>
 </header>
 <section id="content-1" class="p7">
     <div class="container_12">
