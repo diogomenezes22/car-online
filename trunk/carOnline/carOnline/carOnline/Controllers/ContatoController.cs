@@ -8,7 +8,7 @@ using carOnline.Models;
 
 namespace carOnline.Controllers
 {
-    public class ContatoController : Controller
+    public class ContatoController : BaseController
     {
         //
         // GET: /Contato/

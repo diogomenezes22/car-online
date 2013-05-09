@@ -10,7 +10,7 @@ using System.IO;
 using System.Text;
 namespace carOnline.Controllers
 {
-    public class VeiculoController : Controller
+    public class VeiculoController : BaseController
     {
         //
         // GET: /Veiculo/

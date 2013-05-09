@@ -7,7 +7,7 @@ using carOnline.Models;
 using System.Transactions;
 namespace carOnline.Controllers
 {
-    public class UsuarioController : Controller
+    public class UsuarioController : BaseController
     {
         //
         // GET: /Usuario/
