@@ -1,11 +1,13 @@
 ﻿@{  
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    
 }
+
 @using carOnline.Models;
-<div>
-    @{
+
+  <div>
+  @{
+        //Entidades
         CarOnlineEntities entity = new CarOnlineEntities();
         const string radioButtonType = "radiobutton";
         
@@ -15,6 +17,7 @@
         //Última enquete cadastrada
         var ultimaEnquete = ultimasEnquetes.Count() > 0 ? ultimasEnquetes.First() : null;
 
+        //Verificando se a enquete retornou resultados
         if (ultimaEnquete != null)
         {
 
@@ -26,28 +29,60 @@
                 <p>@ultimaEnquete.descricao</p>
         
                 //Opções da enquete
+                //Contador
+                short cont = 0;
+                
+                //Varrendo as opções
                 foreach (var opcao in ultimaEnquete.tblOpcaoEnquete)
                 {
                     <br />
         
+                    cont++;
+        
                     if (opcao.tipo.ToLower() == radioButtonType)
                     {
-                    <span>@Html.RadioButton("idOpcaoEnquete", opcao.idOpcaoEnquete, false)</span>
+                         <span>@Html.RadioButton("Valores", opcao.idOpcaoEnquete, false)</span>
                     }
                     else
                     {
-                        <span>@Html.CheckBox("idOpcaoEnquete",false)</span>
+                        <input type="checkbox" name="IdOpcaoEnquete" value="@opcao.idOpcaoEnquete" onclick="SetarValor(this)"/>
                     }
+                    
+                    //Descrição da opção            
+                    <span>@opcao.descricao</span>
+                }
+                 <input type="submit" value="votar" name="votar" id="votar" />
+            }
+        }
         
-         //Descrição da opção            
-         <span>@opcao.descricao</span>
-                
-              }
-           <input type="submit" value="votar" name="votar" id="votar" />
-         }
-     }
-        
-    }
+   }
+
+    <script type="text/javascript">
+
+        //Seta o valor de um componente de acordo com seu status checked, complementando seu ID com um status
+        SetarValor = function (obj) {
+            if(obj)
+              obj.value = (obj.checked) ? Remover(obj.value) + " true" : Remover(obj.value) + " false";
+        }
+
+        //Remove a sobra do value de um componente
+        Remover = function (value) {
+            retorno = "";
+
+            tamanho = value.length;
+
+            for (i = 0; i < tamanho; i++) {
+                if (value.charAt(i) == ' ')
+                    break;
+                else
+                    retorno += value.charAt(i);
+            }
+
+            return retorno;
+        }
+    
+    </script>
+
 </div>
 <div class="slider-holder">
     <div class="slider">
