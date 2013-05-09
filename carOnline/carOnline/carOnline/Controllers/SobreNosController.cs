@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace carOnline.Controllers
 {
-    public class SobreNosController : Controller
+    public class SobreNosController : Models.BaseController
     {
         //
         // GET: /SobreNos/

@@ -7,7 +7,7 @@ using carOnline.Models;
 
 namespace carOnline.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         //
         // GET: /Home/
@@ -27,7 +27,7 @@ namespace carOnline.Controllers
             {
                 //Entidade
                 CarOnlineEntities entity = new CarOnlineEntities();
-                
+
                 //Varrendo as opções selecionadas, quando for radio sempre será apenas uma
                 for (int i = 0; i < quantidadeOpcoes; i++)
                 {
@@ -35,7 +35,7 @@ namespace carOnline.Controllers
                     //Caso venha um ou um conjunto de checkbox eles viram com seu id seguidos de seu estado - exemplo - 13 true
                     //Caso seu valor seja true a palavra True é removida caso seja false a palavra continua e é inválidada pela função IsInt32
                     if (idOpcaoEnquete[i].Contains("true"))
-                        idOpcaoEnquete[i] = idOpcaoEnquete[i].ToLower().Replace("true", "").Trim(); 
+                        idOpcaoEnquete[i] = idOpcaoEnquete[i].ToLower().Replace("true", "").Trim();
 
                     //Verifica se o valor corrente pode ser um Int32
                     if (!Ferramenta.IsInt32(idOpcaoEnquete[i]))
@@ -43,17 +43,20 @@ namespace carOnline.Controllers
 
                     //Convertendo a opção selecionada para Int32
                     int idOpcao = Convert.ToInt32(idOpcaoEnquete[i]);
-                    
+
                     //Obtendo os dados da opção selecionada
                     var enquete = entity.tblOpcaoEnquete.Where(w => w.idOpcaoEnquete == idOpcao).FirstOrDefault();
-                    
+
                     //Incrementando o total de votos
                     enquete.quantidadeVotos++;
                 }
 
                 //Efetuando o update
-                entity.SaveChanges();
+                Menssagem(ViewBag, entity.SaveChanges() > 0 ? "Seu voto foi computado com sucesso." : "Erro ao computar seu voto");
+
             }
+            else
+                Menssagem(ViewBag,"Por favor, selecione ao menos uma opção para seu voto.");
             return View("Index");
         }
 
