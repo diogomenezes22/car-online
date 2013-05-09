@@ -5,59 +5,86 @@
 
 @using carOnline.Models;
 
-  <div>
+  @if (ViewBag.votado == null)
+  {
+
+  <div class="enquete" id="divEnquete">
   @{
-        //Entidades
-        CarOnlineEntities entity = new CarOnlineEntities();
-        const string radioButtonType = "radiobutton";
-        
-        //Obtendo as última enquetes válidas
-        var ultimasEnquetes = entity.tblEnquete.Where(w => w.dataVigencia >= DateTime.Now).OrderByDescending(o => o.idEnquete);
+      //Entidades
+      CarOnlineEntities entity = new CarOnlineEntities();
+      const string radioButtonType = "radiobutton";
 
-        //Última enquete cadastrada
-        var ultimaEnquete = ultimasEnquetes.Count() > 0 ? ultimasEnquetes.First() : null;
+      //Obtendo as última enquetes válidas
+      var ultimasEnquetes = entity.tblEnquete.Where(w => w.dataVigencia >= DateTime.Now).OrderByDescending(o => o.idEnquete);
 
-        //Verificando se a enquete retornou resultados
-        if (ultimaEnquete != null)
-        {
+      //Última enquete cadastrada
+      var ultimaEnquete = ultimasEnquetes.Count() > 0 ? ultimasEnquetes.First() : null;
 
-            //Iniciando o formulário
-            using (Html.BeginForm("Votar","Home"))
-            {
+      //Verificando se a enquete retornou resultados
+      if (ultimaEnquete != null)
+      {
+
+          //Iniciando o formulário
+          using (Html.BeginForm("Votar", "Home"))
+          {
               
-                //Titulo da enquete
-                <p>@ultimaEnquete.descricao</p>
-        
-                //Opções da enquete
-                //Contador
-                short cont = 0;
+                <div class="enqueteFechar" id="botaoFecharEnquete">X</div>
                 
-                //Varrendo as opções
-                foreach (var opcao in ultimaEnquete.tblOpcaoEnquete)
-                {
-                    <br />
+              //Titulo da enquete
+                <div class="enqueteTitulo ident-bot-3"><h2>@ultimaEnquete.descricao</h2>
+                </div>
         
-                    cont++;
-        
-                    if (opcao.tipo.ToLower() == radioButtonType)
-                    {
-                         <span>@Html.RadioButton("Valores", opcao.idOpcaoEnquete, false)</span>
-                    }
-                    else
-                    {
-                        <input type="checkbox" name="IdOpcaoEnquete" value="@opcao.idOpcaoEnquete" onclick="SetarValor(this)"/>
-                    }
-                    
-                    //Descrição da opção            
-                    <span>@opcao.descricao</span>
-                }
-                 <input type="submit" value="votar" name="votar" id="votar" />
-            }
-        }
+              //Opções da enquete
+              //Contador
+              short cont = 0;
+
+              //Varrendo as opções
+              foreach (var opcao in ultimaEnquete.tblOpcaoEnquete)
+              {
+                    <div class="enqueteOpcao h2 ident-top-1">        
+                        @{
+                  cont++;
+
+                  if (opcao.tipo.ToLower() == radioButtonType)
+                  {
+                             <span>@Html.RadioButton("Valores", opcao.idOpcaoEnquete, false)</span>
+                  }
+                  else
+                  {
+                            <input type="checkbox" name="IdOpcaoEnquete" value="@opcao.idOpcaoEnquete" onclick="SetarValor(this)"/>
+                  }
+                        }
+                        <!--//Descriçao da opcao -->          
+                        <span>@opcao.descricao</span>
+                    </div>
+              }
+                 <input type="submit" value="votar" class="button left cBoth enqueteBotao" name="votar" id="votar" />
+          }
+      }
         
    }
-
+    </div>
+  }
     <script type="text/javascript">
+
+        //Load
+        $(document).ready(function () {
+            if (E('botaoFecharEnquete'))
+                $('#botaoFecharEnquete').click(function () {
+                    Fechar('divEnquete');
+                });
+        })
+
+
+        //Retorna um elemento
+        E = function(id){
+          return (document.getElementById(id));
+        }
+
+        //Fecha a div de enquete
+        Fechar = function (id) { 
+          $("#"+id).hide();
+        }
 
         //Seta o valor de um componente de acordo com seu status checked, complementando seu ID com um status
         SetarValor = function (obj) {
@@ -83,7 +110,7 @@
     
     </script>
 
-</div>
+
 <div class="slider-holder">
     <div class="slider">
         <ul class="items">

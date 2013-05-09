@@ -14,6 +14,7 @@ namespace carOnline.Controllers
 
         public ActionResult Index()
         {
+
             return View();
         }
 
@@ -57,6 +58,8 @@ namespace carOnline.Controllers
             }
             else
                 Menssagem(ViewBag,"Por favor, selecione ao menos uma opção para seu voto.");
+
+            ViewBag.votado = true;
             return View("Index");
         }
 
