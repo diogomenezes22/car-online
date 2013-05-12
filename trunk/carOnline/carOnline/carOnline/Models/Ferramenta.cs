@@ -173,7 +173,7 @@ namespace carOnline.Models
             client.EnableSsl = true;
 
             //Se precisa de autenticação informe o usuário e senha
-            client.Credentials = new NetworkCredential("", "");
+            client.Credentials = new NetworkCredential("geraldo.estudos.trabalho@gmail.com", "91232810abcdef");
 
             //Se não precisa de autenticação
             //client.UseDefaultCredentials = true;

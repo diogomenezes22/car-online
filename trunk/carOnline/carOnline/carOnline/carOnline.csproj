@@ -510,6 +510,7 @@
     <Content Include="Areas\Administrativo\Scripts\tinymce\jscripts\tiny_mce\utils\validate.js" />
     <Content Include="Areas\Administrativo\Scripts\ui.multiselect.js" />
     <Content Include="Content\css\administrativo.css" />
+    <Content Include="Content\css\cssDiogo.css" />
     <Content Include="Content\css\cssGeraldo.css" />
     <Content Include="Content\css\forms.css" />
     <Content Include="Content\css\grid.css" />
