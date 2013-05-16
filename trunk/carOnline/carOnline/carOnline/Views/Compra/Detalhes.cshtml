@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Detalhes";
+}
+
+@using carOnline.Models;
+
+@{
+    
+    if (Ferramenta.IsInt32(ViewBag.IdCarro))
+    {
+        CarOnlineEntities entity = new CarOnlineEntities();
+        int idCarro = Convert.ToInt32(ViewBag.IdCarro);
+        
+        var carroSelecionado = entity.tblVeiculo.Where(c => c.idVeiculo == idCarro );
+
+        var carro = carroSelecionado.Count() > 0 ? carroSelecionado.First() : null;
+
+        if (carro != null)
+        {
+    <br /><br />
+    <p>@carro.ano</p>
+    <p>@carro.dataCadastro</p>
+    <p>@carro.descricao</p>
+    <p>@carro.tblCor.descricao</p>
+    <p>@carro.portas</p>
+    <p>@carro.preco</p>
+    <p>@carro.quilometragem</p>
+    <img src="@carro.tblFotosVeiculo.Count > 0? carro.tblFotosVeiculo.First().urlFoto : " alt="@carro.descricao" />
+    }
+    else
+    {
+     // <script type="text/javascript">Mensagem("Carro não encontrado","Aviso")</script>
+    <p>Carro não encontrado</p>
+        }
+    }
+    
+}

@@ -11,6 +11,19 @@ namespace carOnline.Models
 {
     public class Ferramenta
     {
+        /// <summary>
+        /// Algumas constantes utilizadas no sistema
+        /// </summary>
+        #region Constantes
+
+        ///QueryStrings
+        public struct QueryStrings 
+        {
+            public const string IdCarro = "IdCarro";
+        }
+
+        #endregion
+
 
         #region Utils
 
@@ -173,7 +186,7 @@ namespace carOnline.Models
             client.EnableSsl = true;
 
             //Se precisa de autenticação informe o usuário e senha
-            client.Credentials = new NetworkCredential("geraldo.estudos.trabalho@gmail.com", "91232810abcdef");
+            client.Credentials = new NetworkCredential("", "");
 
             //Se não precisa de autenticação
             //client.UseDefaultCredentials = true;

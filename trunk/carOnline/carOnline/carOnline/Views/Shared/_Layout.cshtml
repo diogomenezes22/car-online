@@ -55,6 +55,9 @@
             });
         });
     });
+
+
+   
 </script>
 </head>
 
@@ -64,7 +67,7 @@
     @if (ViewBag.mensagemModal != null) 
     {
     <div id="modalMenssagem" title="@ViewBag.mensagemTitulo">
-        <p>@ViewBag.mensagemModal</p>
+        <p id="MensagemModal">@ViewBag.mensagemModal</p>
     </div>
     }
     <div class="main">
@@ -122,6 +125,7 @@
                     <li class="active"><a href="@Url.Action("Index","Home",null)">HOME</a></li>
                     <li><a href="@Url.Action("Index","SobreNos",null)">SOBRE NÓS</a></li>
                     <li><a href="@Url.Action("Index","Veiculo",null)">VEÍCULOS</a></li>
+                    <li><a href="@Url.Action("Index","Compra",null)">COMPRA</a></li>
                     <li><a href="@Url.Action("Cadastro","Usuario",null)">USUÁRIO</a></li>
                     <li><a href="@Url.Action("Index","Contato",null)">CONTATO</a></li>
                 </ul>
@@ -145,6 +149,26 @@
             <div class="clear"></div>
         </footer>
     </div>
+
+    <script type="text/javascript">
+        Mensagem = function (mensagem, titulo) {
+            $(document).ready(function () {
+                $('#MensagemModal').html(mensagem);
+                $('#MensagemModal').attr("title", titulo);
+
+                $(function () {
+                    $("#modalMenssagem").dialog({
+                        modal: true,
+                        buttons: {
+                            Ok: function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });
+                });
+            });
+        }
+    </script>
 </body>
 </html>
 <div class="mascara"></div>
