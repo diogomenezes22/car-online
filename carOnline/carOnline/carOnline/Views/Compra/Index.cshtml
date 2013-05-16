@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@using carOnline.Models
+@{
+    CarOnlineEntities entity = new CarOnlineEntities();
+
+    var Carros = entity.tblVeiculo.Select(s => s);
+
+
+    foreach (var carro in Carros)
+    {
+   
+    <br /><br />
+    <p>@carro.ano</p>
+    <p>@carro.dataCadastro</p>
+    <p>@carro.descricao</p>
+    <p>@carro.tblCor.descricao</p>
+    <p>@carro.portas</p>
+    <p>@carro.preco</p>
+    <p>@carro.quilometragem</p>
+    <img src="@carro.tblFotosVeiculo.Count > 0? carro.tblFotosVeiculo.First().urlFoto : " alt="@carro.descricao" />
+    <div onclick="Redirecionar(@carro.idVeiculo,'@Ferramenta.QueryStrings.IdCarro')">Visualizar</div>
+    }
+    
+
+    <script type="text/javascript">
+
+        Redirecionar = function (id,nomeQueryString) {
+            location.href = 'Compra/Detalhes?' + nomeQueryString + '=' + id;
+        }
+
+    </script>
+    
+}
