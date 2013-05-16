@@ -82,6 +82,7 @@
     <Compile Include="Areas\Administrativo\Controllers\PrincipalController.cs" />
     <Compile Include="Areas\Administrativo\Controllers\RelatorioController.cs" />
     <Compile Include="Areas\Administrativo\Controllers\SeguradoraController.cs" />
+    <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\ContatoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SobreNosController.cs" />
@@ -888,6 +889,8 @@
     <None Include="Areas\Administrativo\Scripts\tinymce\jscripts\tiny_mce\plugins\tinybrowser\upload_process.php" />
     <None Include="Areas\Administrativo\Scripts\tinymce\readme" />
     <Content Include="Areas\Administrativo\Views\Shared\_Admin.cshtml" />
+    <Content Include="Views\Compra\Detalhes.cshtml" />
+    <Content Include="Views\Compra\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

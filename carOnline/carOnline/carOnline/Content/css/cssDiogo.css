@@ -66,3 +66,59 @@
 {
   clear:both;
 }
+
+.listaVeiculo
+{
+    width:630px;
+    height:400px;
+    margin:auto;
+    padding:5px;
+    overflow:auto;
+    border-radius:3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border:1px solid #ccc;
+}
+.areaVeiculo
+{
+    float:left;
+    margin-right:6px;
+    border:1px solid #000;
+    margin-bottom:4px;
+    padding:10px;
+}
+.areaVeiculoDetalhe
+{
+    width:200px;
+    border:1px solid #000;
+    padding:10px;
+    margin:auto;
+}
+.botaoVisualizar
+{
+    cursor:pointer;
+    color:Blue;
+    font-family:Verdana;
+    font-size:0.9em;
+    font-weight:bold;
+    width:100%;
+    text-align:center;
+    margin:auto;
+}
+.textoAno
+{
+    color:#f00;
+    font-family:Verdana;
+    font-size:0.9em;
+    font-weight:bold;
+    width:100%;
+    text-align:center;
+    margin:auto;
+}
+.textoPreco
+{
+    color:green;
+    font-family:Verdana;
+    font-size:1.0em;
+    font-weight:bold;
+}

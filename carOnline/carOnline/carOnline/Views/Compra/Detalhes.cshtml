@@ -16,20 +16,26 @@
         var carro = carroSelecionado.Count() > 0 ? carroSelecionado.First() : null;
 
         if (carro != null)
+        {   <br /><br />
+             @:<div class="areaVeiculoDetalhe">
+                <p class="textoAno">@carro.ano</p>
+                @*<p>@carro.dataCadastro</p>*@
+                @*<p>@carro.descricao</p>*@
+                <p>Cor: @carro.tblCor.descricao</p>
+                <p>Portas: @carro.portas</p>
+                <p class="textoPreco">R$ @carro.preco</p>
+                <p>Km: @carro.quilometragem</p>
+                string url = carro.tblFotosVeiculo.Count > 0 ? carro.tblFotosVeiculo.First().urlFoto : "";
+                if (url != "")
+                {
+                        <img src="@Url.Content(url)" width="120px" height="120px" alt="@carro.descricao" />
+                }
+            @:</div>
+             <br /><br />
+        }
+        else
         {
-    <br /><br />
-    <p>@carro.ano</p>
-    <p>@carro.dataCadastro</p>
-    <p>@carro.descricao</p>
-    <p>@carro.tblCor.descricao</p>
-    <p>@carro.portas</p>
-    <p>@carro.preco</p>
-    <p>@carro.quilometragem</p>
-    <img src="@carro.tblFotosVeiculo.Count > 0? carro.tblFotosVeiculo.First().urlFoto : " alt="@carro.descricao" />
-    }
-    else
-    {
-     // <script type="text/javascript">Mensagem("Carro não encontrado","Aviso")</script>
+            // <script type="text/javascript">Mensagem("Carro não encontrado","Aviso")</script>
     <p>Carro não encontrado</p>
         }
     }

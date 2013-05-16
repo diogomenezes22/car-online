@@ -6,24 +6,31 @@
     CarOnlineEntities entity = new CarOnlineEntities();
 
     var Carros = entity.tblVeiculo.Select(s => s);
-
-
+    <br /><br />
+    @:<div class="listaVeiculo">
     foreach (var carro in Carros)
     {
-   
-    <br /><br />
-    <p>@carro.ano</p>
-    <p>@carro.dataCadastro</p>
-    <p>@carro.descricao</p>
-    <p>@carro.tblCor.descricao</p>
-    <p>@carro.portas</p>
-    <p>@carro.preco</p>
-    <p>@carro.quilometragem</p>
-    <img src="@carro.tblFotosVeiculo.Count > 0? carro.tblFotosVeiculo.First().urlFoto : " alt="@carro.descricao" />
-    <div onclick="Redirecionar(@carro.idVeiculo,'@Ferramenta.QueryStrings.IdCarro')">Visualizar</div>
+        
+        @:<div class="areaVeiculo">
+            
+            <p class="textoAno">@carro.ano</p>
+            @*<p>@carro.dataCadastro</p>*@
+            @*<p>@carro.descricao</p>*@
+            <p>Cor: @carro.tblCor.descricao</p>
+            <p>Portas: @carro.portas</p>
+            <p class="textoPreco">R$ @carro.preco</p>
+            <p>Km: @carro.quilometragem</p>
+            string url = carro.tblFotosVeiculo.Count > 0 ? carro.tblFotosVeiculo.First().urlFoto : "";
+            if (url != "")
+            {
+                    <img src="@Url.Content(url)" width="120px" height="120px" alt="@carro.descricao" />
+            }
+            <hr />
+            <div onclick="Redirecionar(@carro.idVeiculo,'@Ferramenta.QueryStrings.IdCarro')" class="botaoVisualizar">Visualizar</div>
+        @:</div>
     }
-    
-
+    @:</div>
+    <br /><br />
     <script type="text/javascript">
 
         Redirecionar = function (id,nomeQueryString) {
