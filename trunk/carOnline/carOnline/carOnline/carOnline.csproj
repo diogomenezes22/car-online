@@ -98,6 +98,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CarOnlineModelo.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ComplexTypes\ModelosRelatorio.cs" />
     <Compile Include="Models\Ferramenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using carOnline.Models;
+using carOnline.Models.ComplexTypes;
 using Rotativa;
 using Rotativa.Options;
 namespace carOnline.Areas.Administrativo.Controllers
@@ -20,11 +19,56 @@ namespace carOnline.Areas.Administrativo.Controllers
             {
                 List<tblMarcaVeiculo> marcas = DB.tblMarcaVeiculo.ToList<tblMarcaVeiculo>();
                 List<tblModeloVeiculo> modelos = DB.tblModeloVeiculo.ToList<tblModeloVeiculo>();
+                var query = DB.tblMarcaVeiculo.Select(m => new { m.descricao, m.idMarcaVeiculo });
+                Dictionary<int, string> todasMarcas = new Dictionary<int, string>();
 
+                foreach (var item in query)
+                {
+                    todasMarcas.Add(item.idMarcaVeiculo,item.descricao);
+                }
+                @ViewBag.ListaCheckBoxMarcas = todasMarcas;
                 @ViewBag.ListaMarcas = new SelectList(marcas, "idMarcaVeiculo", "descricao");
                 @ViewBag.ListaModelos = new SelectList(modelos, "idModeloVeiculo", "descricao");
             }
             return View();
+        }
+        public ActionResult BuscarTodosModelos()
+        {
+            using (CarOnlineEntities DB = new CarOnlineEntities())
+            {
+                List<ModelosRelatorio> modelos = new List<ModelosRelatorio>();
+                var query = DB.tblModeloVeiculo;
+                foreach (var item in query)
+                {
+                    ModelosRelatorio m = new ModelosRelatorio();
+                    m.idModelo = item.idModeloVeiculo;
+                    m.descricao = item.descricao;
+                    modelos.Add(m);
+                }
+                var data = new { modelos };
+                return Json(data);
+            }
+
+        }
+        [HttpPost]
+        public ActionResult BuscarModelosFiltrados(string[] marcas)
+        {
+            using (CarOnlineEntities DB = new CarOnlineEntities())
+            {
+                List<ModelosRelatorio> modelos = new List<ModelosRelatorio>();
+                var query = DB.tblModeloVeiculo.Where(x => marcas.Contains(x.tblMarcaVeiculo.descricao));
+
+                foreach (var item in query)
+                {
+                    ModelosRelatorio m = new ModelosRelatorio();
+                    m.idModelo = item.idModeloVeiculo;
+                    m.descricao = item.descricao;
+                    modelos.Add(m);
+                }
+                var data = new { modelos };
+                return Json(data);
+            }
+
         }
         public ActionResult RelatorioCarrosCadastros()
         {
@@ -35,27 +79,25 @@ namespace carOnline.Areas.Administrativo.Controllers
             else
                 return RedirectToAction("Index", "Home");
         }
-
-        public ActionResult RelatorioCarrosCadastradosPDF(FormCollection formulario)
+        [HttpPost]
+        public ActionResult RelatorioCarrosCadastradosPDF(string dataInicial,string dataFinal,string[] modelos,FormCollection formulario)
         {
+            var allvalues = formulario["modelos"].Split(',').Select(x => int.Parse(x));
+
+            foreach (var item in allvalues)
+            {
+                string teste = item.ToString();
+            }
+
             List<RelatorioCarrosCadastrados_Result> listaCarros = new List<RelatorioCarrosCadastrados_Result>();
-
-            int marca  = Convert.ToInt32(formulario["ListaMarcas"]);
-            int modelo = Convert.ToInt32(formulario["ListaModelos"]);
-
-            string porMarca  = formulario["porMarca"];
-            string porModelo = formulario["porModelo"];
-
-            if (porMarca == null)
-                marca  = 0;
-            if (porModelo == null)
-                modelo = 0;
 
             using (CarOnlineEntities DB = new CarOnlineEntities())
             {
                 
-                listaCarros = DB.RelatorioCarrosCadastrados(formulario["dataInicial"], formulario["dataFinal"],marca,modelo).ToList<RelatorioCarrosCadastrados_Result>();
+                listaCarros = DB.RelatorioCarrosCadastrados(dataInicial, dataFinal).ToList<RelatorioCarrosCadastrados_Result>();
             }
+            if(modelos!=null)
+                listaCarros.Where(lc => modelos.Contains(lc.Modelo));
             var pdf = new ViewAsPdf
             {
                 ViewName = "RelatorioCarrosCadastrados",

@@ -17,24 +17,41 @@
                     @TempData["mensagemRetorno"]
                 </div><!-- MOSTRAR MsgAlerta DE VALIDACAO -->
 
-                @using (@Html.BeginForm("RelatorioCarrosCadastradosPDF","Relatorio",FormMethod.Post))
+                @using (@Html.BeginForm("RelatorioCarrosCadastradosPDF", "Relatorio", FormMethod.Post))
                 {
-                    <p><input type="checkbox" class="porMarca" id="porMarca" name="porMarca" />Por Marca </p>
-                    <p><input type="checkbox" class="porModelo" id="porModelo" name="porModelo" />Por Modelo </p>
-                    <p class="areaEscolhaMarca">
-                        <label for="marcas" class="label">Marca: </label>
-                        @Html.DropDownList("ListaMarcas", null, new { @class = "campoTexto" }) 
-                    </p>
+                    @*<p><input type="checkbox" class="porMarca" id="porMarca" name="porMarca" />Por Marca </p>
+                    <p><input type="checkbox" class="porModelo" id="porModelo" name="porModelo" />Por Modelo </p>*@
+                    <p><a href="#" class="botaoBuscarModelos">Buscar modelos</a></p>
+                    <p class="areaEscolhaMarca"><label for="marcas" class="label">Marcas: </label></p>
+                    <div class="ListaCheckBoxMarcas">
+                        @{
+                            Dictionary<int,string> marcas = @ViewBag.ListaCheckBoxMarcas;
+                            <p><input type="checkbox" data-nome="todos" data-idMarca="0" class="selecionarTodasMarcas" />Todos </p>
+                            foreach (var marca in marcas)
+                            {
+                                <p><input type="checkbox" data-nome="@marca.Value" data-idMarca="@marca.Key" class="itemMarca" />@marca.Value</p>
+                            }
+                            
+                        }
+                    </div>
+                    <br />
+                    <div class="ListaCheckBoxModelos">
+                            
+                    </div>
 
-                    <p class="areaEscolhaModelo">
+                       @* @Html.DropDownList("ListaMarcas", null, new { @class = "campoTexto" })*@ 
+                   
+
+                    @*<p class="areaEscolhaModelo">
                         <label for="modelos" class="label">Modelo: </label>
                         @Html.DropDownList("ListaModelos", null, new { @class = "campoTexto" })
-                    </p>
-        
+                    </p>*@
+                    <br />
                     <p> <label class="label">Data Inicial: </label><input type="text" id="dataInicial" name="dataInicial" class="CALENDARIO campoTexto" /></p>
                     <p> <label class="label">Data Final: </label><input  type="text" id="dataFinal" name="dataFinal" class="CALENDARIO campoTexto" /></p>
                     <br />
-                    <p><input type="submit" value="Gerar Relatório" class="button-red" /> <input type="reset" value="Limpar" class="button-red" /></p>
+                    <p><input type="submit" value="Gerar relatório" /> </p>
+                    <p><a  class="button-red botaoGerarRelatorioCarrosCadastrados">Gerar Relatório</a> </p>
                 }
             </div><!-- panel -->
 

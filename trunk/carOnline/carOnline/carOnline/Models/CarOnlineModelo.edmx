@@ -507,8 +507,6 @@
         <Function Name="RelatorioCarrosCadastrados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="dataInicial" Type="varchar" Mode="In" />
           <Parameter Name="dataFinal" Type="varchar" Mode="In" />
-          <Parameter Name="marca" Type="int" Mode="In" />
-          <Parameter Name="modelo" Type="int" Mode="In" />
         </Function>
         <Function Name="RelatorioCarrosVendidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="dataInicial" Type="varchar" Mode="In" />
@@ -612,8 +610,6 @@
           <FunctionImport Name="RelatorioCarrosCadastrados" ReturnType="Collection(CarOnlineModel.RelatorioCarrosCadastrados_Result)">
             <Parameter Name="dataInicial" Mode="In" Type="String" />
             <Parameter Name="dataFinal" Mode="In" Type="String" />
-            <Parameter Name="marca" Mode="In" Type="Int32" />
-            <Parameter Name="modelo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ConsultarParametro" ReturnType="Collection(CarOnlineModel.ConsultarParametro_Result)" />
           <EntitySet Name="tblEnquete" EntityType="CarOnlineModel.tblEnquete" />
