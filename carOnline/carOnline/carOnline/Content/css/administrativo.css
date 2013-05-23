@@ -872,3 +872,19 @@ a.botoesJanelaModal:hover
     font-family:Verdana;
     color:#000;
 }
+
+
+.ListaCheckBoxMarcas
+{
+    border:1px solid #bbb;
+    overflow:auto;
+    width:200px;
+    height:140px;
+}
+.ListaCheckBoxModelos
+{
+    border:1px solid #bbb;
+    overflow:auto;
+    width:200px;
+    height:140px;
+}

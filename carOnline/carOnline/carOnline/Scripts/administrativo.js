@@ -8,6 +8,98 @@
 
 jQuery(document).ready(function () {
 
+    //----------------------------------------AJAX PARA OS RELATORIOS-----------------------------\\
+
+    jQuery(".selecionarTodasMarcas").click(function () {
+        if (jQuery(this).is(":checked")) {
+            $.post("/Administrativo/Relatorio/BuscarTodosModelos/", {}, function (data) {
+                jQuery(".ListaCheckBoxModelos").html("");
+                jQuery(".ListaCheckBoxModelos").append("<p><input type='checkbox' data-nome='todos' data-idModelo='0' class='selecionarTodosModelos' />Todos </p>");
+                for (var i = 0; i < data.modelos.length; i++) {
+                    jQuery(".ListaCheckBoxModelos").append("<p><input type='checkbox'  value='" + data.modelos[i].descricao + "' id='modelos' name='modelos' data-nome='" + data.modelos[i].descricao + "' data-idModelo='" + data.modelos[i].idModelo + "' class='itemModelo' />" + data.modelos[i].descricao + "</p>");
+                }
+            });
+        }
+        else {
+            jQuery(".ListaCheckBoxModelos").html("");
+        }
+
+    });
+
+    jQuery(".itemMarca").click(function () {
+
+        jQuery(".selecionarTodasMarcas").attr("checked", false);
+        jQuery(".ListaCheckBoxModelos").html("");
+    });
+
+
+    jQuery(".botaoBuscarModelos").click(function () {
+        var vetorMarcas = {};
+        var k = 0;
+        jQuery("p .itemMarca").each(function () {
+            if (jQuery(this).is(":checked")) {
+                vetorMarcas[k] = jQuery(this).attr("data-nome");
+                k++;
+            }
+        });
+
+        if (k > 0) {
+            $.ajax({
+                url: "/Administrativo/Relatorio/BuscarModelosFiltrados/",
+                dataType: "json",
+                type: "post",
+                data: { marcas: vetorMarcas },
+                beforeSend: function (data) {
+                },
+                success: function (data) {
+                    jQuery(".ListaCheckBoxModelos").html("");
+                    jQuery(".ListaCheckBoxModelos").append("<p><input type='checkbox' data-nome='todos' data-idModelo='0' class='selecionarTodosModelos' />Todos </p>");
+                    for (var i = 0; i < data.modelos.length; i++) {
+                        jQuery(".ListaCheckBoxModelos").append("<p><input type='checkbox' value='" + data.modelos[i].descricao + "'  id='modelos' name='modelos'  data-nome='" + data.modelos[i].descricao + "' data-idModelo='" + data.modelos[i].idModelo + "' class='itemModelo' />" + data.modelos[i].descricao + "</p>");
+                    }
+                },
+                error: function (data) {
+
+                }
+            });
+        }
+
+    });
+
+   /* jQuery(".botaoGerarRelatorioCarrosCadastrados").click(function () {
+        var vetorModelos = {};
+        var k = 0;
+        var dataInicial = jQuery("#dataInicial").val();
+        var dataFinal = jQuery("#dataFinal").val();
+
+        jQuery(".itemModelo").each(function () {
+            if (!jQuery(".selecionarTodosModelos").is(":checked")) {
+                vetorModelos[k] = jQuery(this).attr("data-nome");
+                k++;
+            }
+        });
+
+        if (k > 0) {
+            $.ajax({
+                url: "/Administrativo/Relatorio/RelatorioCarrosCadastradosPDF/",
+                dataType: "json",
+                type: "post",
+                data: { dataInicial: dataInicial, dataFinal: dataFinal, modelos: vetorModelos },
+                beforeSend: function (data) {
+                },
+                success: function (data) {
+
+                },
+                error: function (data) {
+
+                }
+            });
+        }
+
+    });*/
+
+
+
     //------------------------------MASCARAS----------------------------\\
     //Transforma todos os inputs do tipo text em calendários desde que usem a classe .CALENDARIO
     jQuery('.CALENDARIO').livequery(function () {
@@ -282,6 +374,10 @@ jQuery(document).ready(function () {
         return marcados;
     }
 
+
+
+
+
     //Configuração Parâmetros de Cargo
     var urlAlterarParametroCargo = jQuery(".urlAlterarParametroCargo").val()
     jQuery(".listaCargos").click(function () {
@@ -320,29 +416,35 @@ jQuery(document).ready(function () {
     });
 
 
-    //----------------------------------------AJAX PARA OS RELATORIOS-----------------------------\\
 
-    jQuery(".porMarca").removeAttr("checked");
+
+
+
+
+
+
+
+    /*jQuery(".porMarca").removeAttr("checked");
     jQuery(".porModelo").removeAttr("checked");
 
     jQuery(".porMarca").click(function () {
-        if (jQuery(this).is(":checked")) {
-            jQuery(".areaEscolhaMarca").toggle();
-        }
-        else {
-            jQuery(".areaEscolhaMarca").toggle();
-        }
+    if (jQuery(this).is(":checked")) {
+    jQuery(".areaEscolhaMarca").toggle();
+    }
+    else {
+    jQuery(".areaEscolhaMarca").toggle();
+    }
     });
 
 
     jQuery(".porModelo").click(function () {
-        if (jQuery(this).is(":checked")) {
-            jQuery(".areaEscolhaModelo").toggle();
-        }
-        else {
-            jQuery(".areaEscolhaModelo").toggle();
-        }
-    });
+    if (jQuery(this).is(":checked")) {
+    jQuery(".areaEscolhaModelo").toggle();
+    }
+    else {
+    jQuery(".areaEscolhaModelo").toggle();
+    }
+    });*/
 
 
 
