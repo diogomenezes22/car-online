@@ -1,0 +1,1 @@
+Sistema de vendas de carros online da empresa e também aberto para demais usuários.
